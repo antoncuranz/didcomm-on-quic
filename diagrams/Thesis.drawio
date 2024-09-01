@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0" version="24.7.7">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0" version="24.7.8">
   <diagram name="Seite-1" id="HDc-kwV_B_1xKTGdfyAV">
-    <mxGraphModel dx="2082" dy="1451" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
+    <mxGraphModel dx="3305" dy="1944" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -631,6 +631,15 @@
         </mxCell>
         <mxCell id="52iqDLaWS4w1kDshRCd4-93" value="&lt;div&gt;OMNeT++ Simulation&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="940" y="374" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZEFBujlcjd5waYW6vQln-1" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="60.01" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZEFBujlcjd5waYW6vQln-2" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="59.99999999999999" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZEFBujlcjd5waYW6vQln-3" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="322.72" width="80" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
