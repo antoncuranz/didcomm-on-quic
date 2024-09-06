@@ -7,8 +7,8 @@ import os
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
-from timeit import default_timer
 from secrets import token_hex
+from timeit import default_timer
 
 import yaml
 from aiohttp import (
@@ -127,6 +127,7 @@ class AriesAgent:
             reuse_connections: bool = False,
             multi_use_invitations: bool = False,
             public_did_connections: bool = False,
+            transport_type: str = "http",
             **params,
     ):
         self.ident = ident
@@ -161,6 +162,7 @@ class AriesAgent:
         self.reuse_connections = reuse_connections
         self.multi_use_invitations = multi_use_invitations
         self.public_did_connections = public_did_connections
+        self.transport_type = transport_type
 
         self.admin_url = f"http://{self.internal_host}:{admin_port}"
         if AGENT_ENDPOINT:
@@ -342,7 +344,7 @@ class AriesAgent:
                     await asyncio.sleep(1.0)
                     attempts = attempts - 1
             schema_id = schema_response["schema_ids"][0]
-        self.log_msg("Schema ID:", schema_id)
+        self.log_msg("Schema ID: " + schema_id)
 
         # Create a cred def for the schema
         cred_def_tag = (
@@ -385,7 +387,7 @@ class AriesAgent:
             credential_definition_id = credential_definition_response[
                 "credential_definition_ids"
             ][0]
-        self.log_msg("Cred def ID:", credential_definition_id)
+        self.log_msg("Cred def ID: " + credential_definition_id)
         return schema_id, credential_definition_id
 
     async def register_schema_and_creddef_anoncreds(
@@ -423,7 +425,7 @@ class AriesAgent:
                     await asyncio.sleep(1.0)
                     attempts = attempts - 1
             schema_id = schema_response["schema_ids"][0]
-        self.log_msg("Schema ID:", schema_id)
+        self.log_msg("Schema ID: " + schema_id)
 
         # Create a cred def for the schema
         cred_def_tag = (
@@ -472,7 +474,7 @@ class AriesAgent:
             credential_definition_id = credential_definition_response[
                 "credential_definition_ids"
             ][0]
-        self.log_msg("Cred def ID:", credential_definition_id)
+        self.log_msg("Cred def ID: " + credential_definition_id)
         return schema_id, credential_definition_id
 
     def get_agent_args(self):
@@ -481,8 +483,8 @@ class AriesAgent:
             ("--label", self.label),
             "--auto-ping-connection",
             "--auto-respond-messages",
-            ("--inbound-transport", "http", "0.0.0.0", str(self.http_port)),
-            ("--outbound-transport", "http"),
+            ("--inbound-transport", self.transport_type, "0.0.0.0", str(self.http_port)),
+            ("--outbound-transport", self.transport_type),
             ("--admin", "0.0.0.0", str(self.admin_port)),
             "--admin-insecure-mode",
             ("--wallet-type", self.wallet_type),
@@ -861,10 +863,12 @@ class AriesAgent:
             self.proc.terminate()
             try:
                 self.proc.wait(timeout=1.5)
-                self.log(f"Exited with return code {self.proc.returncode}")
+                self.proc.stdout.close()
+                self.proc.stderr.close()
+                print(f"Exited with return code {self.proc.returncode}")
             except subprocess.TimeoutExpired:
                 msg = "Process did not terminate in time"
-                self.log(msg)
+                print(msg)
                 raise Exception(msg)
 
     async def terminate(self):
@@ -903,7 +907,7 @@ class AriesAgent:
         await runner.setup()
         self.webhook_site = web.TCPSite(runner, "0.0.0.0", webhook_port)
         await self.webhook_site.start()
-        self.log_msg("Started webhook listener on port:", webhook_port)
+        self.log_msg("Started webhook listener on port: " + str(webhook_port))
 
     async def _receive_webhook(self, request: ClientRequest):
         topic = request.match_info["topic"].replace("-", "_")
@@ -983,6 +987,16 @@ class AriesAgent:
     async def handle_keylist(self, message):
         self.log("Received handle_keylist message ...\n")
         self.log(json.dumps(message))
+
+    async def handle_out_of_band(self, message):
+        self.log("Received out of band webhook ...\n")
+
+    async def handle_connections(self, message):
+        # self.log("Received connections webhook ...\n")
+        if "their_public_did" not in message:
+            return
+        their_did = message["their_did"] if "their_did" in message else message["their_public_did"]
+        self.log("Connection webhook: did = {}; state = {};".format(their_did, message["state"]))
 
     async def taa_accept(self):
         taa_info = await self.admin_GET("/ledger/taa")
@@ -1292,11 +1306,11 @@ class AriesAgent:
 
     async def get_invite(
             self,
-            use_did_exchange: bool,
+            label: str = None,
             auto_accept: bool = True,
             reuse_connections: bool = False,
-            multi_use_invitations: bool = False,
-            public_did_connections: bool = False,
+            multi_use_invitations: bool = True,
+            public_did_connections: bool = True,
             emit_did_peer_2: bool = False,
             emit_did_peer_4: bool = False,
     ):
@@ -1313,79 +1327,39 @@ class AriesAgent:
                 and (not reuse_connections)
                 and (not public_did_connections)
         )
-        if use_did_exchange:
-            # TODO can mediation be used with DID exchange connections?
-            invi_params = {
-                "auto_accept": json.dumps(auto_accept),
-                "multi_use": json.dumps(multi_use_invitations),
-                "create_unique_did": json.dumps(create_unique_did),
-            }
-            payload = {
-                "handshake_protocols": ["didexchange/1.1"],
-                "use_public_did": public_did_connections,
-            }
-            if self.mediation:
-                payload["mediation_id"] = self.mediator_request_id
-            if use_did_method:
-                payload["use_did_method"] = use_did_method
-            invi_rec = await self.admin_POST(
-                "/out-of-band/create-invitation",
-                payload,
-                params=invi_params,
-            )
-        else:
-            if reuse_connections:
-                # use oob for connection reuse
-                invi_params = {
-                    "auto_accept": json.dumps(auto_accept),
-                    "create_unique_did": json.dumps(create_unique_did),
-                }
-                payload = {
-                    "handshake_protocols": ["https://didcomm.org/connections/1.0"],
-                    "use_public_did": public_did_connections,
-                }
-                if self.mediation:
-                    payload["mediation_id"] = self.mediator_request_id
-                if use_did_method:
-                    payload["use_did_method"] = use_did_method
-                invi_rec = await self.admin_POST(
-                    "/out-of-band/create-invitation",
-                    payload,
-                    params=invi_params,
-                )
-            elif self.mediation:
-                invi_params = {
-                    "auto_accept": json.dumps(auto_accept),
-                }
-                payload = {"mediation_id": self.mediator_request_id}
-                invi_rec = await self.admin_POST(
-                    "/connections/create-invitation",
-                    payload,
-                    params=invi_params,
-                )
-            else:
-                invi_rec = await self.admin_POST("/connections/create-invitation")
-
-        return invi_rec
+        invi_params = {
+            "auto_accept": json.dumps(auto_accept),
+            "multi_use": json.dumps(multi_use_invitations),
+            "create_unique_did": json.dumps(create_unique_did),
+        }
+        payload = {
+            "handshake_protocols": ["didexchange/1.1"],
+            "use_public_did": public_did_connections,
+        }
+        if self.mediation:
+            payload["mediation_id"] = self.mediator_request_id
+        if use_did_method:
+            payload["use_did_method"] = use_did_method
+        if label:
+            payload["my_label"] = label
+        return await self.admin_POST(
+            "/out-of-band/create-invitation",
+            payload,
+            params=invi_params,
+        )
 
     async def receive_invite(self, invite, auto_accept: bool = True):
         params = {}
         if self.mediation:
             params["mediation_id"] = self.mediator_request_id
-        if "/out-of-band/" in invite.get("@type", ""):
-            # reuse connections if requested and possible
-            params["use_existing_connection"] = json.dumps(self.reuse_connections)
-            connection = await self.admin_POST(
-                "/out-of-band/receive-invitation",
-                invite,
-                params=params,
-            )
-        else:
-            connection = await self.admin_POST(
-                "/connections/receive-invitation",
-                invite,
-                params=params,
-            )
+
+        # reuse connections if requested and possible
+        params["use_existing_connection"] = json.dumps(self.reuse_connections)
+        connection = await self.admin_POST(
+            "/out-of-band/receive-invitation",
+            invite,
+            params=params,
+        )
 
         self.connection_id = connection["connection_id"]
         return connection
@@ -1398,15 +1372,14 @@ class AriesAgent:
 
 
 def output_reader(handle, callback):
-    for line in iter(handle.readline, b""):
-        if not line:
-            continue
+    while not handle.closed:
         try:
-            callback(line)
+            line = handle.readline()
+            if line is not None:
+                callback(line)
         except:
             # see comment in DemoAgent.handle_output
             # trace log and prompt_toolkit do not get along...
-            sys.exit(1)
             pass
 
 
