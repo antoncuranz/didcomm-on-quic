@@ -4,49 +4,30 @@ import logging
 import random
 import socket
 
-from services.common.aries_agent import AriesAgent
+from services.common.webhook_agent_base import WebhookAgentBase
 
 logging.basicConfig(level=logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 BROADCAST_PORT = 8023
 
 
-class Agent(AriesAgent):
+class Agent(WebhookAgentBase):
     def __init__(
             self,
             ident: str,
             genesis_data: str,
+            external_host: str = "localhost",
             http_port: int = 8020,
             broadcast_invitations: bool = False,
             receive_invitations: bool = False,
-            create_schemas: bool = False,
-            **kwargs,
+            create_schemas: bool = False
     ):
-        super().__init__( # TODO: move default options to AriesAgent
-            ident,
-            http_port,
-            http_port+1,
-            genesis_data=genesis_data,
-            seed=ident.zfill(32),
-            aip=20,
-            public_did_connections=True,
-            extra_args=[
-                "--auto-accept-invites",
-                "--auto-accept-requests",
-                "--auto-store-credential",
-                "--public-invites",
-                "--invite-public",
-                "--requests-through-public-did"
-            ],
-            **kwargs,
-        )
+        super().__init__(ident, http_port, external_host=external_host, genesis_data=genesis_data, seed=ident.zfill(32))
+
         self.broadcast_invitations = broadcast_invitations
         self.receive_invitations = receive_invitations
         self.create_schemas = create_schemas
 
-        # self.webhook_callbacks = {}
-        self.log_callback = None
-        self.log_cache = []
         self.cred_def_type = None
         self.cred_def_reg = None
 
@@ -107,33 +88,6 @@ class Agent(AriesAgent):
                 self.log_msg("Received invitation")
                 await self.receive_invite(parsed)
                 received.append(parsed["@id"])
-
-    def set_log_callback(self, log_callback):
-        self.log_callback = log_callback
-        for log in self.log_cache:
-            self.log_msg(log)
-        self.log_cache = []
-
-    # def set_webhook_callback(self, topic, webhook_callback):
-    #     self.webhook_callbacks[topic] = webhook_callback
-
-    def log_msg(self, msg, color=None):
-        if isinstance(msg, list):
-            msg = str(" ".join(msg))
-        else:
-            msg = str(msg).rstrip()
-
-        if color is not None:
-            msg = color + msg
-
-        if self.log_callback is None:
-            self.log_cache.append(msg)
-            return
-
-        self.log_callback(msg)
-
-    def log_json(self, *msg, **kwargs):
-        pass
 
 
 def is_invitation_with_label(invitation, label):

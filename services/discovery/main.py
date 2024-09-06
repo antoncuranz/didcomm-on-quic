@@ -2,7 +2,8 @@ import argparse
 import asyncio
 import logging
 
-from services.common.aries_agent import fetch_genesis_txns
+from aiohttp import ClientSession
+
 from services.discovery.app import DiscoveryService
 from .agent import Agent
 
@@ -36,6 +37,18 @@ parser.add_argument(
     "--receive-invitations",
     action="store_true"
 )
+
+
+async def fetch_genesis_txns(genesis_url):
+    genesis = None
+    try:
+        async with ClientSession() as session:
+            async with session.get(genesis_url) as resp:
+                genesis = await resp.text()
+    except Exception:
+        LOGGER.exception("Error loading genesis transactions:")
+    return genesis
+
 
 async def main(args):
     genesis_data = await fetch_genesis_txns("http://test.bcovrin.vonx.io/genesis")
