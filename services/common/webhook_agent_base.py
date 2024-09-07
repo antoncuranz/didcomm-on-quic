@@ -16,17 +16,22 @@ class WebhookAgentBase(AgentBase):
             http_port: int,
             internal_host: str = "127.0.0.1",
             external_host: str = "localhost",
+            ledger_url: str = None,
             genesis_data: str = None,
             seed: str = None,
             transport_type: str = "http",
             extra_args=None,
     ):
-        super().__init__(ident, http_port, internal_host, external_host, genesis_data, seed, transport_type, extra_args)
+        super().__init__(ident, http_port, internal_host, external_host, ledger_url, genesis_data, seed, transport_type, extra_args)
 
         self.webhook_port = None
         self.webhook_url = None
         self.webhook_site = None
         self.webhook_callbacks = {}
+
+    async def initialize(self):
+        await self.listen_webhooks(self.http_port + 2)
+        await super().initialize()
 
     def set_webhook_callback(self, topic, webhook_callback):
         self.webhook_callbacks[topic] = webhook_callback
@@ -104,7 +109,14 @@ class WebhookAgentBase(AgentBase):
         self.log("Received out of band webhook ...\n")
 
     async def handle_connections(self, message):
-        # self.log("Received connections webhook ...\n")
+        # accept invitations with public did
+        if message["rfc23_state"] == "invitation-received":
+            public_did = (await self.get_public_did())["result"]["did"]
+            self.log("Received public did: " + public_did)
+            await self.accept_invitation(message["connection_id"], public_did)
+        elif message["rfc23_state"] == "request-received":
+            await self.accept_conn_request(message["connection_id"], use_public_did=True)
+
         if "their_public_did" not in message:
             return
         their_did = message["their_did"] if "their_did" in message else message["their_public_did"]

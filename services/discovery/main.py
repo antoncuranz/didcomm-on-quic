@@ -2,8 +2,6 @@ import argparse
 import asyncio
 import logging
 
-from aiohttp import ClientSession
-
 from services.discovery.app import DiscoveryService
 from .agent import Agent
 
@@ -13,14 +11,19 @@ LOGGER = logging.getLogger(__name__)
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
+    "ident",
+    type=str,
+    help="Agent identity (label)"
+)
+parser.add_argument(
     "--ip",
     default="localhost",
     help="External host IP",
 )
 parser.add_argument(
-    "ident",
-    type=str,
-    help="Agent identity (label)"
+    "--ledger",
+    default="http://test.bcovrin.vonx.io",
+    help="Indy Ledger URL",
 )
 parser.add_argument(
     "-p",
@@ -39,20 +42,8 @@ parser.add_argument(
 )
 
 
-async def fetch_genesis_txns(genesis_url):
-    genesis = None
-    try:
-        async with ClientSession() as session:
-            async with session.get(genesis_url) as resp:
-                genesis = await resp.text()
-    except Exception:
-        LOGGER.exception("Error loading genesis transactions:")
-    return genesis
-
-
 async def main(args):
-    genesis_data = await fetch_genesis_txns("http://test.bcovrin.vonx.io/genesis")
-    agent = Agent(args.ident, genesis_data, http_port=args.port, external_host=args.ip,
+    agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip,
                   broadcast_invitations=args.broadcast_invitations, receive_invitations=args.receive_invitations)
     app = DiscoveryService(agent)
 

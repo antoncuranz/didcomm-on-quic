@@ -30,17 +30,15 @@ class DiscoveryService(AppBase):
         self.service_table.add_rows(ROWS)
 
         self.connection_table = self.query_one("#connection_table", DataTable)
-        self.connection_table.add_columns("Label", "Public DID", "DID", "State")
-        # self.connections.add_rows(ROWS)
+        self.connection_table.add_columns("Label", "DID", "State")
 
     def handle_connections(self, connection):
         if connection["state"] == "active":
             self.log_msg("Adding new connection to table")
 
             label = connection.get("their_label", "-")
-            public_did = connection.get("their_public_did", "-")
             did = connection.get("their_did", "-")
             state = connection["state"]
 
             if state != "invitation":
-                self.connection_table.add_row(label, public_did, did, state)
+                self.connection_table.add_row(label, did, state)

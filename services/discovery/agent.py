@@ -15,14 +15,14 @@ class Agent(WebhookAgentBase):
     def __init__(
             self,
             ident: str,
-            genesis_data: str,
+            ledger_url: str,
             external_host: str = "localhost",
             http_port: int = 8020,
             broadcast_invitations: bool = False,
             receive_invitations: bool = False,
             create_schemas: bool = False
     ):
-        super().__init__(ident, http_port, external_host=external_host, genesis_data=genesis_data, seed=ident.zfill(32))
+        super().__init__(ident, http_port, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32))
 
         self.broadcast_invitations = broadcast_invitations
         self.receive_invitations = receive_invitations
@@ -32,12 +32,7 @@ class Agent(WebhookAgentBase):
         self.cred_def_reg = None
 
     async def initialize(self):
-        await self.register_did("http://test.bcovrin.vonx.io") # TODO
-        self.log_msg("Created public DID")
-
-        # with log_timer("Startup duration:"):
-        await self.listen_webhooks(self.http_port + 2)
-        await self.start_process()
+        await super().initialize()
 
         if self.create_schemas:
             version = format("%d.%d.%d"
@@ -65,7 +60,7 @@ class Agent(WebhookAgentBase):
         broadcast_sock.setblocking(False)
         loop = asyncio.get_event_loop()
 
-        invitation = await self.get_invite() # TODO: goal_code?
+        invitation = await self.get_invite()
         self.log_msg(invitation)
 
         while True:

@@ -9,7 +9,6 @@ from concurrent.futures import ThreadPoolExecutor
 from secrets import token_hex
 from timeit import default_timer
 
-import yaml
 from aiohttp import (
     ClientError,
     ClientResponse,
@@ -27,6 +26,16 @@ PYTHON = os.getenv("PYTHON", sys.executable)
 
 START_TIMEOUT = float(os.getenv("START_TIMEOUT", 30.0))
 
+async def fetch_genesis_txns(genesis_url):
+    genesis = None
+    try:
+        async with ClientSession() as session:
+            async with session.get(genesis_url) as resp:
+                genesis = await resp.text()
+    except Exception:
+        LOGGER.exception("Error loading genesis transactions:")
+    return genesis
+
 class AgentBase:
     def __init__(
             self,
@@ -34,6 +43,7 @@ class AgentBase:
             http_port: int,
             internal_host: str = "127.0.0.1",
             external_host: str = "localhost",
+            ledger_url: str = None,
             genesis_data: str = None,
             seed: str = None,
             transport_type: str = "http",
@@ -44,8 +54,8 @@ class AgentBase:
         self.admin_port = http_port + 1
         self.internal_host = internal_host
         self.external_host = external_host
+        self.ledger_url = ledger_url
         self.genesis_data = genesis_data
-        self.genesis_txn_list = None
         self.revocation = False
         self.mediation = False
         self.mediator_connection_id = None
@@ -53,19 +63,11 @@ class AgentBase:
         self.log_file = None
         self.log_config = None
         self.log_level = None
-        self.reuse_connections = False # TODO
+        self.reuse_connections = False # TODO: check this
         self.multi_use_invitations = True
         self.public_did_connections = True
         self.transport_type = transport_type
-
-        self.extra_args = extra_args or [
-            "--auto-accept-invites",
-            "--auto-accept-requests",
-            "--auto-store-credential",
-            "--public-invites",
-            "--invite-public",
-            "--requests-through-public-did"
-        ]
+        self.extra_args = extra_args
 
         self.admin_url = f"http://{self.internal_host}:{self.admin_port}"
         self.endpoint = f"http://{self.external_host}:{self.http_port}"
@@ -84,31 +86,30 @@ class AgentBase:
         self.did = None
         self.wallet_stats = []
 
-        self.multi_write_ledger_url = None
-        if self.genesis_txn_list:
-            updated_config_list = []
-            with open(self.genesis_txn_list, "r") as stream:
-                ledger_config_list = yaml.safe_load(stream)
-            for config in ledger_config_list:
-                if "genesis_url" in config and "/$LEDGER_HOST:" in config.get(
-                        "genesis_url"
-                ):
-                    config["genesis_url"] = config.get("genesis_url").replace(
-                        "$LEDGER_HOST", str(self.external_host)
-                    )
-                updated_config_list.append(config)
-                if "is_write" in config and config["is_write"]:
-                    self.multi_write_ledger_url = config["genesis_url"].replace(
-                        "/genesis", ""
-                    )
-            with open(self.genesis_txn_list, "w") as file:
-                documents = yaml.dump(updated_config_list, file)
-
         self.log_callback = None
         self.log_cache = []
 
+    async def initialize(self):
+        await self.register_did(self.ledger_url)
+        self.log_msg("Created public DID")
+
+        if not self.genesis_data:
+            self.genesis_data = await fetch_genesis_txns(self.ledger_url + "/genesis")
+
+        await self.start_process()
+
     async def get_connections(self):
         return await self.admin_GET("/connections")
+
+    async def accept_invitation(self, conn_id, use_did = None):
+        uri = "/didexchange/{}/accept-invitation".format(conn_id)
+        if use_did:
+            uri += "?use_did=" + use_did
+        return await self.admin_POST(uri)
+
+    async def accept_conn_request(self, conn_id, use_public_did = False):
+        uri = "/didexchange/{}/accept-request?use_public_did={}".format(conn_id, str(use_public_did).lower())
+        return await self.admin_POST(uri)
 
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
@@ -224,6 +225,8 @@ class AgentBase:
             "--auto-provision",
             "--public-invites",
             "--emit-new-didcomm-prefix",
+            "--auto-store-credential",
+            "--requests-through-public-did"
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":
@@ -246,8 +249,6 @@ class AgentBase:
             )
         if self.genesis_data:
             result.append(("--genesis-transactions", self.genesis_data))
-        if self.genesis_txn_list:
-            result.append(("--genesis-transactions-list", self.genesis_txn_list))
         if self.seed:
             result.append(("--seed", self.seed))
 
@@ -277,9 +278,6 @@ class AgentBase:
     ):
         # if registering a did for issuing indy credentials, publish the did on the ledger
         self.log(f"Registering {self.ident} ...")
-        if not ledger_url:
-            if self.multi_write_ledger_url:
-                ledger_url = self.multi_write_ledger_url
         if not ledger_url:
             ledger_url = f"http://{self.external_host}:9000"
         data = {"alias": alias or self.ident}
@@ -578,7 +576,7 @@ class AgentBase:
     async def get_invite(
             self,
             label: str = None,
-            auto_accept: bool = True,
+            auto_accept: bool = False,
             reuse_connections: bool = False,
             multi_use_invitations: bool = True,
             public_did_connections: bool = True,
@@ -619,7 +617,7 @@ class AgentBase:
             params=invi_params,
         )
 
-    async def receive_invite(self, invite, auto_accept: bool = True):
+    async def receive_invite(self, invite):
         params = {}
         if self.mediation:
             params["mediation_id"] = self.mediator_request_id

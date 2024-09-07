@@ -1,0 +1,35 @@
+# 1. Register DID using seed in VON web UI
+# 2. Start Cloudagent with seed (updates endpoint automatically)
+
+### Get anton's connections
+GET http://localhost:8021/connections
+Accept: application/json
+
+### Get bob's connections
+GET http://localhost:8031/connections
+Accept: application/json
+
+### bob: Connection request
+POST http://localhost:8031/didexchange/create-request?their_public_did=NyaE9SFSneSNRq6Ch8N9Pt&alias=Anton
+Accept: application/json
+
+> {% client.global.set("conn_id_bob", response.body.connection_id); %}
+
+### anton: Get connection id
+GET http://localhost:8021/connections?state=request
+
+> {% client.global.set("conn_id_anton", response.body.results[0].connection_id); %}
+
+### anton: Accept connection
+# state: request => response => ... => active
+POST http://localhost:8021/didexchange/{{conn_id_anton}}/accept-request
+Content-Type: application/json
+
+### anton: Send message
+# state: request => response => ... => active
+POST http://localhost:8021/connections/f64c81c9-264d-4b71-aa5b-d9a1fa4b1698/send-message
+Content-Type: application/json
+
+{
+  "content": "Hallo Bob"
+}
