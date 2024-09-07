@@ -1,8 +1,8 @@
 from textual.app import ComposeResult
 from textual.widgets import DataTable
 
-from .agent import Agent
 from services.common.app_base import AppBase
+from .agent import Agent
 
 ROWS = [
     ("did:indy:xyz", "FRONT_CAM_STREAM", "(D) B-AB 1234", "Daimler", "(timestamp)"),
@@ -16,6 +16,7 @@ class DiscoveryService(AppBase):
         super().__init__("Discovery Service", agent)
         self.service_table = None
         self.connection_table = None
+        self.agent.set_webhook_callback("connections", self.handle_connections)
 
     def compose_ui(self) -> ComposeResult:
         yield DataTable(id="service_table", cursor_type="row")
@@ -29,5 +30,17 @@ class DiscoveryService(AppBase):
         self.service_table.add_rows(ROWS)
 
         self.connection_table = self.query_one("#connection_table", DataTable)
-        self.connection_table.add_columns("Public DID", "DID", "State")
+        self.connection_table.add_columns("Label", "Public DID", "DID", "State")
         # self.connections.add_rows(ROWS)
+
+    def handle_connections(self, connection):
+        if connection["state"] == "active":
+            self.log_msg("Adding new connection to table")
+
+            label = connection.get("their_label", "-")
+            public_did = connection.get("their_public_did", "-")
+            did = connection.get("their_did", "-")
+            state = connection["state"]
+
+            if state != "invitation":
+                self.connection_table.add_row(label, public_did, did, state)

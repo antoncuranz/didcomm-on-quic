@@ -65,7 +65,7 @@ class Agent(WebhookAgentBase):
         broadcast_sock.setblocking(False)
         loop = asyncio.get_event_loop()
 
-        invitation = await self.get_invite(label="service-discovery")
+        invitation = await self.get_invite() # TODO: goal_code?
         self.log_msg(invitation)
 
         while True:
@@ -97,4 +97,4 @@ def is_invitation_with_label(invitation, label):
     if invitation["@type"] != "https://didcomm.org/out-of-band/1.1/invitation":
         return False
 
-    return invitation["label"] == label
+    return True #invitation["label"] == label

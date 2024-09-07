@@ -78,7 +78,7 @@ class WebhookAgentBase(AgentBase):
 
             callback = self.webhook_callbacks.get(topic, None)
             if callback:
-                self.webhook_callbacks[topic](topic, payload, headers)
+                self.webhook_callbacks[topic](payload)
 
     async def handle_problem_report(self, message):
         self.log(

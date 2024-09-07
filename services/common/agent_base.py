@@ -107,15 +107,16 @@ class AgentBase:
         self.log_callback = None
         self.log_cache = []
 
+    async def get_connections(self):
+        return await self.admin_GET("/connections")
+
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
-        wallets = await self.admin_GET("/multitenancy/wallets")
-        return wallets
+        return await self.admin_GET("/multitenancy/wallets")
 
     async def get_public_did(self):
         """Get public did of wallet (called for a sub-wallet)."""
-        did = await self.admin_GET("/wallet/did/public")
-        return did
+        return await self.admin_GET("/wallet/did/public")
 
     async def fetch_schemas(self):
         return await self.admin_GET("/schemas/created")
