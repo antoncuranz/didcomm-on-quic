@@ -48,7 +48,6 @@ async def main(args):
     app = DiscoveryApp(agent)
 
     try:
-        asyncio.create_task(agent.initialize())
         await app.run_async()
     finally:
         await agent.terminate()

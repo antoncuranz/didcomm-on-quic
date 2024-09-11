@@ -1,5 +1,6 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Header, TabbedContent, TabPane, RichLog
+from textual.worker import Worker, WorkerState
 
 from agents.common.webhook_agent_base import WebhookAgentBase
 
@@ -7,6 +8,7 @@ from agents.common.webhook_agent_base import WebhookAgentBase
 class AppBase(App):
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
     CSS_PATH = "style.tcss"
+    AGENT_INIT_WORKER = "agent-initialize"
 
     def __init__(self, controller_name: str, agent: WebhookAgentBase):
         super().__init__()
@@ -15,6 +17,16 @@ class AppBase(App):
         self.agent_logs = None
         self.title = "{} ({})".format(controller_name, agent.ident)
         self.sub_title = "IP: {} Port: {} ({})".format(agent.external_host, agent.http_port, agent.transport_type)
+
+    def on_load(self) -> None:
+        self.run_worker(self.agent.initialize(), name=self.AGENT_INIT_WORKER)
+
+    def on_worker_state_changed(self, event: Worker.StateChanged) -> None:
+        if event.state == WorkerState.ERROR:
+            self.notify(str(event.worker.error), severity="error")
+
+        if event.worker.name == self.AGENT_INIT_WORKER and event.state == WorkerState.SUCCESS:
+            self.notify("Agent initialized!")
 
     def compose(self) -> ComposeResult:
         yield Header()
