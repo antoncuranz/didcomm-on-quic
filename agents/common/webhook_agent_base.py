@@ -86,30 +86,30 @@ class WebhookAgentBase(AgentBase):
                 self.webhook_callbacks[topic](payload)
 
     async def handle_problem_report(self, message):
-        self.log(
+        self.log_msg(
             f"Received problem report: {message['description']['en']}\n",
             source="stderr",
         )
 
     async def handle_endorse_transaction(self, message):
-        self.log("Received endorse transaction ...\n", source="stderr")
+        self.log_msg("Received endorse transaction ...\n", source="stderr")
 
     async def handle_revocation_registry(self, message):
         reg_id = message.get("revoc_reg_id", "(undetermined)")
-        self.log(f"Revocation registry: {reg_id} state: {message['state']}")
+        self.log_msg(f"Revocation registry: {reg_id} state: {message['state']}")
 
     async def handle_mediation(self, message):
-        self.log("Received mediation message ...\n")
+        self.log_msg("Received mediation message ...\n")
 
     async def handle_keylist(self, message):
-        self.log("Received handle_keylist message ...\n")
-        self.log(json.dumps(message))
+        self.log_msg("Received handle_keylist message ...\n")
+        self.log_msg(json.dumps(message))
 
     async def handle_out_of_band(self, message):
-        self.log("Received out of band webhook ...\n")
+        self.log_msg("Received out of band webhook ...\n")
 
     async def handle_issue_credential_v2_0(self, message):
-        self.log("Received issue-credential-2.0 webhook ...\n")
+        self.log_msg("Received issue-credential-2.0 webhook ...\n")
 
     async def handle_connections(self, message):
         # accept invitations with public did
@@ -121,4 +121,4 @@ class WebhookAgentBase(AgentBase):
         if "their_public_did" not in message:
             return
         their_did = message["their_did"] if "their_did" in message else message["their_public_did"]
-        self.log("Connection webhook: did = {}; state = {};".format(their_did, message["state"]))
+        self.log_msg("Connection webhook: did = {}; state = {};".format(their_did, message["state"]))

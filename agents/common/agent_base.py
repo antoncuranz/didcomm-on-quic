@@ -87,8 +87,10 @@ class AgentBase:
         self.did = None
         self.wallet_stats = []
 
-        self.log_callback = None
-        self.log_cache = []
+        self.agent_log_callback = None
+        self.controller_log_callback = None
+        self.agent_log_cache = []
+        self.controller_log_cache = []
 
     async def initialize(self):
         await self.register_did(self.ledger_url)
@@ -310,7 +312,7 @@ class AgentBase:
             role: str = "TRUST_ANCHOR",
     ):
         # if registering a did for issuing indy credentials, publish the did on the ledger
-        self.log(f"Registering {self.ident} ...")
+        self.log_msg(f"Registering {self.ident} ...")
         if not ledger_url:
             ledger_url = f"http://{self.external_host}:9000"
         data = {"alias": alias or self.ident}
@@ -337,20 +339,8 @@ class AgentBase:
                 )
             nym_info = await resp.json()
         self.did = nym_info["did"]
-        self.log(f"nym_info: {nym_info}")
-        self.log(f"Registered DID: {self.did}")
-
-    def log(self, output, source: str = None):
-        if source == "stderr":
-            color = "[bold red]"
-        elif not source:
-            color = "[blue]"
-        else:
-            color = None
-        try:
-            self.log_msg(output, color=color)
-        except AssertionError as e:
-            raise e
+        self.log_msg(f"nym_info: {nym_info}")
+        self.log_msg(f"Registered DID: {self.did}")
 
     def _process(self, args, env, loop):
         proc = subprocess.Popen(
@@ -365,13 +355,13 @@ class AgentBase:
             self.thread_pool_executor,
             output_reader,
             proc.stdout,
-            functools.partial(self.log, source="stdout"),
+            functools.partial(self.log_agent_msg, source="stdout"),
         )
         loop.run_in_executor(
             self.thread_pool_executor,
             output_reader,
             proc.stderr,
-            functools.partial(self.log, source="stderr"),
+            functools.partial(self.log_agent_msg, source="stderr"),
         )
         return proc
 
@@ -389,7 +379,7 @@ class AgentBase:
             my_env["PYTHONPATH"] = python_path
 
         agent_args = self.get_process_args()
-        self.log(agent_args)
+        self.log_msg(agent_args)
 
         # start agent sub-process
         loop = asyncio.get_event_loop()
@@ -431,7 +421,7 @@ class AgentBase:
                 "version": taa_info["result"]["taa_record"]["version"],
                 "text": taa_info["result"]["taa_record"]["text"],
             }
-            self.log(f"Accepting TAA with: {taa_accept}")
+            self.log_msg(f"Accepting TAA with: {taa_accept}")
             await self.admin_POST(
                 "/ledger/taa/accept",
                 data=taa_accept,
@@ -470,7 +460,7 @@ class AgentBase:
             )
             return response
         except ClientError as e:
-            self.log(f"Error during GET {path}: {str(e)}")
+            self.log_msg(f"Error during GET {path}: {str(e)}")
             raise
 
     async def admin_GET(
@@ -481,7 +471,7 @@ class AgentBase:
                 "GET", path, None, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during GET {path}: {str(e)}")
+            self.log_msg(f"Error during GET {path}: {str(e)}")
             raise
 
     async def agency_admin_POST(
@@ -494,7 +484,7 @@ class AgentBase:
                 "POST", path, data, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during POST {path}: {str(e)}")
+            self.log_msg(f"Error during POST {path}: {str(e)}")
             raise
 
     async def admin_POST(
@@ -505,7 +495,7 @@ class AgentBase:
                 "POST", path, data, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during POST {path}: {str(e)}")
+            self.log_msg(f"Error during POST {path}: {str(e)}")
             if not raise_error:
                 return None
             raise
@@ -518,7 +508,7 @@ class AgentBase:
                 "PATCH", path, data, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during PATCH {path}: {str(e)}")
+            self.log_msg(f"Error during PATCH {path}: {str(e)}")
             raise
 
     async def admin_PUT(
@@ -529,7 +519,7 @@ class AgentBase:
                 "PUT", path, data, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during PUT {path}: {str(e)}")
+            self.log_msg(f"Error during PUT {path}: {str(e)}")
             raise
 
     async def admin_DELETE(
@@ -540,7 +530,7 @@ class AgentBase:
                 "DELETE", path, data, text, params, headers=headers
             )
         except ClientError as e:
-            self.log(f"Error during DELETE {path}: {str(e)}")
+            self.log_msg(f"Error during DELETE {path}: {str(e)}")
             raise
 
     async def admin_GET_FILE(self, path, params=None, headers=None) -> bytes:
@@ -552,7 +542,7 @@ class AgentBase:
             resp.raise_for_status()
             return await resp.read()
         except ClientError as e:
-            self.log(f"Error during GET FILE {path}: {str(e)}")
+            self.log_msg(f"Error during GET FILE {path}: {str(e)}")
             raise
 
     async def admin_PUT_FILE(self, files, url, params=None, headers=None) -> bytes:
@@ -564,7 +554,7 @@ class AgentBase:
             resp.raise_for_status()
             return await resp.read()
         except ClientError as e:
-            self.log(f"Error during PUT FILE {url}: {str(e)}")
+            self.log_msg(f"Error during PUT FILE {url}: {str(e)}")
             raise
 
     async def detect_process(self, headers=None):
@@ -666,26 +656,48 @@ class AgentBase:
         self.connection_id = connection["connection_id"]
         return connection
 
-    def set_log_callback(self, log_callback):
-        self.log_callback = log_callback
-        for log in self.log_cache:
-            self.log_msg(log)
-        self.log_cache = []
+    def set_log_callbacks(self, agent_log_callback, controller_log_callback):
+        self.agent_log_callback = agent_log_callback
+        self.controller_log_callback = controller_log_callback
 
-    def log_msg(self, msg, color=None):
+        for log in self.agent_log_cache:
+            self.log_agent_msg(log)
+        self.agent_log_cache = []
+
+        for log in self.controller_log_cache:
+            self.log_msg(log)
+        self.controller_log_cache = []
+
+    def log_msg(self, msg):
         if isinstance(msg, list):
             msg = str(" ".join(msg))
         else:
             msg = str(msg).rstrip()
 
-        if color is not None:
-            msg = color + msg
-
-        if self.log_callback is None:
-            self.log_cache.append(msg)
+        if self.controller_log_callback is None:
+            self.controller_log_cache.append(msg)
             return
 
-        self.log_callback(msg)
+        self.controller_log_callback(msg)
+
+    def log_agent_msg(self, msg, source: str = None):
+        if isinstance(msg, list):
+            msg = str(" ".join(msg))
+        else:
+            msg = str(msg).rstrip()
+
+        if source == "stderr":
+            color = "[bold red]"
+        elif not source:
+            color = "[blue]"
+        else:
+            color = ""
+
+        if self.agent_log_callback is None:
+            self.agent_log_cache.append(color + msg)
+            return
+
+        self.agent_log_callback(color + msg)
 
     def log_json(self, msg, label=None):
         if label is not None:

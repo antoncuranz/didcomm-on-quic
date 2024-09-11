@@ -36,10 +36,7 @@ class AppBase(App):
 
         self.agent_logs = self.query_one("#agent_logs", RichLog)
         self.controller_logs = self.query_one("#controller_logs", RichLog)
-        self.agent.set_log_callback(self.on_log_message)
-
-    def on_log_message(self, msg):
-        self.agent_logs.write(msg)
+        self.agent.set_log_callbacks(self.agent_logs.write, self.controller_logs.write)
 
     def log_msg(self, msg):
         self.controller_logs.write(msg)
