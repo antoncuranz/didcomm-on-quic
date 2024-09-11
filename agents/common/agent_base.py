@@ -5,6 +5,7 @@ import logging
 import os
 import subprocess
 import sys
+import urllib
 from concurrent.futures import ThreadPoolExecutor
 from secrets import token_hex
 from timeit import default_timer
@@ -101,6 +102,17 @@ class AgentBase:
     async def get_connections(self):
         return await self.admin_GET("/connections")
 
+    async def get_connection_by_did(self, their_public_did):
+        uri = "/connection?their_public_did={}".format(their_public_did)
+        rsp = await self.admin_GET(uri)
+        return rsp["results"][0]
+
+    async def create_connection(self, their_public_did, protocol="didexchange/1.1", use_public_did=True):
+        uri = "/didexchange/create-request?their_public_did={}&protocol={}&use_public_did={}".format(
+            their_public_did, urllib.parse.quote_plus(protocol), str(use_public_did).lower()
+        )
+        return await self.admin_POST(uri)
+
     async def accept_invitation(self, conn_id, use_did = None):
         uri = "/didexchange/{}/accept-invitation".format(conn_id)
         if use_did:
@@ -110,6 +122,25 @@ class AgentBase:
     async def accept_conn_request(self, conn_id, use_public_did = False):
         uri = "/didexchange/{}/accept-request?use_public_did={}".format(conn_id, str(use_public_did).lower())
         return await self.admin_POST(uri)
+
+    async def issue_credential(self, conn_id, schema_and_creddef, attributes):
+        uri = "/issue-credential-2.0/send"
+        body = {
+            "connection_id": conn_id,
+            "credential_preview": {
+                "@type": "issue-credential/2.0/credential-preview",
+                "attributes": attributes
+            },
+            "filter": {
+                "indy": {
+                    "cred_def_id": schema_and_creddef[1],
+                    "issuer_did": self.did,
+                    "schema_id": schema_and_creddef[0],
+                    "schema_issuer_did": self.did,
+                }
+            }
+        }
+        return await self.admin_POST(uri, body)
 
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
@@ -225,8 +256,10 @@ class AgentBase:
             "--auto-provision",
             "--public-invites",
             "--emit-new-didcomm-prefix",
+            "--requests-through-public-did",
+            "--auto-respond-credential-offer",
+            "--auto-respond-credential-request",
             "--auto-store-credential",
-            "--requests-through-public-did"
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":
@@ -654,8 +687,10 @@ class AgentBase:
 
         self.log_callback(msg)
 
-    def log_json(self, *msg):
-        pass
+    def log_json(self, msg, label=None):
+        if label is not None:
+            self.log_msg(label)
+        self.log_msg(msg)
 
 
 def output_reader(handle, callback):

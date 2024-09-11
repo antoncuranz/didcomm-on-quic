@@ -1,0 +1,19 @@
+DataTable {
+    margin-top: 2;
+}
+
+Horizontal {
+    height: auto;
+}
+
+.input {
+    width: 60;
+}
+
+.issue_type Input {
+    width: 20;
+}
+
+.issue_reg Input {
+    width: 30;
+}

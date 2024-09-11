@@ -2,7 +2,7 @@ import argparse
 import asyncio
 import logging
 
-from agents.discovery.app import DiscoveryApp
+from agents.issuer.app import IssuerApp
 from .agent import Agent
 
 logging.basicConfig(level=logging.DEBUG)
@@ -32,20 +32,11 @@ parser.add_argument(
     default=8020,
     help="Choose the starting port number to listen on",
 )
-parser.add_argument(
-    "--broadcast-invitations",
-    action="store_true"
-)
-parser.add_argument(
-    "--receive-invitations",
-    action="store_true"
-)
 
 
 async def main(args):
-    agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip,
-                  broadcast_invitations=args.broadcast_invitations, receive_invitations=args.receive_invitations)
-    app = DiscoveryApp(agent)
+    agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip)
+    app = IssuerApp(agent)
 
     try:
         asyncio.create_task(agent.initialize())

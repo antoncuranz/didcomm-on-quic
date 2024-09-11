@@ -7,6 +7,6 @@ ENV ACAPY_DEBUG_WEBHOOKS 1
 
 RUN pip install --no-cache-dir textual
 
-ADD services ./services
+ADD agents ./agents
 
-ENTRYPOINT ["python", "-m", "services.discovery.main"]
+ENTRYPOINT ["python", "-m", "agents.discovery.main"]

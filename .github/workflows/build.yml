@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - services/**
+      - agents/**
 
   workflow_dispatch:
     inputs:
@@ -51,5 +51,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/antoncuranz/didcomm-on-quic/services:latest
+          tags: ghcr.io/antoncuranz/didcomm-on-quic/agents:latest
           platforms: ${{ env.PLATFORMS }}

@@ -1,0 +1,7 @@
+Screen {
+    layout: vertical;
+}
+
+DataTable {
+    margin-bottom: 2;
+}

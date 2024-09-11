@@ -6,7 +6,7 @@ from aiohttp import (
     web,
 )
 
-from services.common.agent_base import AgentBase
+from agents.common.agent_base import AgentBase
 
 
 class WebhookAgentBase(AgentBase):
@@ -108,12 +108,13 @@ class WebhookAgentBase(AgentBase):
     async def handle_out_of_band(self, message):
         self.log("Received out of band webhook ...\n")
 
+    async def handle_issue_credential_v2_0(self, message):
+        self.log("Received issue-credential-2.0 webhook ...\n")
+
     async def handle_connections(self, message):
         # accept invitations with public did
         if message["rfc23_state"] == "invitation-received":
-            public_did = (await self.get_public_did())["result"]["did"]
-            self.log("Received public did: " + public_did)
-            await self.accept_invitation(message["connection_id"], public_did)
+            await self.accept_invitation(message["connection_id"], self.did)
         elif message["rfc23_state"] == "request-received":
             await self.accept_conn_request(message["connection_id"], use_public_did=True)
 

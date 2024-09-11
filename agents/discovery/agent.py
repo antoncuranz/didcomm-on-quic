@@ -4,7 +4,7 @@ import logging
 import random
 import socket
 
-from services.common.webhook_agent_base import WebhookAgentBase
+from agents.common.webhook_agent_base import WebhookAgentBase
 
 logging.basicConfig(level=logging.WARNING)
 LOGGER = logging.getLogger(__name__)
