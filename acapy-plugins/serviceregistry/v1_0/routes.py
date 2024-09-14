@@ -1,17 +1,13 @@
-"""Protocol example admin routes."""
-
 from aiohttp import web
 from aiohttp_apispec import docs, match_info_schema, request_schema, response_schema
+from aries_cloudagent.connections.models.conn_record import ConnRecord
+from aries_cloudagent.messaging.models.base import BaseModelError
+from aries_cloudagent.messaging.valid import UUIDFour
+from aries_cloudagent.storage.error import StorageError, StorageNotFoundError
 from marshmallow import fields, Schema
 
-from aries_cloudagent.connections.models.conn_record import ConnRecord
-from aries_cloudagent.messaging.valid import UUIDFour
-from aries_cloudagent.messaging.models.base import BaseModelError
-from aries_cloudagent.storage.error import StorageError, StorageNotFoundError
-
-from serviceregistry.v1_0.messages.registerservice import RegisterService
-from serviceregistry.v1_0.models import RegisteredServiceRecord
-
+from .messages.registerservice import RegisterService
+from .models import RegisteredServiceRecord
 from .messages.queryservices import QueryServices
 
 
@@ -29,6 +25,7 @@ class QueryServicesRequestSchema(Schema):
 
 class QueryServicesRequestResponseSchema(Schema):
     thread_id = fields.Str(required=False, description="Thread ID of the ping message")
+
 
 @docs(tags=["service registry"], summary="Query registered services")
 @match_info_schema(ConnIdMatchInfoSchema())

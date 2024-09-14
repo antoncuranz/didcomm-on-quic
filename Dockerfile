@@ -14,7 +14,7 @@ ENV PATH="/opt/poetry/bin:/usr/src/app/.venv/bin:$PATH"
 
 # Setup project
 RUN mkdir serviceregistry && touch serviceregistry/__init__.py
-COPY acapy-plugins/serviceregistry_protocol/pyproject.* ./
+COPY acapy-plugins/pyproject.* ./
 RUN poetry install --extras aca-py
 
 RUN pip install textual
@@ -28,9 +28,7 @@ ENV PATH="/usr/src/app/.venv/bin:$PATH"
 
 ENV PYTHONUNBUFFERED 1
 
-COPY acapy-plugins/serviceregistry_protocol/serviceregistry/ serviceregistry/
-#COPY acapy-plugins/http3_transport/http3/ http3/
-
+COPY acapy-plugins ./acapy-plugins
 COPY agents ./agents
 
 ENTRYPOINT ["python", "-m", "agents.discovery.main"]

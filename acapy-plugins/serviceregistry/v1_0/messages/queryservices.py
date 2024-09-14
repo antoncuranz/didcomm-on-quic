@@ -1,17 +1,12 @@
-"""Represents a Privacy Preserving Machine Learning Message"""
-
-from ..message_types import QUERY_SERVICES, PROTOCOL_PACKAGE
-
+from aries_cloudagent.messaging.agent_message import AgentMessage, AgentMessageSchema
 from marshmallow import fields
 
-
-from aries_cloudagent.messaging.agent_message import AgentMessage, AgentMessageSchema
+from ..message_types import QUERY_SERVICES, PROTOCOL_PACKAGE
 
 HANDLER_CLASS = f"{PROTOCOL_PACKAGE}.handlers.queryservices_handler.QueryServicesHandler"
 
 
 class QueryServices(AgentMessage):
-
     class Meta:
         handler_class = HANDLER_CLASS
         message_type = QUERY_SERVICES
@@ -23,7 +18,6 @@ class QueryServices(AgentMessage):
 
 
 class QueryServicesSchema(AgentMessageSchema):
-
     class Meta:
         model_class = QueryServices
 

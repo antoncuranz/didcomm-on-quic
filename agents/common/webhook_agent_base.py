@@ -119,6 +119,10 @@ class WebhookAgentBase(AgentBase):
         self.log_msg("Received queryservices_result message ...\n")
         self.log_msg(json.dumps(message))
 
+    async def handle_fetchchunk_result(self, message):
+        self.log_msg("Received fetchchunk_result message ...\n")
+        self.log_msg(json.dumps(message))
+
     async def handle_connections(self, message):
         # accept invitations with public did
         if message["rfc23_state"] == "invitation-received":

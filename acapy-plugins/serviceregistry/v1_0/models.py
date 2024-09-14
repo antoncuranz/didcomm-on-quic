@@ -1,28 +1,22 @@
-"""Basic Messages Storage Model classes and schemas."""
-
 from aries_cloudagent.messaging.models.base_record import BaseRecord, BaseRecordSchema
 from marshmallow import fields
 
 
 class RegisteredServiceRecord(BaseRecord):
-    """RegisteredService Record."""
-
     RECORD_ID_NAME = "record_id"
     RECORD_TYPE = "registeredservice"
 
     class Meta:
-        """RegisteredService metadata."""
-
         schema_class = "RegisteredServiceRecordSchema"
 
     def __init__(
-        self,
-        *,
-        record_id: str = None,
-        schema: str = None,
-        did: str = None,
-        credentials: list[str] = None,
-        **kwargs,
+            self,
+            *,
+            record_id: str = None,
+            schema: str = None,
+            did: str = None,
+            credentials: list[str] = None,
+            **kwargs,
     ):
         """Initialize a new SchemaRecord."""
         super().__init__(record_id, **kwargs)
@@ -45,11 +39,7 @@ class RegisteredServiceRecord(BaseRecord):
 
 
 class RegisteredServiceRecordSchema(BaseRecordSchema):
-    """Schema to allow serialization/deserialization of RegisteredService records."""
-
     class Meta:
-        """RegisteredServiceRecordSchema metadata."""
-
         model_class = RegisteredServiceRecord
 
     schema = fields.Str(required=True)

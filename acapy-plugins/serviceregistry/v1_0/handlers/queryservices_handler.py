@@ -8,6 +8,7 @@ from ..messages.queryservices import QueryServices
 from ..messages.queryservices_response import QueryServicesResponse
 from ..models import RegisteredServiceRecord
 
+
 class QueryServicesHandler(BaseHandler):
 
     async def handle(self, context: RequestContext, responder: BaseResponder):
@@ -16,7 +17,8 @@ class QueryServicesHandler(BaseHandler):
         assert isinstance(context.message, QueryServices)
 
         self._logger.info(
-            "Received serviceregistry message from: %s with content - %s", context.message_receipt.sender_did, context.message
+            "Received serviceregistry message from: %s with content - %s", context.message_receipt.sender_did,
+            context.message
         )
 
         if not context.connection_ready:
@@ -25,7 +27,7 @@ class QueryServicesHandler(BaseHandler):
                 context.message_receipt.sender_did,
             )
             return
-        
+
         try:
             async with context.profile.session() as session:
                 records = await RegisteredServiceRecord.query(session=session)
@@ -41,4 +43,3 @@ class QueryServicesHandler(BaseHandler):
 
         except Exception as err:
             self._logger.error("Error replying to QueryServices message: " + str(err))
-

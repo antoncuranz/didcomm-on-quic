@@ -6,6 +6,7 @@ from aries_cloudagent.messaging.base_handler import (
 
 from ..messages.queryservices_response import QueryServicesResponse
 
+
 class QueryServicesResponseHandler(BaseHandler):
 
     async def handle(self, context: RequestContext, responder: BaseResponder):
@@ -13,7 +14,8 @@ class QueryServicesResponseHandler(BaseHandler):
         assert isinstance(context.message, QueryServicesResponse)
 
         self._logger.info(
-            "Received serviceregistry response from: %s with content - %s", context.message_receipt.sender_did, context.message
+            "Received serviceregistry response from: %s with content - %s", context.message_receipt.sender_did,
+            context.message
         )
 
         services = [service.serialize() for service in context.message.services]
@@ -25,4 +27,3 @@ class QueryServicesResponseHandler(BaseHandler):
                 "services": services
             },
         )
-

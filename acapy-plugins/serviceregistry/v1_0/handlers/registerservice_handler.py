@@ -7,6 +7,7 @@ from aries_cloudagent.messaging.base_handler import (
 from ..messages.registerservice import RegisterService
 from ..models import RegisteredServiceRecord
 
+
 class RegisterServiceHandler(BaseHandler):
 
     async def handle(self, context: RequestContext, responder: BaseResponder):
@@ -15,10 +16,12 @@ class RegisterServiceHandler(BaseHandler):
         assert isinstance(context.message, RegisterService)
 
         self._logger.info(
-            "Received serviceregistry message from: %s with content - %s", context.message_receipt.sender_did, context.message
+            "Received serviceregistry message from: %s with content - %s", context.message_receipt.sender_did,
+            context.message
         )
 
-        msg = RegisteredServiceRecord(schema=context.message.schema, did=context.connection_record.their_did, credentials=[])
+        msg = RegisteredServiceRecord(schema=context.message.schema, did=context.connection_record.their_did,
+                                      credentials=[])
 
         try:
             async with context.profile.session() as session:

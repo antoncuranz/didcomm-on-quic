@@ -263,7 +263,8 @@ class AgentBase:
             "--auto-respond-credential-request",
             "--auto-store-credential",
             "--auto-disclose-features",
-            ("--plugin", "serviceregistry.v1_0"),
+            ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
+            ("--plugin", "acapy-plugins.videostreaming.v1_0"),
             # ("--plugin", "http3.v1_0"),
             # ("--log-level", "debug"),
         ]
