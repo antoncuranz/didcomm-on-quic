@@ -262,6 +262,9 @@ class AgentBase:
             "--auto-respond-credential-offer",
             "--auto-respond-credential-request",
             "--auto-store-credential",
+            "--auto-disclose-features",
+            ("--plugin", "serviceregistry.v1_0"),
+            # ("--plugin", "http3.v1_0"),
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":

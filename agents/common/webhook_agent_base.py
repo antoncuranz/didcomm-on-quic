@@ -111,6 +111,14 @@ class WebhookAgentBase(AgentBase):
     async def handle_issue_credential_v2_0(self, message):
         self.log_msg("Received issue-credential-2.0 webhook ...\n")
 
+    async def handle_registered_service(self, message):
+        self.log_msg("Received registered_service message ...\n")
+        self.log_msg(json.dumps(message))
+
+    async def handle_queryservices_result(self, message):
+        self.log_msg("Received queryservices_result message ...\n")
+        self.log_msg(json.dumps(message))
+
     async def handle_connections(self, message):
         # accept invitations with public did
         if message["rfc23_state"] == "invitation-received":

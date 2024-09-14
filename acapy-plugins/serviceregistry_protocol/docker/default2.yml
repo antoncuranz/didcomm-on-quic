@@ -1,0 +1,21 @@
+label: serviceregistry
+
+admin: [0.0.0.0, 8031]
+admin-insecure-mode: true
+
+inbound-transport:
+  - [http, 0.0.0.0, 8030]
+  - [ws, 0.0.0.0, 8032]
+outbound-transport: http
+endpoint:
+  - http://host.docker.internal:8030
+
+plugin:
+  - serviceregistry.v1_0
+
+genesis-url: http://test.bcovrin.vonx.io/genesis
+
+log-level: info
+
+auto-accept-invites: true
+auto-respond-messages: true
