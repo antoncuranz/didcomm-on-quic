@@ -1,0 +1,53 @@
+sequenceDiagram
+    participant car as Car
+    participant truck as Truck
+    participant discovery as Discovery
+    participant indy as Indy Node
+
+    Note over car,discovery: Truck offers Service
+
+    discovery-->>truck: Broadcast DIDComm Invitation
+
+    truck->>+discovery: Register FRONT_CAMERA_STREAM service
+
+    loop Establish Trust
+        discovery->>truck: Request Credentials
+        truck-->>discovery: Present Credentials
+        discovery->>+indy: Verify Credential
+        indy-->>-discovery: .
+    end
+    deactivate discovery
+
+
+    Note over car,discovery: Car requests Service
+
+    discovery-->>+car: Broadcast DIDComm Invitation
+
+
+    car->>+discovery: Query available services
+    discovery-->>-car: .
+
+%%    opt Establish Connection
+%%        car->>+truck: DIDExchange Request
+%%        truck->>car: Accept Request
+%%        car->>truck: Complete Request
+%%        deactivate truck
+%%    end
+
+    car->>+truck: Request Video Stream
+
+    loop Establish Trust
+        truck->>car: Request Credential
+        car-->>truck: Present Credential
+        truck->>+indy: Verify Credential
+        indy-->>-truck: .
+    end
+
+    truck->>-car: Respond with Stream information
+
+    loop
+        car->>+truck: Request Video Chunk
+        truck->>-car: Send Video Chunk
+    end
+
+    deactivate car
