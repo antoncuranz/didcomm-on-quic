@@ -22,7 +22,8 @@ class WebhookAgentBase(AgentBase):
             transport_type: str = "http",
             extra_args=None,
     ):
-        super().__init__(ident, http_port, internal_host, external_host, ledger_url, genesis_data, seed, transport_type, extra_args)
+        super().__init__(ident, http_port, internal_host, external_host, ledger_url, genesis_data, seed, transport_type,
+                         extra_args)
 
         self.webhook_port = None
         self.webhook_url = None
@@ -120,8 +121,8 @@ class WebhookAgentBase(AgentBase):
         self.log_msg(json.dumps(message))
 
     async def handle_fetchchunk_result(self, message):
-        self.log_msg("Received fetchchunk_result message ...\n")
-        self.log_msg(json.dumps(message))
+        self.log_msg("Received fetchchunk_result message (chunk = {}; status = {})...\n".format(
+            message["chunk"], message["status"]))
 
     async def handle_connections(self, message):
         # accept invitations with public did

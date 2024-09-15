@@ -1,3 +1,6 @@
+import base64
+import re
+
 from aiohttp import web
 from aiohttp_apispec import docs, match_info_schema, request_schema, response_schema
 from aries_cloudagent.connections.models.conn_record import ConnRecord
@@ -20,13 +23,8 @@ class ConnIdMatchInfoSchema(Schema):
     )
 
 
-class FetchChunkRequestResponseSchema(Schema):
-    thread_id = fields.Str(required=False, description="Thread ID of the ping message")
-
-
 @docs(tags=["video streaming"], summary="Fetch a Chunk")
 @match_info_schema(ConnIdMatchInfoSchema())
-@response_schema(FetchChunkRequestResponseSchema(), 200)
 async def fetch_chunk(request: web.BaseRequest):
     context = request["context"]
     connection_id = request.match_info["conn_id"]
@@ -45,9 +43,29 @@ async def fetch_chunk(request: web.BaseRequest):
     msg = FetchChunk(chunk=chunk)
     await outbound_handler(msg, connection_id=connection_id)
 
-    # test = context.inject(EventBus).wait_for_event(context.profile, "fetchchunk_result")
+    event_bus = context.inject(EventBus)
+    with event_bus.wait_for_event(
+            context.profile,
+            re.compile("^acapy::webhook::fetchchunk_result$"),
+            lambda event: event.payload.get("chunk") == chunk
+    ) as await_event:
+        event = await await_event
+        if event.payload["status"] == 200:
+            try:
+                file_content = base64.b64decode(event.payload["data"])
+            except (TypeError, ValueError) as e:
+                return web.Response(status=400, text="Invalid base64 content")
 
-    return web.json_response({"thread_id": msg._thread_id})
+            return web.Response(
+                body=file_content,
+                status=200,
+                headers={
+                    'Content-Disposition': f'attachment; filename="{event.payload["chunk"]}"',
+                    'Content-Type': 'application/octet-stream'
+                }
+            )
+        else:
+            return web.Response(text="Error", status=event.payload["status"])
 
 
 async def register(app: web.Application):
@@ -55,5 +73,4 @@ async def register(app: web.Application):
 
     app.add_routes([
         web.get("/connections/{conn_id}/videostreaming/{chunk}", fetch_chunk),
-        # web.post("/connections/{conn_id}/videostreaming/subscribe", subscribe_to_chunks),
     ])

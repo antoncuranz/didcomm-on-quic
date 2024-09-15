@@ -20,6 +20,8 @@ class FetchChunkResponseHandler(BaseHandler):
         await responder.send_webhook(
             "fetchchunk_result",
             {
-                "chunk": context.message.chunk
+                "status": context.message.status,
+                "chunk": context.message.chunk,
+                "data": context.message.data
             },
         )

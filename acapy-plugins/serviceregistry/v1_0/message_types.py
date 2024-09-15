@@ -7,7 +7,7 @@ QUERY_SERVICES_RESPONSE = f"{PROTOCOL_URI}/queryservices_response"
 
 REGISTER_SERVICE = f"{PROTOCOL_URI}/registerservice"
 
-PROTOCOL_PACKAGE = "serviceregistry.v1_0"
+PROTOCOL_PACKAGE = "acapy-plugins.serviceregistry.v1_0"
 
 MESSAGE_TYPES = {
     QUERY_SERVICES: f"{PROTOCOL_PACKAGE}.messages.queryservices.QueryServices",
