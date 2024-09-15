@@ -262,6 +262,7 @@ class AgentBase:
             "--auto-respond-credential-offer",
             "--auto-respond-credential-request",
             "--auto-store-credential",
+            "--auto-verify-presentation",
             "--auto-disclose-features",
             ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
             ("--plugin", "acapy-plugins.videostreaming.v1_0"),

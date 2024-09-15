@@ -52,3 +52,5 @@ class AppBase(App):
 
     def log_msg(self, msg):
         self.controller_logs.write(msg)
+
+    # TODO: popup on present proof request
