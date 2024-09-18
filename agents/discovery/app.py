@@ -1,5 +1,3 @@
-import json
-
 from textual.app import ComposeResult
 from textual.widgets import DataTable
 

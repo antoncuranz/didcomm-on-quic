@@ -17,19 +17,19 @@ class IssuerApp(AppBase):
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
-            Input(id="input_connect", placeholder="Connect to DID", classes="input"),
+            Input("M4Hx67zhvyKkAyVAB46zDj", id="input_connect", placeholder="Connect to DID", classes="input"),
             Button("Connect", id="connect"),
         )
         yield Horizontal(
-            Input(id="input_make", placeholder="Make"),
-            Input(id="input_model", placeholder="Model"),
-            Input(id="input_year", placeholder="Year"),
+            Input("VW", id="input_make", placeholder="Make"),
+            Input("Golf", id="input_model", placeholder="Model"),
+            Input("2019", id="input_year", placeholder="Year"),
             Button("Issue", id="issue_type"),
             classes="issue_type"
         )
         yield Horizontal(
-            Input(id="input_reg", placeholder="Registration"),
-            Input(id="input_exp", placeholder="Expiration"),
+            Input("(D) B-C 1234", id="input_reg", placeholder="Registration"),
+            Input("2025", id="input_exp", placeholder="Expiration"),
             Button("Issue", id="issue_reg"),
             classes="issue_reg"
         )

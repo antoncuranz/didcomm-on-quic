@@ -1,9 +1,47 @@
+from textual import events
 from textual.app import App, ComposeResult
-from textual.widgets import Header, TabbedContent, TabPane, RichLog
+from textual.containers import Grid
+from textual.screen import ModalScreen
+from textual.widgets import Header, TabbedContent, TabPane, RichLog, Label, Button, DataTable
 from textual.worker import Worker, WorkerState
 
 from agents.common.webhook_agent_base import WebhookAgentBase
 
+class PresentProofScreen(ModalScreen):
+    CSS_PATH = "modal.tcss"
+
+    def __init__(self, agent, pres_ex_id):
+        super().__init__()
+        self.agent = agent
+        self.pres_ex_id = pres_ex_id
+
+        self.credentials = []
+        self.requested_attributes = []
+        self.credential_table = None
+
+    def compose(self) -> ComposeResult:
+        yield Grid(
+            Label("New Present-Proof request:", id="question"),
+            DataTable(id="credential_table", cursor_type="row"),
+            Button("Refuse", variant="error", id="refuse"),
+            Button("Present", variant="primary", id="present"),
+            id="dialog",
+        )
+
+    async def on_mount(self) -> None:
+        self.credentials = await self.agent.get_credentials_for_pres_req(self.pres_ex_id)
+        self.requested_attributes = list(self.credentials[0]["cred_info"]["attrs"].keys()) if len(self.credentials) > 0 else []
+
+        self.credential_table = self.query_one("#credential_table", DataTable)
+        self.credential_table.add_columns(*(["Credential"] + self.requested_attributes))
+        rows = [tuple(["todo"] + list(cred["cred_info"]["attrs"].values())) for cred in self.credentials]
+        self.credential_table.add_rows(rows)
+
+    async def on_button_pressed(self, event: Button.Pressed) -> None:
+        if event.button.id == "present":
+            await self.agent.send_presentation(self.pres_ex_id, self.credentials[0])
+
+        self.app.pop_screen()
 
 class AppBase(App):
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
@@ -17,6 +55,7 @@ class AppBase(App):
         self.agent_logs = None
         self.title = "{} ({})".format(controller_name, agent.ident)
         self.sub_title = "IP: {} Port: {} ({})".format(agent.external_host, agent.http_port, agent.transport_type)
+        self.agent.set_webhook_callback("present_proof_v2_0", self.handle_present_proof)
 
     def on_load(self) -> None:
         self.run_worker(self.agent.initialize(), name=self.AGENT_INIT_WORKER)
@@ -53,4 +92,15 @@ class AppBase(App):
     def log_msg(self, msg):
         self.controller_logs.write(msg)
 
-    # TODO: popup on present proof request
+    def on_key(self, event: events.Key) -> None:
+        if event.key != "p":
+            return
+
+        message = dict(by_format=dict(pres_request=dict(indy=dict(requested_attributes=dict(foo=dict(name="foo"))))))
+        self.push_screen(PresentProofScreen(self.agent, message))
+
+    def handle_present_proof(self, message):
+        if message["state"] != "request-received":
+            return
+
+        self.push_screen(PresentProofScreen(self.agent, message["pres_ex_id"]))

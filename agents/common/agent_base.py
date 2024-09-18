@@ -144,6 +144,25 @@ class AgentBase:
         }
         return await self.admin_POST(uri, body)
 
+    async def get_credentials_for_pres_req(self, pres_ex_id):
+        return await self.admin_GET("/present-proof-2.0/records/{}/credentials".format(pres_ex_id))
+
+    async def send_presentation(self, pres_ex_id, credential):
+        uri = "/present-proof-2.0/records/{}/send-presentation".format(pres_ex_id)
+        body = {
+            "indy": {
+                "requested_attributes": {
+                    attr: {
+                        "cred_id": credential["cred_info"]["referent"],
+                        "revealed": True
+                    } for attr in credential["presentation_referents"]
+                },
+                "requested_predicates": {},
+                "self_attested_attributes": {}
+            }
+        }
+        return await self.admin_POST(uri, body)
+
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
         return await self.admin_GET("/multitenancy/wallets")

@@ -82,8 +82,7 @@ class WebhookAgentBase(AgentBase):
                     f"to handle webhook on topic {topic}"
                 )
 
-            callback = self.webhook_callbacks.get(topic, None)
-            if callback:
+            if topic in self.webhook_callbacks:
                 self.webhook_callbacks[topic](payload)
 
     async def handle_problem_report(self, message):
@@ -135,3 +134,6 @@ class WebhookAgentBase(AgentBase):
             return
         their_did = message["their_did"] if "their_did" in message else message["their_public_did"]
         self.log_msg("Connection webhook: did = {}; state = {};".format(their_did, message["state"]))
+
+    async def handle_present_proof_v2_0(self, message):
+        self.log_msg("Present-Proof webhook: pres_ex_id = {}; state = {};".format(message["pres_ex_id"], message["state"]))
