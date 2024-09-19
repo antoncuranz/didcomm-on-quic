@@ -34,6 +34,13 @@ class WebhookAgentBase(AgentBase):
         await self.listen_webhooks(self.http_port + 2)
         await super().initialize()
 
+        # send artificial webhooks for persisted resources
+        for connection in (await self.get_connections())["results"]:
+            await self.handle_webhook("connections", connection)
+
+        for credential in (await self.get_credentials())["results"]:
+            await self.handle_webhook("issue_credential_v2_0", credential["cred_ex_record"])
+
     def set_webhook_callback(self, topic, webhook_callback):
         self.webhook_callbacks[topic] = webhook_callback
 
@@ -68,7 +75,7 @@ class WebhookAgentBase(AgentBase):
         await self.handle_webhook(topic, payload, request.headers)
         return web.Response(status=200)
 
-    async def handle_webhook(self, topic: str, payload, headers: dict):
+    async def handle_webhook(self, topic: str, payload, headers: dict = {}):
         if topic != "webhook":  # would recurse
             handler = f"handle_{topic}"
 
@@ -125,10 +132,11 @@ class WebhookAgentBase(AgentBase):
 
     async def handle_connections(self, message):
         # accept invitations with public did
-        if message["rfc23_state"] == "invitation-received":
-            await self.accept_invitation(message["connection_id"], self.did)
-        elif message["rfc23_state"] == "request-received":
-            await self.accept_conn_request(message["connection_id"], use_public_did=True)
+        if "rfc23_state" in message:
+            if message["rfc23_state"] == "invitation-received":
+                await self.accept_invitation(message["connection_id"], self.did)
+            elif message["rfc23_state"] == "request-received":
+                await self.accept_conn_request(message["connection_id"], use_public_did=True)
 
         if "their_public_did" not in message:
             return

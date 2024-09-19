@@ -3,6 +3,7 @@ import functools
 import json
 import logging
 import os
+import shutil
 import subprocess
 import sys
 import urllib
@@ -16,6 +17,7 @@ from aiohttp import (
     ClientSession,
     ClientTimeout,
 )
+from aries_cloudagent.utils.env import storage_path
 
 LOGGER = logging.getLogger(__name__)
 
@@ -83,7 +85,7 @@ class AgentBase:
         self.seed = token_hex(16) if seed == "random" else seed
         self.wallet_type = "askar"
         self.wallet_name = self.ident.lower().replace(" ", "") + rand_name
-        self.wallet_key = self.ident + rand_name
+        self.wallet_key = self.ident
         self.did = None
         self.wallet_stats = []
 
@@ -143,6 +145,9 @@ class AgentBase:
             }
         }
         return await self.admin_POST(uri, body)
+
+    async def get_credentials(self):
+        return await self.admin_GET("/issue-credential-2.0/records")
 
     async def get_credentials_for_pres_req(self, pres_ex_id):
         return await self.admin_GET("/present-proof-2.0/records/{}/credentials".format(pres_ex_id))
@@ -397,6 +402,8 @@ class AgentBase:
         )
 
     async def start_process(self, python_path: str = None, wait: bool = True):
+        await self._init_wallet()
+
         my_env = os.environ.copy()
         python_path = DEFAULT_PYTHON_PATH if python_path is None else python_path
         if python_path:
@@ -414,6 +421,13 @@ class AgentBase:
         if wait:
             await asyncio.sleep(1.0)
             await self.detect_process()
+
+    async def _init_wallet(self):
+        wallet_path = storage_path("wallet", self.wallet_name)
+        template_path = storage_path("wallet", self.ident.lower().replace(" ", ""))
+
+        if template_path.exists():
+            shutil.copytree(template_path, wallet_path, dirs_exist_ok=True)
 
     def _terminate(self):
         if self.proc and self.proc.poll() is None:

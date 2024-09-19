@@ -1,5 +1,6 @@
 from textual.app import ComposeResult
 from textual.widgets import DataTable
+from textual.widgets._data_table import RowDoesNotExist
 
 from agents.common.app_base import AppBase
 from .agent import Agent
@@ -38,16 +39,24 @@ class DiscoveryApp(AppBase):
         self.credential_table.add_columns("State", "Schema", "Attributes")
 
     def handle_connections(self, connection):
-        if connection["state"] == "active":
-            self.log_msg("Adding new connection to table")
+        state = connection["state"]
+        if state == "invitation":
+            return
 
-            label = connection.get("their_label", "-")
-            did = connection.get("their_did", "-")
-            state = connection["state"]
-            conn_id = connection["connection_id"]
+        conn_id = connection["connection_id"]
+        label = connection.get("their_label", "-")
+        did = connection.get("their_did", "-")
 
-            if state != "invitation": # dumb
-                self.connection_table.add_row(state, label, did, conn_id)
+        try:
+            self.connection_table.remove_row(conn_id)
+            self.log_msg("Deleted old connection from table")
+        except RowDoesNotExist:
+            pass
+
+        if state != "deleted":
+            self.connection_table.add_row(state, label, did, conn_id, key=conn_id)
+            self.log_msg("Inserted new connection")
+
 
     def handle_credentials(self, credential):
         if credential["state"] == "done":
