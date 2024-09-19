@@ -15,7 +15,7 @@ class RegisteredServiceRecord(BaseRecord):
             record_id: str = None,
             schema: str = None,
             did: str = None,
-            credentials: list[str] = None,
+            credentials: dict = {},
             **kwargs,
     ):
         """Initialize a new SchemaRecord."""
@@ -37,6 +37,11 @@ class RegisteredServiceRecord(BaseRecord):
             for prop in ("schema", "did", "credentials")
         }
 
+    def serialize_with_state(self, state):
+        serialized = super().serialize()
+        serialized["state"] = state
+        return serialized
+
 
 class RegisteredServiceRecordSchema(BaseRecordSchema):
     class Meta:
@@ -44,14 +49,9 @@ class RegisteredServiceRecordSchema(BaseRecordSchema):
 
     schema = fields.Str(required=True)
     did = fields.Str(required=True)
-    credentials = fields.List(
-        fields.Str(
-            metadata={
-                "description": "Role: requester or responder",
-                "example": "requester",
-            }
-        ),
+    credentials = fields.Dict(
+        keys=fields.Str(),
+        values=fields.Str(),
         required=False,
         allow_none=True,
-        metadata={"description": "List of roles"},
     )

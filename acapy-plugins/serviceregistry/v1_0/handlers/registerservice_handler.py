@@ -1,5 +1,8 @@
+import asyncio
+import re
 from os import urandom
 
+from aries_cloudagent.core.event_bus import EventBus
 from aries_cloudagent.messaging.base_handler import (
     BaseHandler,
     BaseResponder,
@@ -26,8 +29,7 @@ class RegisterServiceHandler(BaseHandler):
             context.message
         )
 
-        msg = RegisteredServiceRecord(schema=context.message.schema, did=context.connection_record.their_did,
-                                      credentials=[])
+        msg = RegisteredServiceRecord(schema=context.message.schema, did=context.connection_record.their_did)
 
         try:
             async with context.profile.session() as session:
@@ -35,41 +37,45 @@ class RegisterServiceHandler(BaseHandler):
                 self._logger.info(msg)
 
             self._logger.info("Send webhook with topic registered_service")
-            await responder.send_webhook("registered_service", msg.serialize())
+            await responder.send_webhook("service_registry", msg.serialize_with_state("created"))
 
             restrictions = [{"issuer_did": "NB5Rjw6kpkMcwmcUQeLhKt"}]
 
             # VC 1
-            await self.send_present_proof_request(context, responder, {
-                "0_car_registration": {
+            task1 = await self.send_present_proof_request(context, responder, msg, {
+                "1_car_registration": {
                     "name": "registration",
+                    "restrictions": restrictions
+                },
+                "2_car_reg_expiration": {
+                    "name": "expiration",
                     "restrictions": restrictions
                 }
             })
 
             # VC 2
-            await self.send_present_proof_request(context, responder, {
-                "0_car_make": {
+            task2 = await self.send_present_proof_request(context, responder, msg, {
+                "1_car_make": {
                     "name": "make",
                     "restrictions": restrictions
                 },
-                "0_car_model": {
+                "2_car_model": {
                     "name": "model",
                     "restrictions": restrictions
                 },
-                "0_car_year": {
+                "3_car_year": {
                     "name": "year",
                     "restrictions": restrictions
                 }
             })
 
-            # TODO: update record once proof was presented
+            await asyncio.gather(task1, task2)
 
         except Exception as err:
             self._logger.error(err)
             raise err
 
-    async def send_present_proof_request(self, context, responder, requested_attributes):
+    async def send_present_proof_request(self, context, responder, msg, requested_attributes):
         pres_manager = V20PresManager(context.profile)
 
         request = {
@@ -88,7 +94,7 @@ class RegisterServiceHandler(BaseHandler):
             request_presentations_attach=[AttachDecorator.data_base64(mapping=request, ident="indy")]
         )
 
-        await pres_manager.create_exchange_for_request(
+        pres_ex_record = await pres_manager.create_exchange_for_request(
             connection_id=context.connection_record.connection_id,
             pres_request_message=pres_request_message
         )
@@ -96,3 +102,29 @@ class RegisterServiceHandler(BaseHandler):
         # pres_request_message.assign_thread_from(context.message)
         pres_request_message.assign_trace_from(context.message)
         await responder.send_reply(pres_request_message)
+
+        # update record once proof was presented
+        return asyncio.create_task(
+            self._wait_for_event_and_update_record(context, responder, msg, pres_ex_record.pres_ex_id)
+        )
+
+    async def _wait_for_event_and_update_record(self, context, responder, msg, pres_ex_id):
+        event_bus = context.inject(EventBus)
+        with event_bus.wait_for_event(
+                context.profile,
+                re.compile("^acapy::record::present_proof_v2_0::done$"),
+                lambda event: event.payload.get("pres_ex_id") == pres_ex_id
+        ) as await_event:
+            event = await await_event
+
+            indy = event.payload["by_format"]["pres"]["indy"]
+            schema = indy["identifiers"][0]["schema_id"]
+            attrs = indy["requested_proof"]["revealed_attrs"]
+            attrs = dict(sorted(attrs.items())).values()
+            attrs_concat = " ".join([attr["raw"] for attr in attrs])
+
+            async with context.profile.session() as session:
+                msg.credentials[schema] = attrs_concat
+                await msg.save(session, reason="Updated service after Proof")
+                self._logger.info(msg)
+                await responder.send_webhook("service_registry", msg.serialize_with_state("updated"))
