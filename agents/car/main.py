@@ -2,7 +2,7 @@ import argparse
 import asyncio
 import logging
 
-from agents.discovery.app import DiscoveryApp
+from agents.car.app import CarApp
 from .agent import Agent
 
 logging.basicConfig(level=logging.DEBUG)
@@ -33,15 +33,15 @@ parser.add_argument(
     help="Choose the starting port number to listen on",
 )
 parser.add_argument(
-    "--broadcast-invitations",
+    "--receive-invitations",
     action="store_true"
 )
 
 
 async def main(args):
     agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip,
-                  broadcast_invitations=args.broadcast_invitations)
-    app = DiscoveryApp(agent)
+                  receive_invitations=args.receive_invitations)
+    app = CarApp(agent)
 
     try:
         await app.run_async()

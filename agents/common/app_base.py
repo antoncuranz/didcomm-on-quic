@@ -3,6 +3,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Grid
 from textual.screen import ModalScreen
 from textual.widgets import Header, TabbedContent, TabPane, RichLog, Label, Button, DataTable
+from textual.widgets._data_table import RowDoesNotExist
 from textual.worker import Worker, WorkerState
 
 from agents.common.webhook_agent_base import WebhookAgentBase
@@ -51,10 +52,12 @@ class AppBase(App):
     def __init__(self, controller_name: str, agent: WebhookAgentBase):
         super().__init__()
         self.agent = agent
-        self.controller_logs = None
-        self.agent_logs = None
         self.title = "{} ({})".format(controller_name, agent.ident)
         self.sub_title = "IP: {} Port: {} ({})".format(agent.external_host, agent.http_port, agent.transport_type)
+        self.connection_table = None
+        self.controller_logs = None
+        self.agent_logs = None
+        self.agent.set_webhook_callback("connections", self.handle_connections)
         self.agent.set_webhook_callback("present_proof_v2_0", self.handle_present_proof)
 
     def on_load(self) -> None:
@@ -74,6 +77,7 @@ class AppBase(App):
             with TabPane("User Interface", id="ui"):
                 for widget in  self.compose_ui():
                     yield widget
+                yield DataTable(id="connection_table", cursor_type="row")
             with TabPane("Controller Logs", id="controller"):
                 yield RichLog(id="controller_logs", highlight=True, markup=True, wrap=True)
             with TabPane("Agent Logs", id="agent"):
@@ -84,6 +88,9 @@ class AppBase(App):
 
     def on_mount(self) -> None:
         self.query_one(Header).tall = True
+
+        self.connection_table = self.query_one("#connection_table", DataTable)
+        self.connection_table.add_columns("State", "Label", "DID", "Connection")
 
         self.agent_logs = self.query_one("#agent_logs", RichLog)
         self.controller_logs = self.query_one("#controller_logs", RichLog)
@@ -98,6 +105,25 @@ class AppBase(App):
 
         message = dict(by_format=dict(pres_request=dict(indy=dict(requested_attributes=dict(foo=dict(name="foo"))))))
         self.push_screen(PresentProofScreen(self.agent, message))
+
+    def handle_connections(self, connection):
+        state = connection["state"]
+        if state == "invitation":
+            return
+
+        conn_id = connection["connection_id"]
+        label = connection.get("their_label", "-")
+        did = connection.get("their_did", "-")
+
+        try:
+            self.connection_table.remove_row(conn_id)
+            self.log_msg("Deleted old connection from table")
+        except RowDoesNotExist:
+            pass
+
+        if state != "deleted":
+            self.connection_table.add_row(state, label, did, conn_id, key=conn_id)
+            self.log_msg("Inserted new connection")
 
     def handle_present_proof(self, message):
         if message["state"] != "request-received":

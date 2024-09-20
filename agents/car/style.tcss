@@ -1,0 +1,27 @@
+Screen {
+    layout: vertical;
+}
+
+DataTable {
+    margin-top: 2;
+}
+
+Horizontal {
+    height: auto;
+}
+
+Horizontal {
+    width: 60;
+}
+
+#service_input {
+    width: 25;
+}
+
+#register_btn {
+    width: 15;
+}
+
+#access_btn {
+    width: 20;
+}
