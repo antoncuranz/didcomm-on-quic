@@ -15,7 +15,7 @@ class IssuerApp(AppBase):
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
-            Input("M4Hx67zhvyKkAyVAB46zDj", id="input_connect", placeholder="Connect to DID", classes="input"),
+            Input("9HktKFSbBsrxQJ6tTKq7SU", id="input_connect", placeholder="Connect to DID", classes="input"),
             Button("Connect", id="connect"),
         )
         yield Horizontal(
@@ -69,7 +69,3 @@ class IssuerApp(AppBase):
                 {"name": "expiration", "value": self.input_exp.value},
             ]
             self.run_worker(self.agent.issue_credential(conn_id, self.agent.cred_def_reg, attributes), exit_on_error=False)
-
-    def get_focused_connection(self):
-        cursor_row = self.connection_table.cursor_row
-        return self.connection_table.get_cell_at(Coordinate(cursor_row, 3))

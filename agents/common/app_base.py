@@ -1,6 +1,7 @@
 from textual import events
 from textual.app import App, ComposeResult
 from textual.containers import Grid
+from textual.coordinate import Coordinate
 from textual.screen import ModalScreen
 from textual.widgets import Header, TabbedContent, TabPane, RichLog, Label, Button, DataTable
 from textual.widgets._data_table import RowDoesNotExist
@@ -105,6 +106,10 @@ class AppBase(App):
 
         message = dict(by_format=dict(pres_request=dict(indy=dict(requested_attributes=dict(foo=dict(name="foo"))))))
         self.push_screen(PresentProofScreen(self.agent, message))
+
+    def get_focused_connection(self):
+        cursor_row = self.connection_table.cursor_row
+        return self.connection_table.get_cell_at(Coordinate(cursor_row, 3))
 
     def handle_connections(self, connection):
         state = connection["state"]

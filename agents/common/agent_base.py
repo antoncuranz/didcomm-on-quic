@@ -168,6 +168,17 @@ class AgentBase:
         }
         return await self.admin_POST(uri, body)
 
+    async def register_service(self, conn_id, service):
+        uri = "/connections/{}/register-service".format(conn_id)
+        body = {
+            "schema": service
+        }
+        return await self.admin_POST(uri, body)
+
+    async def request_video_stream(self, conn_id):
+        uri = "/connections/{}/videostreaming".format(conn_id)
+        return await self.admin_POST(uri)
+
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
         return await self.admin_GET("/multitenancy/wallets")

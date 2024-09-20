@@ -130,6 +130,9 @@ class WebhookAgentBase(AgentBase):
         self.log_msg("Received fetchchunk_result message (chunk = {}; status = {})...\n".format(
             message["chunk"], message["status"]))
 
+    async def handle_requeststream_result(self, message):
+        self.log_msg("Received requeststream_result message (name = {})...\n".format(message["name"]))
+
     async def handle_connections(self, message):
         # accept invitations with public did
         if "rfc23_state" in message:

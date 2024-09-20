@@ -10,9 +10,40 @@ from aries_cloudagent.storage.error import StorageNotFoundError
 from marshmallow import fields, Schema
 
 from .messages.fetchchunk import FetchChunk
+from .messages.requeststream import RequestStream
 
 
 class ConnIdMatchInfoSchema(Schema):
+    """Path parameters and validators for request taking connection id."""
+
+    conn_id = fields.Str(
+        description="Connection identifier", required=True, example=UUIDFour.EXAMPLE
+    )
+
+
+@docs(tags=["video streaming"], summary="Request video stream")
+@match_info_schema(ConnIdMatchInfoSchema())
+async def request_stream(request: web.BaseRequest):
+    context = request["context"]
+    connection_id = request.match_info["conn_id"]
+    outbound_handler = request["outbound_message_router"]
+
+    try:
+        async with context.profile.session() as session:
+            connection = await ConnRecord.retrieve_by_id(session, connection_id)
+    except StorageNotFoundError:
+        raise web.HTTPNotFound()
+
+    if not connection.is_ready:
+        raise web.HTTPBadRequest()
+
+    msg = RequestStream()
+    await outbound_handler(msg, connection_id=connection_id)
+
+    return web.json_response({"thread_id": msg._thread_id})
+
+
+class ConnIdChunkMatchInfoSchema(Schema):
     """Path parameters and validators for request taking connection id."""
 
     conn_id = fields.Str(
@@ -24,7 +55,7 @@ class ConnIdMatchInfoSchema(Schema):
 
 
 @docs(tags=["video streaming"], summary="Fetch a Chunk")
-@match_info_schema(ConnIdMatchInfoSchema())
+@match_info_schema(ConnIdChunkMatchInfoSchema())
 async def fetch_chunk(request: web.BaseRequest):
     context = request["context"]
     connection_id = request.match_info["conn_id"]
@@ -72,5 +103,6 @@ async def register(app: web.Application):
     """Register routes."""
 
     app.add_routes([
-        web.get("/connections/{conn_id}/videostreaming/{chunk}", fetch_chunk),
+        web.post("/connections/{conn_id}/videostreaming", request_stream),
+        web.get("/connections/{conn_id}/videostreaming/{chunk:.*}", fetch_chunk),
     ])

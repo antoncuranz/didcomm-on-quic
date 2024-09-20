@@ -9,7 +9,7 @@ from ..messages.fetchchunk_response import FetchChunkResponse
 class FetchChunkResponseHandler(BaseHandler):
 
     async def handle(self, context: RequestContext, responder: BaseResponder):
-        self._logger.info("QueryServicesResponseHandler called")
+        self._logger.info("FetchChunkResponseHandler called")
         assert isinstance(context.message, FetchChunkResponse)
 
         self._logger.info(

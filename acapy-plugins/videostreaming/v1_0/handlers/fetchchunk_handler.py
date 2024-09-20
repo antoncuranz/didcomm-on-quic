@@ -1,4 +1,5 @@
 import base64
+from urllib.parse import unquote
 
 from aries_cloudagent.messaging.base_handler import (
     BaseHandler,
@@ -14,7 +15,7 @@ class FetchChunkHandler(BaseHandler):
 
     async def handle(self, context: RequestContext, responder: BaseResponder):
 
-        self._logger.info(f"QueryServicesHandler called")
+        self._logger.info(f"FetchChunkHandler called")
         assert isinstance(context.message, FetchChunk)
 
         self._logger.info(
@@ -47,7 +48,7 @@ class FetchChunkHandler(BaseHandler):
 
     def encode_file_to_base64(self, file_path):
         # Read the file in binary mode
-        with open(file_path, "rb") as file:
+        with open(unquote(file_path), "rb") as file:
             file_content = file.read()
 
         # Encode the file content to Base64
