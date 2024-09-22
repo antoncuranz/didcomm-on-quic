@@ -1,0 +1,12 @@
+VideoStreamScreen {
+    align: center middle;
+}
+
+Vertical {
+    width: 70;
+    height: 10;
+}
+
+Button {
+    width: 100%;
+}

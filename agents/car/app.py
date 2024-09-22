@@ -1,11 +1,70 @@
+import asyncio
 import base64
+import subprocess
 
 from textual.app import ComposeResult
-from textual.containers import Horizontal
-from textual.widgets import DataTable, Input, Button
+from textual.containers import Horizontal, Vertical
+from textual.screen import ModalScreen
+from textual.widgets import DataTable, Input, Button, Log, Checkbox
 
 from agents.common.app_base import AppBase
 from .agent import Agent
+
+
+class VideoStreamScreen(ModalScreen):
+    CSS_PATH = "modal.tcss"
+
+    def __init__(self, agent, stream_file, display_stream):
+        super().__init__()
+        self.agent = agent
+        self.stream_file = stream_file
+        self.vo = "" if display_stream else "null"
+        self.proc = None
+        self.stream_log = None
+
+    def compose(self) -> ComposeResult:
+        yield Vertical(
+            Log(id="stream_log"),
+            Button("Close Stream", variant="error", id="close"),
+        )
+
+    async def on_mount(self) -> None:
+        self.stream_log = self.query_one(Log)
+        self.proc = subprocess.Popen(["mpv", "-vo=" + self.vo, self.stream_file],
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE
+        )
+        for handle in [self.proc.stdout, self.proc.stderr]:
+            asyncio.get_event_loop().run_in_executor(
+                self.agent.thread_pool_executor,
+                self.handle_stdout, handle
+            )
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        self.proc.terminate()
+        try:
+            self.proc.wait(timeout=1.5)
+            self.proc.stdout.close()
+            self.proc.stderr.close()
+            self.app.pop_screen()
+        except subprocess.TimeoutExpired:
+            msg = "Process did not terminate in time"
+            print(msg)
+            raise Exception(msg)
+
+    def handle_stdout(self, handle):
+        while not handle.closed:
+            try:
+                line = handle.readline().decode().rstrip()
+                lines = self.stream_log._lines
+
+                if len(lines) > 0 and line.startswith("V: ") and lines[-1].startswith("V: "):
+                    self.stream_log._lines[-1] = line
+                    self.stream_log.refresh_lines(len(lines) - 1)
+                elif line is not None:
+                    self.stream_log.write_line(line)
+            except:
+                pass
 
 
 class CarApp(AppBase):
@@ -24,6 +83,7 @@ class CarApp(AppBase):
             Input(id="service_input", placeholder="Service"),
             Button("Register", id="register_btn"),
             Button("Access Stream", id="access_btn"),
+            Checkbox("Display", id="display_cb")
         )
         yield DataTable(id="credential_table", cursor_type="row")
 
@@ -36,6 +96,7 @@ class CarApp(AppBase):
         self.service_input = self.query_one("#service_input", Input)
         self.register_btn = self.query_one("#register_btn", Button)
         self.access_btn = self.query_one("#access_btn", Button)
+        self.display_cb = self.query_one("#display_cb", Checkbox)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
@@ -64,7 +125,10 @@ class CarApp(AppBase):
         base_url = "http://0.0.0.0:{}/connections/{}/videostreaming/".format(self.agent.admin_port, message["conn_id"])
         # TODO: use self.agent.external_host instead of 0.0.0.0?
 
-        with open("recvd/stream.mpd", "wb") as file:
-            modified = file_content.replace(b"media=\"", b"media=\"" + base_url.encode())\
+        stream_file = "recvd/stream.mpd"
+        with open(stream_file, "wb") as file:
+            modified = file_content.replace(b"media=\"", b"media=\"" + base_url.encode()) \
                 .replace(b"initialization=\"", b"initialization=\"" + base_url.encode())
             file.write(modified)
+
+        self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
