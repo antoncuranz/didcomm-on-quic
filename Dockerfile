@@ -38,4 +38,8 @@ COPY acapy-plugins ./acapy-plugins
 COPY agents ./agents
 COPY wallets /root/.aries_cloudagent/wallet
 
+COPY stream.mpd ./
+COPY bbb ./bbb
+RUN mkdir recvd
+
 ENTRYPOINT ["python", "-m"]
