@@ -55,3 +55,5 @@ jobs:
           push: true
           tags: ghcr.io/antoncuranz/didcomm-on-quic/agents:latest
           platforms: ${{ env.PLATFORMS }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
