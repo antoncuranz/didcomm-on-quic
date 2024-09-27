@@ -33,4 +33,4 @@ COPY acapy-plugins ./acapy-plugins
 COPY agents ./agents
 COPY wallets /root/.aries_cloudagent/wallet
 
-ENTRYPOINT ["python", "-m", "agents.discovery.main"]
+ENTRYPOINT ["python", "-m"]
