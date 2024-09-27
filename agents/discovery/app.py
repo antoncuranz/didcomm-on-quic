@@ -1,5 +1,5 @@
 from textual.app import ComposeResult
-from textual.widgets import DataTable
+from textual.widgets import DataTable, Label
 from textual.widgets._data_table import RowDoesNotExist
 
 from agents.common.app_base import AppBase
@@ -14,6 +14,7 @@ class DiscoveryApp(AppBase):
         self.agent.set_webhook_callback("service_registry", self.handle_service_registry)
 
     def compose_ui(self) -> ComposeResult:
+        yield Label("Registered Services")
         yield DataTable(id="service_table", cursor_type="row")
 
     def on_mount(self) -> None:

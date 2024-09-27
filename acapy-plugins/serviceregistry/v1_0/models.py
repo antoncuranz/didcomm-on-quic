@@ -6,6 +6,8 @@ class RegisteredServiceRecord(BaseRecord):
     RECORD_ID_NAME = "record_id"
     RECORD_TYPE = "registeredservice"
 
+    TAG_NAMES = {"schema", "did"}
+
     class Meta:
         schema_class = "RegisteredServiceRecordSchema"
 

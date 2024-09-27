@@ -30,11 +30,7 @@ class QueryServicesHandler(BaseHandler):
 
         try:
             async with context.profile.session() as session:
-                records = await RegisteredServiceRecord.query(session=session)
-
-            # results = [record.serialize() for record in records]
-            # return sorted by most recent first
-            # results.sort(key=lambda x: str_to_epoch(x["created_at"]), reverse=True)
+                records = await RegisteredServiceRecord.query(session=session, tag_filter={"schema": context.message.schema})
 
             reply = QueryServicesResponse(services=records)
             reply.assign_thread_from(context.message)

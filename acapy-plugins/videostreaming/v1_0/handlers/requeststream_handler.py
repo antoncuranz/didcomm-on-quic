@@ -38,12 +38,12 @@ class RequestStreamHandler(BaseHandler):
         restrictions = [{"issuer_did": "NB5Rjw6kpkMcwmcUQeLhKt"}]
 
         await self.send_present_proof_request_and_wait(context, responder, {
-            "1_car_registration": {
-                "name": "registration",
+            "1_first_name": {
+                "name": "first_name",
                 "restrictions": restrictions
             },
-            "2_car_reg_expiration": {
-                "name": "expiration",
+            "2_last_name": {
+                "name": "last_name",
                 "restrictions": restrictions
             }
         })

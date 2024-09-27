@@ -5,7 +5,7 @@ import subprocess
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import DataTable, Input, Button, Log, Checkbox
+from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label
 
 from agents.common.app_base import AppBase
 from .agent import Agent
@@ -68,6 +68,7 @@ class VideoStreamScreen(ModalScreen):
 
 
 class CarApp(AppBase):
+    CSS_PATH = "style.tcss"
 
     def __init__(self, agent: Agent):
         super().__init__("Car Agent", agent)
@@ -75,17 +76,21 @@ class CarApp(AppBase):
         self.service_input = None
         self.register_btn = None
         self.access_btn = None
+        self.display_cb = None
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
+        self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
             Input(id="service_input", placeholder="Service"),
             Button("Register", id="register_btn"),
+            Button("Query", id="query_btn"),
             Button("Access Stream", id="access_btn"),
             Checkbox("Display", id="display_cb")
         )
-        yield DataTable(id="credential_table", cursor_type="row")
+        yield Label("Credentials")
+        yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
 
     def on_mount(self) -> None:
         super().on_mount()
@@ -105,6 +110,9 @@ class CarApp(AppBase):
         if button == "register_btn":
             service = self.service_input.value
             self.run_worker(self.agent.register_service(conn_id, service), exit_on_error=False)
+        elif button == "query_btn":
+            service = self.service_input.value
+            self.run_worker(self.agent.query_services(conn_id, service), exit_on_error=False)
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
@@ -132,3 +140,19 @@ class CarApp(AppBase):
             file.write(modified)
 
         self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
+
+    def handle_available_services(self, message):
+        connections = list(self.connection_table.get_column_at(2))
+        services = message["services"]
+
+        if len(services) == 0:
+            self.notify("No services available")
+
+        for service in services:
+            did = service["did"]
+            if did not in connections and self.agent.did not in did:
+                self.log_msg("Connecting to " + did)
+                self.notify("Connecting to " + did)
+                self.run_worker(self.agent.create_connection(did), exit_on_error=False)
+            else:
+                self.notify("Not connecting to " + did)

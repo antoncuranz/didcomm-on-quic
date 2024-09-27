@@ -1,4 +1,4 @@
-DataTable {
+Label {
     margin-top: 2;
 }
 
@@ -8,6 +8,10 @@ Horizontal {
 
 .input {
     width: 60;
+}
+
+.issue_name Input {
+    width: 30;
 }
 
 .issue_type Input {

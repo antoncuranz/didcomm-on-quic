@@ -19,6 +19,12 @@ class IssuerApp(AppBase):
             Button("Connect", id="connect"),
         )
         yield Horizontal(
+            Input("Anton", id="input_first_name", placeholder="First Name"),
+            Input("Curanz", id="input_last_name", placeholder="Last Name"),
+            Button("Issue", id="issue_name"),
+            classes="issue_name"
+        )
+        yield Horizontal(
             Input("VW", id="input_make", placeholder="Make"),
             Input("Golf", id="input_model", placeholder="Model"),
             Input("2019", id="input_year", placeholder="Year"),
@@ -35,6 +41,8 @@ class IssuerApp(AppBase):
     def on_mount(self) -> None:
         super().on_mount()
 
+        self.input_first_name = self.query_one("#input_first_name", Input)
+        self.input_last_name = self.query_one("#input_last_name", Input)
         self.input_connect = self.query_one("#input_connect", Input)
         self.input_make = self.query_one("#input_make", Input)
         self.input_model = self.query_one("#input_model", Input)
@@ -53,7 +61,15 @@ class IssuerApp(AppBase):
 
         conn_id = self.get_focused_connection()
 
-        if button == "issue_type":
+        if button == "issue_name":
+            self.log_msg("Issuing Name Credential to connection " + conn_id)
+            attributes = [
+                {"name": "first_name", "value": self.input_first_name.value},
+                {"name": "last_name", "value": self.input_last_name.value},
+            ]
+            self.run_worker(self.agent.issue_credential(conn_id, self.agent.cred_def_name, attributes), exit_on_error=False)
+
+        elif button == "issue_type":
             self.log_msg("Issuing Type Credential to connection " + conn_id)
             attributes = [
                 {"name": "make", "value": self.input_make.value},

@@ -2,7 +2,7 @@ Screen {
     layout: vertical;
 }
 
-DataTable {
+Label {
     margin-top: 2;
 }
 
@@ -11,7 +11,7 @@ Horizontal {
 }
 
 Horizontal {
-    width: 80;
+    width: 100;
 }
 
 #service_input {
@@ -19,9 +19,13 @@ Horizontal {
 }
 
 #register_btn {
-    width: 15;
+    width: 0;
+}
+
+#query_btn {
+    width: 0;
 }
 
 #access_btn {
-    width: 20;
+    width: 0;
 }

@@ -19,6 +19,7 @@ class Agent(WebhookAgentBase):
         super().__init__(ident, http_port, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32))
 
         self.create_schemas = create_schemas
+        self.cred_def_name = None
         self.cred_def_type = None
         self.cred_def_reg = None
 
@@ -28,6 +29,9 @@ class Agent(WebhookAgentBase):
         if self.create_schemas:
             version = format("%d.%d.%d"
                 % (random.randint(1, 101), random.randint(1, 101), random.randint(1, 101))
+            )
+            self.cred_def_name = await self.register_schema_and_creddef(
+                "name", version, ["first_name", "last_name"]
             )
             self.cred_def_type = await self.register_schema_and_creddef(
                 "car-type", version, ["make", "model", "year"]

@@ -36,7 +36,7 @@ class PresentProofScreen(ModalScreen):
 
         self.credential_table = self.query_one("#credential_table", DataTable)
         self.credential_table.add_columns(*(["Credential"] + self.requested_attributes))
-        rows = [tuple(["todo"] + list(cred["cred_info"]["attrs"].values())) for cred in self.credentials]
+        rows = [tuple([cred["cred_info"]["cred_def_id"].split(":")[-1]] + list(cred["cred_info"]["attrs"].values())) for cred in self.credentials]
         self.credential_table.add_rows(rows)
 
     async def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -78,6 +78,7 @@ class AppBase(App):
             with TabPane("User Interface", id="ui"):
                 for widget in  self.compose_ui():
                     yield widget
+                yield Label("Connections")
                 yield DataTable(id="connection_table", cursor_type="row")
             with TabPane("Controller Logs", id="controller"):
                 yield RichLog(id="controller_logs", highlight=True, markup=True, wrap=True)

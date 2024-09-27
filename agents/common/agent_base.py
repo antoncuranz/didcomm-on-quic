@@ -168,6 +168,13 @@ class AgentBase:
         }
         return await self.admin_POST(uri, body)
 
+    async def query_services(self, conn_id, service):
+        uri = "/connections/{}/query-services".format(conn_id)
+        body = {
+            "schema": service
+        }
+        return await self.admin_POST(uri, body)
+
     async def register_service(self, conn_id, service):
         uri = "/connections/{}/register-service".format(conn_id)
         body = {
