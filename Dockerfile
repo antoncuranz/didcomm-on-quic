@@ -6,7 +6,7 @@ USER root
 
 ENV POETRY_VERSION=1.8.3
 ENV POETRY_HOME=/opt/poetry
-RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN apt-get update && apt-get install -y curl patch && apt-get clean
 RUN curl -sSL https://install.python-poetry.org | python -
 
 RUN python -m venv /usr/src/app/.venv
@@ -18,6 +18,10 @@ COPY acapy-plugins/pyproject.* ./
 RUN poetry install --extras aca-py
 
 RUN pip install textual
+
+# apply stupid patch \
+COPY invitation-fix.patch ./
+RUN patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/connections/base_manager.py -i invitation-fix.patch
 
 USER $user
 

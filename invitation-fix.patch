@@ -1,0 +1,12 @@
+--- .venv/lib/python3.12/site-packages/aries_cloudagent/connections/base_manager.py	2024-09-27 16:48:33
++++ .venv/lib/python3.12/site-packages/aries_cloudagent/connections/base_manager_patched.py	2024-09-27 16:48:54
+@@ -987,7 +987,8 @@
+                                 "recipient_did": receipt.recipient_did,
+                                 "recipient_did_public": receipt.recipient_did_public,
+                             }
+-                            await entry.set_result(cache_val, 3600)
++                            if connection.state != ConnRecord.State.INVITATION:
++                                await entry.set_result(cache_val, 3600)
+                         resolved = True
+ 
+         if not connection and not resolved:
