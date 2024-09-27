@@ -17,14 +17,14 @@ class RegisteredServiceRecord(BaseRecord):
             record_id: str = None,
             schema: str = None,
             did: str = None,
-            credentials: dict = {},
+            credentials=None,
             **kwargs,
     ):
         """Initialize a new SchemaRecord."""
         super().__init__(record_id, **kwargs)
         self.schema = schema
         self.did = did
-        self.credentials = credentials
+        self.credentials = credentials if credentials is not None else {}
 
     @property
     def record_id(self) -> str:
