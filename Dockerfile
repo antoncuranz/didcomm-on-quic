@@ -25,10 +25,12 @@ FROM python:3.12-bullseye
 WORKDIR /usr/src/app
 COPY --from=base /usr/src/app/.venv /usr/src/app/.venv
 ENV PATH="/usr/src/app/.venv/bin:$PATH"
-
 ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get install -y mpv && apt-get clean
 
 COPY acapy-plugins ./acapy-plugins
 COPY agents ./agents
+COPY wallets /root/.aries_cloudagent/wallet
 
 ENTRYPOINT ["python", "-m", "agents.discovery.main"]

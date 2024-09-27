@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - agents/**
+      - wallets/**
 
   workflow_dispatch:
     inputs:
