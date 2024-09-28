@@ -4,35 +4,49 @@ sequenceDiagram
     participant discovery as Discovery
     participant indy as Indy Node
 
-    Note over car,discovery: Truck offers Service
+    Note over car,indy: Truck offers Service
 
     discovery-->>truck: Broadcast DIDComm Invitation
+    activate truck
+    opt Establish Connection
+        truck->>discovery: 
+        discovery->>truck: 
+        truck->>discovery: 
+    end
 
     truck->>+discovery: Register FRONT_CAMERA_STREAM service
+    discovery->>discovery: Create Entry
 
     loop Establish Trust
         discovery->>truck: Request Credentials
         truck-->>discovery: Present Credentials
         discovery->>+indy: Verify Credential
-        indy-->>-discovery: .
+        indy-->>-discovery: 
+        discovery->>discovery: Update Entry
     end
     deactivate discovery
+    deactivate truck
 
 
-    Note over car,discovery: Car requests Service
+    Note over car,indy: Car accesses Service
 
-    discovery-->>+car: Broadcast DIDComm Invitation
+    discovery-->>car: Broadcast DIDComm Invitation
+    activate car
+    opt Establish Connection
+        car->>discovery: 
+        discovery->>car: 
+        car->>discovery: 
+    end
 
 
     car->>+discovery: Query available services
-    discovery-->>-car: .
+    discovery-->>-car: 
 
-%%    opt Establish Connection
-%%        car->>+truck: DIDExchange Request
-%%        truck->>car: Accept Request
-%%        car->>truck: Complete Request
-%%        deactivate truck
-%%    end
+    opt Establish Connection
+        car->>truck: 
+        truck->>car: 
+        car->>truck: 
+    end
 
     car->>+truck: Request Video Stream
 
@@ -40,10 +54,10 @@ sequenceDiagram
         truck->>car: Request Credential
         car-->>truck: Present Credential
         truck->>+indy: Verify Credential
-        indy-->>-truck: .
+        indy-->>-truck: 
     end
 
-    truck->>-car: Respond with Stream information
+    truck->>-car: Send Stream Manifest
 
     loop
         car->>+truck: Request Video Chunk
