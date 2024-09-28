@@ -18,8 +18,6 @@ class DiscoveryApp(AppBase):
         yield DataTable(id="service_table", cursor_type="row")
 
     def on_mount(self) -> None:
-        super().on_mount()
-
         self.service_table = self.query_one("#service_table", DataTable)
         self.service_table.add_columns("DID", "Service", "Registration", "Type")
 

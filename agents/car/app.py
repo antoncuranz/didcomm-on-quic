@@ -55,16 +55,25 @@ class VideoStreamScreen(ModalScreen):
     def handle_stdout(self, handle):
         while not handle.closed:
             try:
-                line = handle.readline().decode().rstrip()
+                line = self.custom_readline(handle)
                 lines = self.stream_log._lines
 
                 if len(lines) > 0 and line.startswith("V: ") and lines[-1].startswith("V: "):
                     self.stream_log._lines[-1] = line
                     self.stream_log.refresh_lines(len(lines) - 1)
-                elif line is not None:
+                elif len(line) > 0:
                     self.stream_log.write_line(line)
             except:
                 pass
+
+    def custom_readline(self, handle):
+        line = ""
+        while not handle.closed:
+            char = handle.read(1)
+            if char == b'\n' or char == b'\r':
+                return line.removeprefix("\x1b[K").rstrip()
+            else:
+                line += char.decode()
 
 
 class CarApp(AppBase):
@@ -93,8 +102,6 @@ class CarApp(AppBase):
         yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
 
     def on_mount(self) -> None:
-        super().on_mount()
-
         self.credential_table = self.query_one("#credential_table", DataTable)
         self.credential_table.add_columns("State", "Schema", "Attributes")
 

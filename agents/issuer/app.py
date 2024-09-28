@@ -39,8 +39,6 @@ class IssuerApp(AppBase):
         )
 
     def on_mount(self) -> None:
-        super().on_mount()
-
         self.input_first_name = self.query_one("#input_first_name", Input)
         self.input_last_name = self.query_one("#input_last_name", Input)
         self.input_connect = self.query_one("#input_connect", Input)
