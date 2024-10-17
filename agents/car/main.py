@@ -36,10 +36,15 @@ parser.add_argument(
     "--receive-invitations",
     action="store_true"
 )
+parser.add_argument(
+    "--quic",
+    action="store_true"
+)
 
 
 async def main(args):
-    agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip,
+    transport_type = "http3" if args.quic else "http"
+    agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip,
                   receive_invitations=args.receive_invitations)
     app = CarApp(agent)
 

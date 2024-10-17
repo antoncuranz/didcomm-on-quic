@@ -44,12 +44,12 @@ class AgentBase:
             self,
             ident: str,
             http_port: int,
+            transport_type: str, # must be in ["http", "https", "http3"]
             internal_host: str = "127.0.0.1",
             external_host: str = "localhost",
             ledger_url: str = None,
             genesis_data: str = None,
             seed: str = None,
-            transport_type: str = "http",
             extra_args=None,
     ):
         self.ident = ident
@@ -73,7 +73,7 @@ class AgentBase:
         self.extra_args = extra_args
 
         self.admin_url = f"http://{self.internal_host}:{self.admin_port}"
-        self.endpoint = f"http://{self.external_host}:{self.http_port}"
+        self.endpoint = f"{self.transport_type}://{self.external_host}:{self.http_port}"
 
         self.proc = None
         self.client_session: ClientSession = ClientSession()
@@ -289,8 +289,9 @@ class AgentBase:
             ("--label", self.ident),
             "--auto-ping-connection",
             "--auto-respond-messages",
-            ("--inbound-transport", self.transport_type, "0.0.0.0", str(self.http_port)),
-            ("--outbound-transport", self.transport_type),
+            ("--inbound-transport", "acapy-plugins.http3transport.v1_0.inbound" if self.transport_type == "http3" else "http", "0.0.0.0", str(self.http_port)),
+            ("--outbound-transport", "acapy-plugins.http3transport.v1_0.outbound") if self.transport_type == "http3" else (),
+            ("--outbound-transport", "http"), # always required for webhooks
             ("--admin", "0.0.0.0", str(self.admin_port)),
             "--admin-insecure-mode",
             ("--wallet-type", self.wallet_type),
@@ -308,7 +309,7 @@ class AgentBase:
             "--auto-disclose-features",
             ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
             ("--plugin", "acapy-plugins.videostreaming.v1_0"),
-            # ("--plugin", "http3.v1_0"),
+            ("--plugin", "acapy-plugins.http3transport.v1_0"),
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":

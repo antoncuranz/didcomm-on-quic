@@ -15,11 +15,12 @@ class Agent(WebhookAgentBase):
             self,
             ident: str,
             ledger_url: str,
+            transport_type: str, # must be in ["http", "https", "http3"]
             external_host: str = "localhost",
             http_port: int = 8020,
             broadcast_invitations: bool = False,
     ):
-        super().__init__(ident, http_port, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32))
+        super().__init__(ident, http_port, transport_type, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32))
 
         self.broadcast_invitations = broadcast_invitations
 

@@ -14,15 +14,15 @@ class WebhookAgentBase(AgentBase):
             self,
             ident: str,
             http_port: int,
+            transport_type: str,
             internal_host: str = "127.0.0.1",
             external_host: str = "localhost",
             ledger_url: str = None,
             genesis_data: str = None,
             seed: str = None,
-            transport_type: str = "http",
             extra_args=None,
     ):
-        super().__init__(ident, http_port, internal_host, external_host, ledger_url, genesis_data, seed, transport_type,
+        super().__init__(ident, http_port, transport_type, internal_host, external_host, ledger_url, genesis_data, seed,
                          extra_args)
 
         self.webhook_port = None

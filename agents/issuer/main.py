@@ -32,10 +32,15 @@ parser.add_argument(
     default=8020,
     help="Choose the starting port number to listen on",
 )
+parser.add_argument(
+    "--quic",
+    action="store_true"
+)
 
 
 async def main(args):
-    agent = Agent(args.ident, args.ledger, http_port=args.port, external_host=args.ip)
+    transport_type = "http3" if args.quic else "http"
+    agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip)
     app = IssuerApp(agent)
 
     try:
