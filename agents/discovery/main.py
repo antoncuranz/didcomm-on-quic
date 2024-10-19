@@ -43,7 +43,7 @@ parser.add_argument(
 
 
 async def main(args):
-    transport_type = "http3" if args.quic else "http"
+    transport_type = "http3" if args.quic else "https"
     agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip,
                   broadcast_invitations=args.broadcast_invitations)
     app = DiscoveryApp(agent)

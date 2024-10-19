@@ -289,9 +289,9 @@ class AgentBase:
             ("--label", self.ident),
             "--auto-ping-connection",
             "--auto-respond-messages",
-            ("--inbound-transport", "acapy-plugins.http3transport.v1_0.inbound" if self.transport_type == "http3" else "http", "0.0.0.0", str(self.http_port)),
+            ("--inbound-transport", "acapy-plugins.http3transport.v1_0.inbound" if self.transport_type == "http3" else "acapy-plugins.httpstransport.v1_0.inbound", "0.0.0.0", str(self.http_port)),
             ("--outbound-transport", "acapy-plugins.http3transport.v1_0.outbound") if self.transport_type == "http3" else (),
-            ("--outbound-transport", "http"), # always required for webhooks
+            ("--outbound-transport", "acapy-plugins.httpstransport.v1_0.outbound"), # always required for webhooks
             ("--admin", "0.0.0.0", str(self.admin_port)),
             "--admin-insecure-mode",
             ("--wallet-type", self.wallet_type),
@@ -310,6 +310,7 @@ class AgentBase:
             ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
             ("--plugin", "acapy-plugins.videostreaming.v1_0"),
             ("--plugin", "acapy-plugins.http3transport.v1_0"),
+            ("--plugin", "acapy-plugins.httpstransport.v1_0"),
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":
