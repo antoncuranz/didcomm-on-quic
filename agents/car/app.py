@@ -1,11 +1,12 @@
 import asyncio
 import base64
 import subprocess
+import time
 
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label
+from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label, Collapsible
 
 from agents.common.app_base import AppBase
 from .agent import Agent
@@ -86,6 +87,7 @@ class CarApp(AppBase):
         self.register_btn = None
         self.access_btn = None
         self.display_cb = None
+        self.bm_input = None
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
@@ -100,6 +102,11 @@ class CarApp(AppBase):
         )
         yield Label("Credentials")
         yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
+        
+    def compose_benchmark_ui(self) -> ComposeResult:
+        yield Input("9HktKFSbBsrxQJ6tTKq7SU", id="bm_input", placeholder="Connect to DID", classes="input")
+        yield Button("Connect", id="bm_connect")
+        yield Button("Request Cred", id="bm_reqest_cred")
 
     def on_mount(self) -> None:
         self.credential_table = self.query_one("#credential_table", DataTable)
@@ -109,6 +116,7 @@ class CarApp(AppBase):
         self.register_btn = self.query_one("#register_btn", Button)
         self.access_btn = self.query_one("#access_btn", Button)
         self.display_cb = self.query_one("#display_cb", Checkbox)
+        self.bm_input = self.query_one("#bm_input", Input)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
@@ -123,6 +131,10 @@ class CarApp(AppBase):
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
+        elif button == "bm_connect":
+            did = self.bm_input.value
+            self.log_msg("BM: Connecting to " + did + " at time " + str(time.perf_counter()))
+            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
 
     def handle_credentials(self, credential):
         if credential["state"] == "done":

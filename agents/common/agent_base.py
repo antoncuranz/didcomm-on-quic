@@ -110,6 +110,9 @@ class AgentBase:
         uri = "/connection?their_public_did={}".format(their_public_did)
         rsp = await self.admin_GET(uri)
         return rsp["results"][0]
+    
+    async def delete_connection(self, conn_id):
+        return await self.admin_DELETE("/connections/{}".format(conn_id))
 
     async def create_connection(self, their_public_did, protocol="didexchange/1.1", use_public_did=True):
         uri = "/didexchange/create-request?their_public_did={}&protocol={}&use_public_did={}".format(
@@ -287,7 +290,6 @@ class AgentBase:
         result = [
             ("--endpoint", self.endpoint),
             ("--label", self.ident),
-            "--auto-ping-connection",
             "--auto-respond-messages",
             ("--inbound-transport", "acapy-plugins.http3transport.v1_0.inbound" if self.transport_type == "http3" else "acapy-plugins.httpstransport.v1_0.inbound", "0.0.0.0", str(self.http_port)),
             ("--outbound-transport", "acapy-plugins.http3transport.v1_0.outbound") if self.transport_type == "http3" else (),
@@ -306,7 +308,6 @@ class AgentBase:
             "--auto-respond-credential-request",
             "--auto-store-credential",
             "--auto-verify-presentation",
-            "--auto-disclose-features",
             ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
             ("--plugin", "acapy-plugins.videostreaming.v1_0"),
             ("--plugin", "acapy-plugins.http3transport.v1_0"),

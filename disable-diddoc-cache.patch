@@ -1,0 +1,10 @@
+--- .venv/lib/python3.12/site-packages/aries_cloudagent/resolver/base.py	
++++ .venv/lib/python3.12/site-packages/aries_cloudagent/resolver/base_patched.py	
+@@ -159,7 +159,6 @@
+                     return entry.result
+                 else:
+                     result = await self._resolve(profile, did, service_accept)
+-                    await entry.set_result(result, ttl=self.DEFAULT_TTL)
+                     return result
+ 
+         return await self._resolve(profile, did, service_accept)

@@ -1,9 +1,11 @@
+import time
+
 from textual import events
 from textual.app import App, ComposeResult
-from textual.containers import Grid
+from textual.containers import Grid, Horizontal
 from textual.coordinate import Coordinate
 from textual.screen import ModalScreen
-from textual.widgets import Header, TabbedContent, TabPane, RichLog, Label, Button, DataTable
+from textual.widgets import Header, TabbedContent, TabPane, RichLog, Label, Button, DataTable, Collapsible, Checkbox
 from textual.widgets._data_table import RowDoesNotExist
 from textual.worker import Worker, WorkerState
 
@@ -58,6 +60,7 @@ class AppBase(App):
         self.connection_table = None
         self.controller_logs = None
         self.agent_logs = None
+        self.benchmark_mode = None
         self.agent.set_webhook_callback("connections", self.handle_connections)
         self.agent.set_webhook_callback("present_proof_v2_0", self.handle_present_proof)
 
@@ -80,6 +83,11 @@ class AppBase(App):
                     yield widget
                 yield Label("Connections")
                 yield DataTable(id="connection_table", cursor_type="row")
+                with Collapsible(title="Benchmark", id="benchmark_ui"):
+                    with Horizontal():
+                        yield Checkbox("Enable", id="benchmark_mode")
+                        for widget in self.compose_benchmark_ui():
+                            yield widget
             with TabPane("Controller Logs", id="controller"):
                 yield RichLog(id="controller_logs", highlight=True, markup=True, wrap=True)
             with TabPane("Agent Logs", id="agent"):
@@ -87,6 +95,9 @@ class AppBase(App):
 
     def compose_ui(self) -> ComposeResult:
         raise NotImplemented
+    
+    def compose_benchmark_ui(self) -> ComposeResult:
+        return []
 
     def on_mount(self) -> None:
         self.query_one(Header).tall = True
@@ -97,6 +108,8 @@ class AppBase(App):
         self.agent_logs = self.query_one("#agent_logs", RichLog)
         self.controller_logs = self.query_one("#controller_logs", RichLog)
         self.agent.set_log_callbacks(self.agent_logs.write, self.controller_logs.write)
+        
+        self.benchmark_mode = self.query_one("#benchmark_mode", Checkbox)
 
     def log_msg(self, msg):
         self.controller_logs.write(msg)
@@ -118,6 +131,10 @@ class AppBase(App):
             return
 
         conn_id = connection["connection_id"]
+        if state == "active" and self.benchmark_mode.value:
+            self.log_msg("BM: Connected at time " + str(time.perf_counter()))
+            self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
+
         label = connection.get("their_label", "-")
         did = connection.get("their_did", "-")
 
@@ -134,5 +151,12 @@ class AppBase(App):
     def handle_present_proof(self, message):
         if message["state"] != "request-received":
             return
-
-        self.push_screen(PresentProofScreen(self.agent, message["pres_ex_id"]))
+        
+        if self.benchmark_mode.value:
+            self.run_worker(self.auto_present_credential(message["pres_ex_id"]), exit_on_error=False)
+        else:
+            self.push_screen(PresentProofScreen(self.agent, message["pres_ex_id"]))
+    
+    async def auto_present_credential(self, pres_ex_id):
+        credentials = await self.agent.get_credentials_for_pres_req(pres_ex_id)
+        await self.agent.send_presentation(self.pres_ex_id, credentials[0])

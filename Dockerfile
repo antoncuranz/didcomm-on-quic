@@ -1,6 +1,8 @@
 FROM python:3.12-slim AS base
 WORKDIR /usr/src/app
 
+ARG DISABLE_DIDDOC_CACHE=false
+
 # Install and configure poetry
 USER root
 
@@ -19,9 +21,14 @@ RUN poetry install --extras aca-py
 
 RUN pip install textual
 
-# apply stupid patch \
-COPY invitation-fix.patch ./
-RUN patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/connections/base_manager.py -i invitation-fix.patch
+# apply stupid patch
+COPY disable-connection-cache.patch ./
+RUN patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/connections/base_manager.py -i disable-connection-cache.patch
+
+COPY disable-diddoc-cache.patch ./
+RUN if [ "$DISABLE_DIDDOC_CACHE" = "true" ]; then \
+        patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/resolver/base.py -i disable-diddoc-cache.patch \
+    fi
 
 USER $user
 

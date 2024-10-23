@@ -29,3 +29,11 @@ Horizontal {
 #access_btn {
     width: 0;
 }
+
+#benchmark_ui {
+    margin-top: 2;
+}
+
+.input {
+    width: 40;
+}
