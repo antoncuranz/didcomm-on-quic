@@ -1,8 +1,9 @@
 import base64
 import re
+import time
 from os import urandom
 
-from aries_cloudagent.core.event_bus import EventBus
+from aries_cloudagent.core.event_bus import EventBus, Event
 from aries_cloudagent.messaging.base_handler import (
     BaseHandler,
     BaseResponder,
@@ -99,6 +100,8 @@ class RequestStreamHandler(BaseHandler):
             connection_id=context.connection_record.connection_id,
             pres_request_message=pres_request_message
         )
+        
+        req_time = time.perf_counter()
 
         # pres_request_message.assign_thread_from(context.message)
         pres_request_message.assign_trace_from(context.message)
@@ -112,3 +115,6 @@ class RequestStreamHandler(BaseHandler):
                 lambda event: event.payload.get("pres_ex_id") == pres_ex_record.pres_ex_id
         ) as await_event:
             await await_event
+            rsp_time = time.perf_counter()
+            msg = "BM(pres): {};{};{};{}".format(pres_ex_record.pres_ex_id, req_time, rsp_time, rsp_time-req_time)
+            await event_bus.notify(context.profile, Event("acapy::webhook::presentation_metrics", msg))

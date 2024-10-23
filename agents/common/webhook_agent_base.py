@@ -82,12 +82,6 @@ class WebhookAgentBase(AgentBase):
             method = getattr(self, handler, None)
             if method:
                 asyncio.get_event_loop().create_task(method(payload))
-            else:
-                self.log_msg(
-                    f"Error: agent {self.ident} "
-                    f"has no method {handler} "
-                    f"to handle webhook on topic {topic}"
-                )
 
             if topic in self.webhook_callbacks:
                 self.webhook_callbacks[topic](payload)

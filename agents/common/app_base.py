@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from textual import events
 from textual.app import App, ComposeResult
@@ -63,6 +64,8 @@ class AppBase(App):
         self.benchmark_mode = None
         self.agent.set_webhook_callback("connections", self.handle_connections)
         self.agent.set_webhook_callback("present_proof_v2_0", self.handle_present_proof)
+        self.controller_log_file = open("logs/{}_{}_{}.txt".format(
+            str(datetime.now()).replace(" ", "_"), agent.ident, agent.transport_type), "w")
 
     def on_load(self) -> None:
         self.run_worker(self.agent.initialize(), name=self.AGENT_INIT_WORKER)
@@ -107,12 +110,13 @@ class AppBase(App):
 
         self.agent_logs = self.query_one("#agent_logs", RichLog)
         self.controller_logs = self.query_one("#controller_logs", RichLog)
-        self.agent.set_log_callbacks(self.agent_logs.write, self.controller_logs.write)
+        self.agent.set_log_callbacks(self.agent_logs.write, self.log_msg)
         
         self.benchmark_mode = self.query_one("#benchmark_mode", Checkbox)
 
     def log_msg(self, msg):
         self.controller_logs.write(msg)
+        self.controller_log_file.write(msg + '\n')
 
     def on_key(self, event: events.Key) -> None:
         if event.key != "p":
@@ -132,7 +136,7 @@ class AppBase(App):
 
         conn_id = connection["connection_id"]
         if state == "active" and self.benchmark_mode.value:
-            self.log_msg("BM: Connected at time " + str(time.perf_counter()))
+            self.log_msg("BM(conn): done at " + str(time.perf_counter()))
             self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
 
         label = connection.get("their_label", "-")
@@ -159,4 +163,4 @@ class AppBase(App):
     
     async def auto_present_credential(self, pres_ex_id):
         credentials = await self.agent.get_credentials_for_pres_req(pres_ex_id)
-        await self.agent.send_presentation(self.pres_ex_id, credentials[0])
+        await self.agent.send_presentation(pres_ex_id, credentials[0])

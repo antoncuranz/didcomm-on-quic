@@ -49,6 +49,6 @@ COPY wallets /root/.aries_cloudagent/wallet
 COPY stream.mpd ./
 COPY bbb ./bbb
 COPY certs ./certs
-RUN mkdir recvd
+RUN mkdir recvd logs
 
 ENTRYPOINT ["python", "-m"]

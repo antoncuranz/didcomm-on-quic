@@ -91,6 +91,8 @@ class CarApp(AppBase):
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
+        self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
+        self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
@@ -106,7 +108,6 @@ class CarApp(AppBase):
     def compose_benchmark_ui(self) -> ComposeResult:
         yield Input("9HktKFSbBsrxQJ6tTKq7SU", id="bm_input", placeholder="Connect to DID", classes="input")
         yield Button("Connect", id="bm_connect")
-        yield Button("Request Cred", id="bm_reqest_cred")
 
     def on_mount(self) -> None:
         self.credential_table = self.query_one("#credential_table", DataTable)
@@ -133,7 +134,7 @@ class CarApp(AppBase):
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
         elif button == "bm_connect":
             did = self.bm_input.value
-            self.log_msg("BM: Connecting to " + did + " at time " + str(time.perf_counter()))
+            self.log_msg("BM(conn): init " + did + " at " + str(time.perf_counter()))
             self.run_worker(self.agent.create_connection(did), exit_on_error=False)
 
     def handle_credentials(self, credential):
@@ -158,7 +159,8 @@ class CarApp(AppBase):
                 .replace(b"initialization=\"", b"initialization=\"" + base_url.encode())
             file.write(modified)
 
-        self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
+        if not self.benchmark_mode.value:
+            self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
 
     def handle_available_services(self, message):
         connections = list(self.connection_table.get_column_at(2))

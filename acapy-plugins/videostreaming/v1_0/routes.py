@@ -1,10 +1,11 @@
 import base64
 import re
+import time
 
 from aiohttp import web
 from aiohttp_apispec import docs, match_info_schema, request_schema, response_schema
 from aries_cloudagent.connections.models.conn_record import ConnRecord
-from aries_cloudagent.core.event_bus import EventBus
+from aries_cloudagent.core.event_bus import EventBus, Event
 from aries_cloudagent.messaging.valid import UUIDFour
 from aries_cloudagent.storage.error import StorageNotFoundError
 from marshmallow import fields, Schema
@@ -72,6 +73,7 @@ async def fetch_chunk(request: web.BaseRequest):
         raise web.HTTPBadRequest()
 
     msg = FetchChunk(chunk=chunk)
+    req_time = time.perf_counter()
     await outbound_handler(msg, connection_id=connection_id)
 
     event_bus = context.inject(EventBus)
@@ -82,6 +84,10 @@ async def fetch_chunk(request: web.BaseRequest):
     ) as await_event:
         event = await await_event
         if event.payload["status"] == 200:
+            rsp_time = time.perf_counter()
+            msg = "BM(chunk): {};{};{};{}".format(chunk, req_time, rsp_time, rsp_time-req_time)
+            await event_bus.notify(context.profile, Event("acapy::webhook::fetchchunk_metrics", msg))
+            
             try:
                 file_content = base64.b64decode(event.payload["data"])
             except (TypeError, ValueError) as e:

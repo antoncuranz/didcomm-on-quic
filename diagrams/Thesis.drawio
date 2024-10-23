@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0" version="24.7.8">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2024-10-21T09:33:47.711Z" version="22.1.22" etag="zbspeHCAbAwAPlpL_933" type="embed">
   <diagram name="Seite-1" id="HDc-kwV_B_1xKTGdfyAV">
-    <mxGraphModel dx="3305" dy="1944" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
+    <mxGraphModel dx="2173" dy="1255" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -461,9 +461,6 @@
         <mxCell id="u4925fE9N81U36_T5HTY-120" value="Discovery Service" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="u4925fE9N81U36_T5HTY-121" vertex="1">
           <mxGeometry width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="u4925fE9N81U36_T5HTY-122" value="Broadcast OOB&lt;br&gt;Invitation!" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;size=70;position=0.17;base=14;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="215" y="220" width="120" height="120" as="geometry" />
-        </mxCell>
         <mxCell id="52iqDLaWS4w1kDshRCd4-2" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="846.65" y="-260" width="420" height="100" as="geometry" />
         </mxCell>
@@ -632,13 +629,13 @@
         <mxCell id="52iqDLaWS4w1kDshRCd4-93" value="&lt;div&gt;OMNeT++ Simulation&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="940" y="374" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="ZEFBujlcjd5waYW6vQln-1" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ZEFBujlcjd5waYW6vQln-1" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="280" y="60.01" width="80" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ZEFBujlcjd5waYW6vQln-2" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ZEFBujlcjd5waYW6vQln-2" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="59.99999999999999" width="80" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ZEFBujlcjd5waYW6vQln-3" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ZEFBujlcjd5waYW6vQln-3" value="Issuer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="322.72" width="80" height="40" as="geometry" />
         </mxCell>
       </root>
