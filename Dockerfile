@@ -27,7 +27,7 @@ RUN patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/connections/bas
 
 COPY disable-diddoc-cache.patch ./
 RUN if [ "$DISABLE_DIDDOC_CACHE" = "true" ]; then \
-        patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/resolver/base.py -i disable-diddoc-cache.patch \
+        patch -u .venv/lib/python3.12/site-packages/aries_cloudagent/resolver/base.py -i disable-diddoc-cache.patch; \
     fi
 
 USER $user
