@@ -51,6 +51,7 @@ class AgentBase:
             genesis_data: str = None,
             seed: str = None,
             extra_args=None,
+            force_close: bool = False
     ):
         self.ident = ident
         self.http_port = http_port
@@ -71,6 +72,7 @@ class AgentBase:
         self.public_did_connections = True
         self.transport_type = transport_type
         self.extra_args = extra_args
+        self.force_close = force_close
 
         self.admin_url = f"http://{self.internal_host}:{self.admin_port}"
         self.endpoint = f"{self.transport_type}://{self.external_host}:{self.http_port}"
@@ -294,6 +296,7 @@ class AgentBase:
             ("--inbound-transport", "acapy-plugins.http3transport.v1_0.inbound" if self.transport_type == "http3" else "acapy-plugins.httpstransport.v1_0.inbound", "0.0.0.0", str(self.http_port)),
             ("--outbound-transport", "acapy-plugins.http3transport.v1_0.outbound") if self.transport_type == "http3" else (),
             ("--outbound-transport", "acapy-plugins.httpstransport.v1_0.outbound"), # always required for webhooks
+            ("--plugin-config-value", "httpxtransport.force_close=true") if self.force_close is True else (),
             ("--admin", "0.0.0.0", str(self.admin_port)),
             "--admin-insecure-mode",
             ("--wallet-type", self.wallet_type),

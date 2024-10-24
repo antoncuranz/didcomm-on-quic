@@ -40,12 +40,16 @@ parser.add_argument(
     "--quic",
     action="store_true"
 )
+parser.add_argument(
+    "--force-close",
+    action="store_true"
+)
 
 
 async def main(args):
     transport_type = "http3" if args.quic else "https"
     agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip,
-                  receive_invitations=args.receive_invitations)
+                  receive_invitations=args.receive_invitations, force_close=args.force_close)
     app = CarApp(agent)
 
     try:

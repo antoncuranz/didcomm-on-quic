@@ -9,6 +9,7 @@ from aries_cloudagent.core.profile import Profile
 from aries_cloudagent.transport.stats import StatsTracer
 from aries_cloudagent.transport.wire_format import DIDCOMM_V0_MIME_TYPE, DIDCOMM_V1_MIME_TYPE
 from aries_cloudagent.transport.outbound.base import BaseOutboundTransport, OutboundTransportError
+from .config import get_config
 
 
 class HttpsTransport(BaseOutboundTransport):
@@ -23,10 +24,11 @@ class HttpsTransport(BaseOutboundTransport):
         self.client_session: Optional[ClientSession] = None
         self.connector: Optional[TCPConnector] = None
         self.logger = logging.getLogger(__name__)
+        self.force_close = get_config(self.root_profile.context.settings).force_close
 
     async def start(self):
         """Start the transport."""
-        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False)
+        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False, force_close=self.force_close)
         session_args = {
             "cookie_jar": DummyCookieJar(),
             "connector": self.connector,

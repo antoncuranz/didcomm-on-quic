@@ -1,18 +1,21 @@
 """Http3 outbound transport."""
-
+import asyncio
 import logging
+import socket
 import ssl
 from typing import Union, cast
 from urllib.parse import urlparse
 
-from aioquic.asyncio import connect
+from aioquic.asyncio import QuicConnectionProtocol, connect
 from aioquic.h3.connection import H3_ALPN
 from aioquic.quic.configuration import QuicConfiguration
-
-from .http3_client import Http3Client
+from aioquic.quic.connection import QuicConnection
+from aries_cloudagent.core.profile import Profile
 from aries_cloudagent.transport.outbound.base import BaseOutboundTransport, OutboundTransportError
 from aries_cloudagent.transport.wire_format import DIDCOMM_V0_MIME_TYPE, DIDCOMM_V1_MIME_TYPE
-from aries_cloudagent.core.profile import Profile
+
+from .http3_client import Http3Client
+from .config import get_config
 
 
 class Http3Transport(BaseOutboundTransport):
@@ -25,6 +28,8 @@ class Http3Transport(BaseOutboundTransport):
         """Initialize an `Http3Transport` instance."""
         super().__init__(**kwargs)
         self.logger = logging.getLogger(__name__)
+        self.open_connections = {}
+        self.force_close = get_config(self.root_profile.context.settings).force_close
 
     async def start(self):
         """Start the transport."""
@@ -66,23 +71,67 @@ class Http3Transport(BaseOutboundTransport):
             "Posting to %s; Data: %s; Headers: %s", endpoint, payload, headers
         )
 
-        configuration = QuicConfiguration(
-            is_client=True,
-            alpn_protocols=H3_ALPN,
-            verify_mode=ssl.CERT_NONE
-        )
-
         parsed = urlparse(endpoint)
         host = parsed.hostname
         port = parsed.port
+        
+        configuration = QuicConfiguration(
+            is_client=True,
+            alpn_protocols=H3_ALPN,
+            verify_mode=ssl.CERT_NONE,
+            server_name=host
+        )
+        
+        if self.force_close:
+            async with (connect(
+                    host,
+                    port,
+                    configuration=configuration,
+                    create_protocol=Http3Client,
+            ) as client):
+                client = cast(Http3Client, client)
 
-        async with (connect(
-                host,
-                port,
-                configuration=configuration,
-                create_protocol=Http3Client,
-        ) as client):
-            client = cast(Http3Client, client)
+                headers["content-length"] = str(len(payload))
+                return await client.send_http_request(endpoint, "POST", payload, headers)
+        
+        if endpoint not in self.open_connections:
+            self.open_connections[endpoint] = await self.create_connection(host, port, configuration)
 
-            headers["content-length"] = str(len(payload))
-            return await client.send_http_request(endpoint, "POST", payload, headers)
+        client = cast(Http3Client, self.open_connections[endpoint])
+        headers["content-length"] = str(len(payload))
+        return await client.send_http_request(endpoint, "POST", payload, headers)
+    
+    async def create_connection(self, host, port, configuration):
+        loop = asyncio.get_event_loop()
+        local_host = "::"
+
+        # lookup remote address
+        infos = await loop.getaddrinfo(host, port, type=socket.SOCK_DGRAM)
+        addr = infos[0][4]
+        if len(addr) == 2:
+            addr = ("::ffff:" + addr[0], addr[1], 0, 0)
+
+        # prepare QUIC connection
+        connection = QuicConnection(
+            configuration=configuration,
+        )
+
+        # explicitly enable IPv4/IPv6 dual stack
+        sock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+        completed = False
+        try:
+            sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+            sock.bind((local_host, 0, 0, 0))
+            completed = True
+        finally:
+            if not completed:
+                sock.close()
+        # connect
+        transport, protocol = await loop.create_datagram_endpoint(
+            lambda: Http3Client(connection),
+            sock=sock,
+        )
+        protocol = cast(QuicConnectionProtocol, protocol)
+        protocol.connect(addr)
+        await protocol.wait_connected()
+        return protocol
