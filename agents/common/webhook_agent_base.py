@@ -61,7 +61,7 @@ class WebhookAgentBase(AgentBase):
 
     async def listen_webhooks(self, webhook_port):
         self.webhook_port = webhook_port
-        self.webhook_url = f"http://{self.external_host}:{str(webhook_port)}/webhooks"
+        self.webhook_url = f"http://localhost:{str(webhook_port)}/webhooks"
         app = web.Application(client_max_size=1024**3)
         app.add_routes([web.post("/webhooks/topic/{topic}/", self._receive_webhook)])
         runner = web.AppRunner(app)
