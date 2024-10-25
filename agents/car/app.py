@@ -121,6 +121,12 @@ class CarApp(AppBase):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
+        if button == "bm_connect":
+            did = self.bm_input.value
+            self.log_msg("BM(conn): init " + did + " at " + str(time.perf_counter()))
+            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
+            return
+        
         conn_id = self.get_focused_connection()
 
         if button == "register_btn":
@@ -132,10 +138,6 @@ class CarApp(AppBase):
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
-        elif button == "bm_connect":
-            did = self.bm_input.value
-            self.log_msg("BM(conn): init " + did + " at " + str(time.perf_counter()))
-            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
 
     def handle_credentials(self, credential):
         if credential["state"] == "done":
