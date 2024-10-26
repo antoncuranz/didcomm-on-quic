@@ -47,7 +47,7 @@ COPY agents ./agents
 COPY wallets /root/.aries_cloudagent/wallet
 
 COPY stream.mpd ./
-COPY bbb ./bbb
+COPY bbb ./stream
 COPY certs ./certs
 RUN mkdir recvd logs
 

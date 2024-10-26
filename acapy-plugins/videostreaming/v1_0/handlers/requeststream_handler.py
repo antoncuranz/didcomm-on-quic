@@ -50,7 +50,7 @@ class RequestStreamHandler(BaseHandler):
         })
 
         try:
-            manifest = "stream.mpd"
+            manifest = "stream/stream.mpd"
             data = self.encode_file_to_base64(manifest)
             reply = RequestStreamResponse(name=manifest, data=data)
         except Exception as err:

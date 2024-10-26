@@ -1,6 +1,5 @@
 from textual.app import ComposeResult
 from textual.containers import Horizontal
-from textual.coordinate import Coordinate
 from textual.widgets import Input, Button
 
 from agents.common.app_base import AppBase

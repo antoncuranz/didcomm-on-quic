@@ -7,7 +7,7 @@
 
  <Period duration="PT0H9M56.458S">
   <AdaptationSet segmentAlignment="true" maxWidth="1280" maxHeight="720" maxFrameRate="24" par="16:9" startWithSAP="1">
-   <SegmentTemplate media="bbb_dash_track1_$Number$.m4s" initialization="bbb_dash_track1_init.mp4" timescale="24000" startNumber="1" duration="48000"/>
+   <SegmentTemplate media="stream/bbb_dash_track1_$Number$.m4s" initialization="stream/bbb_dash_track1_init.mp4" timescale="24000" startNumber="1" duration="48000"/>
    <Representation id="1" mimeType="video/mp4" codecs="avc1.64001F" width="1280" height="720" frameRate="24" sar="1:1" bandwidth="1991287">
    </Representation>
   </AdaptationSet>
