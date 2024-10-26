@@ -117,6 +117,7 @@ class AppBase(App):
     def log_msg(self, msg):
         self.controller_logs.write(msg)
         self.controller_log_file.write(msg + '\n')
+        self.controller_log_file.flush()
 
     def on_key(self, event: events.Key) -> None:
         if event.key != "p":
