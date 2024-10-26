@@ -106,7 +106,7 @@ class CarApp(AppBase):
         yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
         
     def compose_benchmark_ui(self) -> ComposeResult:
-        yield Input("9HktKFSbBsrxQJ6tTKq7SU", id="bm_input", placeholder="Connect to DID", classes="input")
+        yield Input("PhbGmg1H53KupchWiZSyk1", id="bm_input", placeholder="Connect to DID", classes="input")
         yield Button("Connect", id="bm_connect")
 
     def on_mount(self) -> None:
