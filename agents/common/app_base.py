@@ -66,6 +66,7 @@ class AppBase(App):
         self.agent.set_webhook_callback("present_proof_v2_0", self.handle_present_proof)
         self.controller_log_file = open("logs/{}_{}_{}.txt".format(
             str(datetime.now()).replace(" ", "_"), agent.ident, agent.transport_type), "w")
+        self.bm_connections = {}
 
     def on_load(self) -> None:
         self.run_worker(self.agent.initialize(), name=self.AGENT_INIT_WORKER)
@@ -136,9 +137,15 @@ class AppBase(App):
             return
 
         conn_id = connection["connection_id"]
-        if state == "active" and self.benchmark_mode.value:
-            self.log_msg("BM(conn): done at " + str(time.perf_counter()))
-            self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
+        if state == "active":
+            did = connection["their_did"].split(":")[-1]
+            if did in self.bm_connections:
+                req_time = self.bm_connections[did]
+                rsp_time = time.perf_counter()
+                self.log_msg("BM(conn): {};{};{};{}".format(connection["their_did"], req_time, rsp_time, rsp_time-req_time))
+                del self.bm_connections[did]
+            if self.benchmark_mode.value:
+                self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
 
         label = connection.get("their_label", "-")
         did = connection.get("their_did", "-")

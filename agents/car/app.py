@@ -123,7 +123,7 @@ class CarApp(AppBase):
         button = event.button.id
         if button == "bm_connect":
             did = self.bm_input.value
-            self.log_msg("BM(conn): init " + did + " at " + str(time.perf_counter()))
+            self.bm_connections[did] = time.perf_counter()
             self.run_worker(self.agent.create_connection(did), exit_on_error=False)
             return
         
