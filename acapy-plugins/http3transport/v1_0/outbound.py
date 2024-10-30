@@ -3,7 +3,8 @@ import asyncio
 import logging
 import socket
 import ssl
-from typing import Union, cast
+import time
+from typing import Union, cast, Tuple, Dict
 from urllib.parse import urlparse
 
 from aioquic.asyncio import QuicConnectionProtocol, connect
@@ -28,8 +29,9 @@ class Http3Transport(BaseOutboundTransport):
         """Initialize an `Http3Transport` instance."""
         super().__init__(**kwargs)
         self.logger = logging.getLogger(__name__)
-        self.open_connections = {}
+        self.open_connections: Dict[str, Tuple[Http3Client, float]] = {}
         self.force_close = get_config(self.root_profile.context.settings).force_close
+        self.keepalive_timeout = get_config(self.root_profile.context.settings).keepalive_timeout
 
     async def start(self):
         """Start the transport."""
@@ -94,13 +96,25 @@ class Http3Transport(BaseOutboundTransport):
                 headers["content-length"] = str(len(payload))
                 return await client.send_http_request(endpoint, "POST", payload, headers)
         
-        if endpoint not in self.open_connections:
-            self.open_connections[endpoint] = await self.create_connection(host, port, configuration)
-
-        client = cast(Http3Client, self.open_connections[endpoint])
+        client = await self.get_connection(endpoint, host, port, configuration)
         headers["content-length"] = str(len(payload))
-        return await client.send_http_request(endpoint, "POST", payload, headers)
+        rsp = await client.send_http_request(endpoint, "POST", payload, headers)
+        
+        self.open_connections[endpoint] = (client, time.monotonic())
+        return rsp
     
+    async def get_connection(self, endpoint, host, port, configuration) -> Http3Client:
+        if endpoint in self.open_connections:
+            conn_tuple = self.open_connections[endpoint]
+            now = time.monotonic()
+            if now - conn_tuple[1] < self.keepalive_timeout:
+                return cast(Http3Client, conn_tuple[0])
+            else:
+                conn_tuple[0].close()
+                del self.open_connections[endpoint]
+
+        return cast(Http3Client, await self.create_connection(host, port, configuration))
+
     async def create_connection(self, host, port, configuration):
         loop = asyncio.get_event_loop()
         local_host = "::"

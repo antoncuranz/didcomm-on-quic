@@ -15,21 +15,24 @@ def print_latex(files, bp):
     medians = [median.get_ydata() for median in bp["medians"]]
     whiskers = [whiskers.get_ydata() for whiskers in bp["whiskers"]]
 
-    for i in range(len(files)):
+    for i, file in enumerate(files):
+        fill = "blue" if "http3" in file else "red"
+        position = 1.2 if "http3" in file else 0.8
         latex = """
-    \\addplot+[
-    fill=red,
-    draw=black,
-    boxplot prepared={{
-        draw position=0.8,
-        lower whisker={},
-        lower quartile={},
-        median={},
-        upper quartile={},
-        upper whisker={}
-    }},
-    ] coordinates {{{}}};
-            """.format(whiskers[i * 2][1], boxes[i][1], medians[i][1], boxes[i][2], whiskers[i * 2 + 1][1],
+\\addplot+[
+fill={},
+draw=black,
+boxplot prepared={{
+    draw position={},
+    lower whisker={},
+    lower quartile={},
+    median={},
+    upper quartile={},
+    upper whisker={}
+}},
+] coordinates {{}};
+% ] coordinates {{{}}};
+            """.format(fill, position, whiskers[i * 2][1], boxes[i][1], medians[i][1], boxes[i][2], whiskers[i * 2 + 1][1],
                        " ".join(["(0,{})".format(str(o)) for o in outliers[i]]))
         print(latex)
 

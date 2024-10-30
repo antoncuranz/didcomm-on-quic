@@ -21,10 +21,11 @@ class WebhookAgentBase(AgentBase):
             genesis_data: str = None,
             seed: str = None,
             extra_args=None,
-            force_close: bool = False
+            force_close: bool = False,
+            keepalive_timeout=None
     ):
         super().__init__(ident, http_port, transport_type, internal_host, external_host, ledger_url, genesis_data, seed,
-                         extra_args, force_close)
+                         extra_args, force_close, keepalive_timeout)
 
         self.webhook_port = None
         self.webhook_url = None

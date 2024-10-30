@@ -25,10 +25,11 @@ class HttpsTransport(BaseOutboundTransport):
         self.connector: Optional[TCPConnector] = None
         self.logger = logging.getLogger(__name__)
         self.force_close = get_config(self.root_profile.context.settings).force_close
+        self.keepalive_timeout = get_config(self.root_profile.context.settings).keepalive_timeout
 
     async def start(self):
         """Start the transport."""
-        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False, force_close=self.force_close)
+        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False, force_close=self.force_close, keepalive_timeout=self.keepalive_timeout)
         session_args = {
             "cookie_jar": DummyCookieJar(),
             "connector": self.connector,

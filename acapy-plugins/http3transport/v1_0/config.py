@@ -14,12 +14,14 @@ PLUGIN_KEYS = {"httpxtransport"}
 class HttpxConfig(BaseModel):
 
     force_close: bool = False
+    keepalive_timeout: float = 15.0
 
     @classmethod
     def default(cls):
         """Return default configuration."""
         return cls(
-            force_close=False
+            force_close=False,
+            keepalive_timeout=15.0
         )
 
 
