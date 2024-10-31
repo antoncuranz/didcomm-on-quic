@@ -108,6 +108,7 @@ class CarApp(AppBase):
     def compose_benchmark_ui(self) -> ComposeResult:
         yield Input("PhbGmg1H53KupchWiZSyk1", id="bm_input", placeholder="Connect to DID", classes="input")
         yield Button("Connect", id="bm_connect")
+        yield Input("1", id="bm_conn_count", placeholder="Count", classes="input")
 
     def on_mount(self) -> None:
         self.credential_table = self.query_one("#credential_table", DataTable)
@@ -118,13 +119,14 @@ class CarApp(AppBase):
         self.access_btn = self.query_one("#access_btn", Button)
         self.display_cb = self.query_one("#display_cb", Checkbox)
         self.bm_input = self.query_one("#bm_input", Input)
+        self.bm_conn_count = self.query_one("#bm_conn_count", Input)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
         if button == "bm_connect":
             did = self.bm_input.value
-            self.bm_connections[did] = time.perf_counter()
-            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
+            count = self.bm_conn_count.value
+            self.run_worker(self.bm_create_connections(did, int(count)), exit_on_error=False)
             return
         
         conn_id = self.get_focused_connection()
@@ -138,6 +140,12 @@ class CarApp(AppBase):
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
+    
+    async def bm_create_connections(self, did, count = 1):
+        for i in range(count):
+            self.bm_connections[did] = time.perf_counter()
+            await self.agent.create_connection(did)
+            await asyncio.sleep(1)
 
     def handle_credentials(self, credential):
         if credential["state"] == "done":

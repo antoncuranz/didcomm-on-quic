@@ -37,3 +37,7 @@ Horizontal {
 .input {
     width: 40;
 }
+
+#bm_conn_count {
+    width: 20;
+}
