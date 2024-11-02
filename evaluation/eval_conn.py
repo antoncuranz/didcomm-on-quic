@@ -64,6 +64,7 @@ def process(path):
 
     df = pd.DataFrame(data)
     _, bp = pd.DataFrame.boxplot(df, return_type='both')
+    plt.savefig(join(path, path))
 
     print_latex(files, bp)
 

@@ -6,7 +6,7 @@ import time
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label, Collapsible
+from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label
 
 from agents.common.app_base import AppBase
 from .agent import Agent
@@ -93,6 +93,8 @@ class CarApp(AppBase):
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
         self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
         self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
+        self.bm_connections = {}
+        self.bm_reconnect_count = 0
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
@@ -125,8 +127,8 @@ class CarApp(AppBase):
         button = event.button.id
         if button == "bm_connect":
             did = self.bm_input.value
-            count = self.bm_conn_count.value
-            self.run_worker(self.bm_create_connections(did, int(count)), exit_on_error=False)
+            self.bm_reconnect_count = int(self.bm_conn_count.value) - 1
+            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
             return
         
         conn_id = self.get_focused_connection()
@@ -141,12 +143,6 @@ class CarApp(AppBase):
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
     
-    async def bm_create_connections(self, did, count = 1):
-        for i in range(count):
-            self.bm_connections[did] = time.perf_counter()
-            await self.agent.create_connection(did)
-            await asyncio.sleep(1)
-
     def handle_credentials(self, credential):
         if credential["state"] == "done":
             self.log_msg("Adding new credential to table")
@@ -187,3 +183,33 @@ class CarApp(AppBase):
                 self.run_worker(self.agent.create_connection(did), exit_on_error=False)
             else:
                 self.notify("Not connecting to " + did)
+    
+    def handle_connections(self, connection):
+        super().handle_connections(connection)
+        
+        state = connection["state"]
+        if state == "active":
+            conn_id = connection["connection_id"]
+            did = connection["their_did"].split(":")[-1]
+            
+            if did in self.bm_connections:
+                req_time = self.bm_connections[did]
+                rsp_time = time.perf_counter()
+                self.log_msg("BM(conn): {};{};{};{}".format(connection["their_did"], req_time, rsp_time, rsp_time-req_time))
+                del self.bm_connections[did]
+                
+            if self.benchmark_mode.value:
+                self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
+                
+        elif state == "deleted" and self.bm_reconnect_count > 0:
+            did = connection["their_did"].split(":")[-1]
+            self.bm_reconnect_count -= 1
+
+            async def wait_and_connect(did):
+                await asyncio.sleep(self.agent.keepalive_timeout + 0.5)
+                self.bm_connections[did] = time.perf_counter()
+                await self.agent.create_connection(did)
+
+            self.run_worker(wait_and_connect(did), exit_on_error=False)
+    
+
