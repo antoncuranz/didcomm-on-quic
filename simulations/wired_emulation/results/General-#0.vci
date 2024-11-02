@@ -1,0 +1,738 @@
+file 9691156 1730472170                                         
+version 3
+run General-0-20241101-15:26:23-29394
+attr configname General
+attr datetime 20241101-15:26:23
+attr datetimef 20241101-152623
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network WiredEmulation
+attr processid 29394
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../inet/images:../../../simu5g/images:../../../veins/subprojects/veins_inet/images:../../../veins/images
+config scheduler-class inet::RealTimeScheduler
+config cmdenv-express-mode true
+config network WiredEmulation
+config **.fcsMode "\"computed\""
+config **.crcMode "\"computed\""
+config *.router1.ipv4.routingTable.routingFile "\"routing/router1.mrt\""
+config *.router2.ipv4.routingTable.routingFile "\"routing/router2.mrt\""
+config *.router3.ipv4.routingTable.routingFile "\"routing/router3.mrt\""
+config *.router*.numEthInterfaces 2
+config *.router*.eth[0].typename ExtLowerEthernetInterface
+config *.router*.eth[0].mtu 1500B
+config *.router1.eth[0].device "\"sim-veth1\""
+config *.router2.eth[0].device "\"sim-veth2\""
+config *.router3.eth[0].device "\"sim-veth3\""
+
+vector 0 WiredEmulation.router1.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 1 WiredEmulation.router1.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 2 WiredEmulation.router2.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 3 WiredEmulation.router2.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 4 WiredEmulation.router3.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 5 WiredEmulation.router3.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 6 WiredEmulation.switch1.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 WiredEmulation.switch1.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 WiredEmulation.switch1.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 9 WiredEmulation.switch1.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 10 WiredEmulation.switch1.eth[2].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 11 WiredEmulation.switch1.eth[2].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 12 WiredEmulation.router2.eth[0].socket packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 13 WiredEmulation.router2.eth[0].socket packetSentFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, packetBytes"
+vector 14 WiredEmulation.router2.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 15 WiredEmulation.router2.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 16 WiredEmulation.router2.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 17 WiredEmulation.router2.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 18 WiredEmulation.router2.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 19 WiredEmulation.router2.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 20 WiredEmulation.router2.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 21 WiredEmulation.router2.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 22 WiredEmulation.router2.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 23 WiredEmulation.router2.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 24 WiredEmulation.router3.eth[0].socket packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 25 WiredEmulation.router3.eth[0].socket packetSentFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, packetBytes"
+vector 26 WiredEmulation.router3.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 27 WiredEmulation.router3.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 28 WiredEmulation.router3.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 29 WiredEmulation.router3.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 30 WiredEmulation.router3.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 31 WiredEmulation.router3.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 32 WiredEmulation.router3.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 33 WiredEmulation.router3.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 34 WiredEmulation.router3.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 35 WiredEmulation.router3.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 36 WiredEmulation.switch1.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 37 WiredEmulation.switch1.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 38 WiredEmulation.switch1.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 39 WiredEmulation.switch1.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 40 WiredEmulation.switch1.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 41 WiredEmulation.switch1.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 42 WiredEmulation.switch1.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 43 WiredEmulation.switch1.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 44 WiredEmulation.switch1.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 45 WiredEmulation.switch1.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 46 WiredEmulation.switch1.eth[2].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 47 WiredEmulation.switch1.eth[2].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 48 WiredEmulation.switch1.eth[2].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 49 WiredEmulation.switch1.eth[2].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 50 WiredEmulation.switch1.eth[2].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 51 WiredEmulation.switch1.eth[2].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 52 WiredEmulation.switch1.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 53 WiredEmulation.switch1.eth[2].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 54 WiredEmulation.switch1.eth[2].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 55 WiredEmulation.switch1.eth[2].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 56 WiredEmulation.switch1.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 57 WiredEmulation.switch1.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 58 WiredEmulation.switch1.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 59 WiredEmulation.switch1.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 60 WiredEmulation.switch1.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 61 WiredEmulation.switch1.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 62 WiredEmulation.switch1.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 63 WiredEmulation.router1.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 64 WiredEmulation.router1.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 65 WiredEmulation.router3.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 66 WiredEmulation.router3.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 67 WiredEmulation.router1.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 68 WiredEmulation.router1.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 69 WiredEmulation.router1.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 70 WiredEmulation.router1.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 71 WiredEmulation.router1.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 72 WiredEmulation.router1.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 73 WiredEmulation.router1.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 74 WiredEmulation.router1.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 75 WiredEmulation.router1.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 76 WiredEmulation.router1.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 77 WiredEmulation.router2.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 78 WiredEmulation.router2.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 79 WiredEmulation.switch1.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 80 WiredEmulation.switch1.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 81 WiredEmulation.router1.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 82 WiredEmulation.router1.eth[0].socket packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 83 WiredEmulation.router1.eth[0].socket packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 84 WiredEmulation.router1.eth[0].socket packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 85 WiredEmulation.router1.eth[0].socket packetSentFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, packetBytes"
+vector 86 WiredEmulation.router2.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 87 WiredEmulation.router3.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 88 WiredEmulation.router2.eth[0].socket packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 89 WiredEmulation.router2.eth[0].socket packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 90 WiredEmulation.router3.eth[0].socket packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 91 WiredEmulation.router3.eth[0].socket packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+0	23232 26242 0 138086 0 477.438570445 1116 0 8 875 2713
+1	49474 27534 0 138086 0 477.438570445 1116 0 46880 3105216 61118370560
+2	77008 128444 0 168734 0 530.812611507 5320 0 4 1730 2992
+3	205452 132172 0 168734 0 530.812611507 5320 0 19368 8747296 108340595328
+4	337624 111038 0 168704 0 530.752333234 4599 0 3 647 791
+5	448662 112646 0 168704 0 530.752333234 4599 0 12472 2670704 20740540928
+6	561308 26787 0 138237 0 477.528886701 1143 0 5 257 447
+7	588095 27251 0 138237 0 477.528886701 1143 0 5120 247864 500674880
+8	615346 108371 0 168718 0 530.782395634 4487 0 2 424 434
+9	723717 109458 0 168718 0 530.782395634 4487 0 9272 1282712 7033042368
+10	833175 126124 0 168741 0 530.842673907 5015 0 2 871 1073
+11	959299 128178 0 168741 0 530.842673907 5015 0 6792 2532440 12284044480
+12	1087477 119129 0 168730 6.290014597 530.812611507 4461 64 1514 1358727 1177851237
+13	1206606 119129 0 168730 6.290014597 530.812611507 4461 64 1514 1358727 1177851237
+14	1325735 228086 1 168731 6.290014597 530.812611507 8528 46 1496 2598466 2295973378
+15	1553821 223 2 114563 6.290014597 420.991434751 9 28 28 252 7056
+16	1554044 227939 3 168733 6.290014597 530.812611507 8522 28 1496 2597812 2295932710
+17	1781983 123182 4 168734 6.290014597 530.812611507 4467 368 12112 10870496 75381751552
+18	1905165 94535 4 168734 0.1 530.8 5308 0 306080 108699360 19128751219200
+19	1999700 120527 4 168734 6.290014597 530.812611507 4467 0 0.0024696 0.604880466 0.00063924366531994
+20	2120227 123138 4 168734 6.290014597 530.812611507 4467 368 12112 10870496 75381751552
+21	2243365 94545 4 168734 0.1 530.8 5308 0 306080 108699360 19111342131200
+22	2337910 119232 4 168734 6.290014597 530.812611507 4467 46 1514 1358812 1177839868
+23	2457142 119229 5 168735 6.290072197 530.812673907 4467 64 1514 1359064 1177867588
+24	2576371 109045 6 168700 6.292896565 530.752333234 4074 64 1514 1323195 1110751085
+25	2685416 109045 6 168700 6.292896565 530.752333234 4074 64 1514 1323195 1110751085
+26	2794461 225005 7 168745 6.292896565 530.872736307 8413 46 1496 2581725 2288938053
+27	3019466 222 8 114492 6.292896565 420.80519337 9 28 28 252 7056
+28	3019688 224857 9 168747 6.292896565 530.872736307 8407 28 1496 2581071 2288897385
+29	3244545 112459 10 168704 6.292896565 530.752333234 4079 368 12112 10585648 71086991360
+30	3357004 94980 10 168698 0.1 530.7 5307 0 253120 105845280 13582109593600
+31	3451984 107505 10 168704 6.292896565 530.752333234 4079 0 0.001074199 0.21932025 0.0001557211153437
+32	3559489 112458 10 168704 6.292896565 530.752333234 4079 368 12112 10585648 71086991360
+33	3671947 94990 10 168698 0.1 530.7 5307 0 253120 105845280 13562421491200
+34	3766937 109164 10 168704 6.292896565 530.752333234 4079 46 1514 1323206 1110734240
+35	3876101 109162 11 168705 6.292954165 530.752395634 4079 64 1514 1323458 1110761960
+36	3985263 119230 13 168737 6.320072197 530.842673907 4467 64 1514 1359064 1177867588
+37	4104493 119230 13 168737 6.320072197 530.842673907 4467 64 1514 1359064 1177867588
+38	4223723 249982 14 168738 6.320072197 530.842673907 9372 46 1496 2775856 2420299720
+39	4473705 250481 16 168740 6.320072197 530.842673907 9392 46 1496 2776776 2420342040
+40	4724186 26316 18 138235 6.320072197 477.528814701 983 512 3576 1138632 2242175808
+41	4750502 80151 18 138234 0.1 477.5 4775 0 336160 11375120 1344645625600
+42	4830653 25270 18 138237 6.320072197 477.528886701 983 0 0.000471224 0.016928388 3.25941420278e-06
+43	4855923 26319 18 138237 6.320072197 477.528886701 983 512 3576 1138632 2242175808
+44	4882242 80151 18 138234 0.1 477.5 4775 0 336160 11375120 1344645625600
+45	4962393 25387 18 138237 6.320072197 477.528886701 983 64 447 142329 35033997
+46	4987780 119889 19 168741 6.320072197 530.842673907 4341 512 12112 11281192 81527851328
+47	5107669 94613 19 168741 0.1 530.8 5308 0 363200 112806320 20588919724800
+48	5202282 114527 19 168741 6.320072197 530.842673907 4341 0 0.0011368 0.427648669 0.00035309739222754
+49	5316809 119888 19 168741 6.320072197 530.842673907 4341 512 12112 11281192 81527851328
+50	5436697 94621 19 168741 0.1 530.8 5308 0 363200 112806320 20573441862400
+51	5531318 116113 19 168741 6.320072197 530.842673907 4341 64 1514 1410149 1273872677
+52	5647431 25385 20 138238 6.320129797 477.528949101 983 64 447 142329 35033997
+53	5672816 116108 21 168742 6.320129797 530.842736307 4341 64 1514 1410149 1273872677
+54	5788924 109162 24 168714 6.322954165 530.782395634 4079 64 1514 1323458 1110761960
+55	5898086 109162 24 168714 6.322954165 530.782395634 4079 64 1514 1323458 1110761960
+56	6007248 112343 30 168718 6.322954165 530.782395634 4068 512 12112 11146832 77724307840
+57	6119591 94914 30 168711 0.1 530.7 5307 0 437760 111457120 15582913216000
+58	6214505 105604 30 168718 6.322954165 530.782395634 4068 0 0.0011368 0.244525247 0.00020693040209815
+59	6320109 112343 30 168718 6.322954165 530.782395634 4068 512 12112 11146832 77724307840
+60	6432452 94914 30 168711 0.1 530.7 5307 0 437760 111457120 15582913216000
+61	6527366 109079 30 168718 6.322954165 530.782395634 4068 64 1514 1393354 1214442310
+62	6636445 109078 32 168719 6.323011765 530.782458034 4068 64 1514 1393354 1214442310
+63	6745523 25403 35 138270 6.350129797 477.558949101 983 64 447 142329 35033997
+64	6770926 25403 35 138270 6.350129797 477.558949101 983 64 447 142329 35033997
+65	6796329 116108 36 168744 6.350129797 530.872736307 4341 64 1514 1410149 1273872677
+66	6912437 116108 36 168744 6.350129797 530.872736307 4341 64 1514 1410149 1273872677
+67	7028545 46853 37 138271 6.350129797 477.558949101 1800 46 1496 371383 255681661
+68	7075398 146 39 86807 6.350129797 373.000250615 6 28 28 168 4704
+69	7075544 46649 41 138273 6.350129797 477.558949101 1792 28 1496 370745 255644753
+70	7122193 22422 42 138086 6.350129797 477.438570445 826 368 12112 2094512 15015280384
+71	7144615 80018 42 138080 0.1 477.4 4774 0 860480 20933920 7106350016000
+72	7224633 22926 42 138086 6.350129797 477.438570445 826 0 0.00506253 0.206082991 0.00039048408634368
+73	7247559 22436 42 138086 6.350129797 477.438570445 826 368 12112 2094512 15015280384
+74	7269995 80018 42 138080 0.1 477.4 4774 0 860480 20933920 7144737292800
+75	7350013 21685 42 138086 6.350129797 477.438570445 826 46 1514 261814 234613756
+76	7371698 21685 43 138087 6.350187397 477.438632845 826 64 1514 262030 234637516
+77	7393383 109079 46 168726 6.353011765 530.812458034 4068 64 1514 1393354 1214442310
+78	7502462 109079 46 168726 6.353011765 530.812458034 4068 64 1514 1393354 1214442310
+79	7611541 21685 55 138117 6.380187397 477.468632845 826 64 1514 262030 234637516
+80	7633226 21685 55 138117 6.380187397 477.468632845 826 64 1514 262030 234637516
+81	7654911 221 99 86876 6.470382597 373.120692489 9 28 28 252 7056
+82	7655132 24978 101 138274 6.470382597 477.558949101 966 46 447 141187 34958425
+83	7680110 24978 101 138274 6.470382597 477.558949101 966 46 447 141187 34958425
+84	7705088 21477 101 138082 6.470732531 477.438570445 818 64 1514 261565 234612973
+85	7726565 21477 101 138082 6.470732531 477.438570445 818 64 1514 261565 234612973
+86	7748042 306 149 120268 6.530999523 430.144443937 12 28 28 336 9408
+87	7748348 309 160 128948 6.534044949 462.399320316 12 28 28 336 9408
+88	7748657 108759 211 168730 6.651252323 530.812458034 4055 46 1514 1392396 1214375202
+89	7857416 108759 211 168730 6.651252323 530.812458034 4055 46 1514 1392396 1214375202
+90	7966175 115789 226 168748 6.654297749 530.872736307 4328 46 1514 1409191 1273805569
+91	8081964 115789 226 168748 6.654297749 530.872736307 4328 46 1514 1409191 1273805569
+2	8197753 2513 168773 172016 684.173096755 701.23562917 101 0 2 14 16
+3	8200266 2552 168773 172016 684.173096755 701.23562917 101 0 15640 64392 612744384
+4	8202818 2468 168752 171986 684.112981555 701.175030148 99 0 1 6 6
+5	8205286 2483 168752 171986 684.112981555 701.175030148 99 0 8808 22176 162241920
+6	8207769 50 168760 168817 684.143039155 684.324990181 2 0 0 0 0
+7	8207819 50 168760 168817 684.143039155 684.324990181 2 0 0 0 0
+8	8207869 2394 168761 172000 684.143039155 701.205092548 96 0 1 3 3
+9	8210263 2400 168761 172000 684.143039155 701.205092548 96 0 744 2232 1660608
+10	8212663 2509 168780 172023 684.203154355 701.26569157 97 0 1 8 8
+11	8215172 2530 168780 172023 684.203154355 701.26569157 97 0 3528 19872 63894528
+12	8217702 2409 168801 172012 684.294666538 701.23562917 88 64 1514 24808 21838088
+13	8220111 2409 168801 172012 684.294666538 701.23562917 88 64 1514 24808 21838088
+14	8222520 4964 168769 172013 684.173096755 701.23562917 181 46 1496 47982 40996796
+15	8227484 54 168799 168807 684.293349555 684.294932581 2 28 28 56 1568
+16	8227538 4964 168772 172015 684.173096755 701.23562917 181 28 1496 47928 40992800
+17	8232502 2525 168773 172016 684.173096755 701.23562917 89 368 12112 198688 1397646336
+18	8235027 30485 168773 172016 530.9 701.2 1704 0 202880 1986880 276796582400
+19	8265512 2419 168773 172016 684.173096755 701.23562917 89 0 0.001340832 0.008242962 8.178875488234e-06
+20	8267931 2526 168773 172016 684.173096755 701.23562917 89 368 12112 198688 1397646336
+21	8270457 30485 168773 172016 530.9 701.2 1704 0 202880 1986880 276796582400
+22	8300942 2437 168773 172016 684.173096755 701.23562917 89 46 1514 24836 21838224
+23	8303379 2435 168774 172017 684.173154355 701.23569157 89 64 1514 24872 21842184
+24	8305814 2527 168748 171982 684.112981555 701.175030148 92 64 1514 26368 20940608
+25	8308341 2527 168748 171982 684.112981555 701.175030148 92 64 1514 26368 20940608
+26	8310868 4964 168749 172027 684.112981555 701.29575397 181 46 1496 47982 40996796
+27	8315832 54 168750 168856 684.112981555 684.475300581 2 28 28 56 1568
+28	8315886 4964 168751 172029 684.112981555 701.29575397 181 28 1496 47928 40992800
+29	8320850 2637 168752 171986 684.112981555 701.175030148 93 368 12112 211168 1340207616
+30	8323487 30499 168752 171980 530.8 701.1 1704 0 173440 2111680 247723942400
+31	8353986 2471 168752 171986 684.112981555 701.175030148 93 0 0.000987824 0.003266652 2.937374402282e-06
+32	8356457 2638 168752 171986 684.112981555 701.175030148 93 368 12112 211168 1340207616
+33	8359095 30499 168752 171980 530.8 701.1 1704 0 173440 2111680 247723942400
+34	8389594 2555 168752 171986 684.112981555 701.175030148 93 46 1514 26396 20940744
+35	8392149 2555 168753 171987 684.113039155 701.175092548 93 64 1514 26432 20944704
+36	8394704 2435 168776 172019 684.203154355 701.26569157 89 64 1514 24872 21842184
+37	8397139 2435 168776 172019 684.203154355 701.26569157 89 64 1514 24872 21842184
+38	8399574 4990 168756 172020 684.143039155 701.26569157 182 46 1496 48028 40998912
+39	8404564 5044 168758 172022 684.143039155 701.26569157 184 46 1496 48120 41003144
+40	8409608 56 168760 168817 684.143039155 684.324990181 2 512 512 1024 524288
+41	8409664 36817 168760 168817 477.6 684.3 2068 0 11200 16320 151654400
+42	8446481 52 168760 168817 684.143039155 684.324990181 2 0 0 0 0
+43	8446533 56 168760 168817 684.143039155 684.324990181 2 512 512 1024 524288
+44	8446589 36817 168760 168817 477.6 684.3 2068 0 11200 16320 151654400
+45	8483406 54 168760 168817 684.143039155 684.324990181 2 64 64 128 8192
+46	8483460 2524 168780 172023 684.203154355 701.26569157 89 512 12112 198976 1397899776
+47	8485984 30487 168780 172023 530.9 701.2 1704 0 202880 1989760 269829132800
+48	8516471 2365 168780 172023 684.203154355 701.26569157 89 0 0.0011368 0.0077024 7.56119552e-06
+49	8518836 2524 168780 172023 684.203154355 701.26569157 89 512 12112 198976 1397899776
+50	8521360 30487 168780 172023 530.9 701.2 1704 0 202880 1989760 269829132800
+51	8551847 2435 168780 172023 684.203154355 701.26569157 89 64 1514 24872 21842184
+52	8554282 54 168762 168819 684.143096755 684.325047781 2 64 64 128 8192
+53	8554336 2437 168781 172024 684.203211955 701.26575397 89 64 1514 24872 21842184
+54	8556773 2555 168755 171996 684.143039155 701.205092548 93 64 1514 26432 20944704
+55	8559328 2555 168755 171996 684.143039155 701.205092548 93 64 1514 26432 20944704
+56	8561883 2638 168761 172000 684.143039155 701.205092548 93 512 12112 211456 1340461056
+57	8564521 30522 168761 171993 530.8 701.2 1705 0 173440 2114560 241850380800
+58	8595043 2436 168761 172000 684.143039155 701.205092548 93 0 0.0011368 0.0034104 3.87694272e-06
+59	8597479 2638 168761 172000 684.143039155 701.205092548 93 512 12112 211456 1340461056
+60	8600117 30522 168761 171993 530.8 701.2 1705 0 173440 2114560 241850380800
+61	8630639 2555 168761 172000 684.143039155 701.205092548 93 64 1514 26432 20944704
+62	8633194 2555 168763 172001 684.143096755 701.205154948 93 64 1514 26432 20944704
+63	8635749 54 168766 168823 684.173096755 684.355047781 2 64 64 128 8192
+64	8635803 54 168766 168823 684.173096755 684.355047781 2 64 64 128 8192
+65	8635857 2437 168783 172026 684.233211955 701.29575397 89 64 1514 24872 21842184
+66	8638294 2437 168783 172026 684.233211955 701.29575397 89 64 1514 24872 21842184
+67	8640731 54 168768 168825 684.173096755 684.355047781 2 46 46 92 4232
+77	8640785 2555 168767 172008 684.173096755 701.235154948 93 64 1514 26432 20944704
+78	8643340 2555 168767 172008 684.173096755 701.235154948 93 64 1514 26432 20944704
+84	8645895 27 172030 172030 742.817286839 742.817286839 1 74 74 74 5476
+85	8645922 27 172030 172030 742.817286839 742.817286839 1 74 74 74 5476
+86	8645949 27 168771 168771 684.173096755 684.173096755 1 28 28 28 784
+87	8645976 27 168828 168828 684.355047781 684.355047781 1 28 28 28 784
+88	8646003 2528 168801 172012 684.293349555 701.235154948 92 46 1514 26350 20938628
+89	8648531 2528 168801 172012 684.293349555 701.235154948 92 46 1514 26350 20938628
+90	8651059 2410 168858 172030 684.475300581 701.29575397 88 46 1514 24790 21836108
+91	8653469 2410 168858 172030 684.475300581 701.29575397 88 46 1514 24790 21836108
+vector 92 WiredEmulation.switch1.ieee8021q.qTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 93 WiredEmulation.switch1.ieee8021r.rTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+18	8656333 50119 172031 172031 701.3 982.623394618 2815 0 5600 5600 31360000
+21	8706452 50119 172031 172031 701.3 982.623394618 2815 0 5600 5600 31360000
+30	8756571 50138 172031 172031 701.2 982.623394618 2816 0 11200 11200 125440000
+33	8806709 50138 172031 172031 701.2 982.623394618 2816 0 11200 11200 125440000
+41	8856847 53127 172031 172031 684.4 982.623394618 2984 0 5120 5120 26214400
+44	8909974 53127 172031 172031 684.4 982.623394618 2984 0 5120 5120 26214400
+47	8963101 50119 172031 172031 701.3 982.623394618 2815 0 5600 5600 31360000
+50	9013220 50119 172031 172031 701.3 982.623394618 2815 0 5600 5600 31360000
+57	9063339 50120 172031 172031 701.3 982.623394618 2815 0 11200 11200 125440000
+60	9113459 50120 172031 172031 701.3 982.623394618 2815 0 11200 11200 125440000
+71	9163579 89956 172031 172031 477.5 982.623394618 5053 0 11200 11200 125440000
+74	9253535 89956 172031 172031 477.5 982.623394618 5053 0 11200 11200 125440000
+92	9343491 173832 172031 172031 0.1 982.623394618 9827 0 0 0 0
+93	9517323 173832 172031 172031 0.1 982.623394618 9827 0 0 0 0
+

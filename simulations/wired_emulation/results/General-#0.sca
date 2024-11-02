@@ -1,0 +1,4976 @@
+version 3
+run General-0-20241101-15:26:23-29394
+attr configname General
+attr datetime 20241101-15:26:23
+attr datetimef 20241101-152623
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network WiredEmulation
+attr processid 29394
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../inet/images:../../../simu5g/images:../../../veins/subprojects/veins_inet/images:../../../veins/images
+config scheduler-class inet::RealTimeScheduler
+config cmdenv-express-mode true
+config network WiredEmulation
+config **.fcsMode "\"computed\""
+config **.crcMode "\"computed\""
+config *.router1.ipv4.routingTable.routingFile "\"routing/router1.mrt\""
+config *.router2.ipv4.routingTable.routingFile "\"routing/router2.mrt\""
+config *.router3.ipv4.routingTable.routingFile "\"routing/router3.mrt\""
+config *.router*.numEthInterfaces 2
+config *.router*.eth[0].typename ExtLowerEthernetInterface
+config *.router*.eth[0].mtu 1500B
+config *.router1.eth[0].device "\"sim-veth1\""
+config *.router2.eth[0].device "\"sim-veth2\""
+config *.router3.eth[0].device "\"sim-veth3\""
+
+par WiredEmulation.router1.ethg$o[1].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.router1.ethg$o[1].channel disabled false
+attr mutable ""
+par WiredEmulation.router1.ethg$o[1].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.router1.ethg$o[1].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.router1.ethg$o[1].channel ber 0
+attr mutable ""
+par WiredEmulation.router1.ethg$o[1].channel per 0
+attr mutable ""
+par WiredEmulation.router1.ethg$o[1].channel length 10m
+attr unit m
+par WiredEmulation.switch1.ethg$o[0].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.switch1.ethg$o[0].channel disabled false
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[0].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.switch1.ethg$o[0].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.switch1.ethg$o[0].channel ber 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[0].channel per 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[0].channel length 10m
+attr unit m
+par WiredEmulation.router2.ethg$o[1].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.router2.ethg$o[1].channel disabled false
+attr mutable ""
+par WiredEmulation.router2.ethg$o[1].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.router2.ethg$o[1].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.router2.ethg$o[1].channel ber 0
+attr mutable ""
+par WiredEmulation.router2.ethg$o[1].channel per 0
+attr mutable ""
+par WiredEmulation.router2.ethg$o[1].channel length 10m
+attr unit m
+par WiredEmulation.switch1.ethg$o[1].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.switch1.ethg$o[1].channel disabled false
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[1].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.switch1.ethg$o[1].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.switch1.ethg$o[1].channel ber 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[1].channel per 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[1].channel length 10m
+attr unit m
+par WiredEmulation.router3.ethg$o[1].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.router3.ethg$o[1].channel disabled false
+attr mutable ""
+par WiredEmulation.router3.ethg$o[1].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.router3.ethg$o[1].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.router3.ethg$o[1].channel ber 0
+attr mutable ""
+par WiredEmulation.router3.ethg$o[1].channel per 0
+attr mutable ""
+par WiredEmulation.router3.ethg$o[1].channel length 10m
+attr unit m
+par WiredEmulation.switch1.ethg$o[2].channel typename "\"thesis.simulations.wired_emulation.WiredEmulation.ethline\""
+par WiredEmulation.switch1.ethg$o[2].channel disabled false
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[2].channel delay 0.03s
+attr mutable ""
+attr unit s
+par WiredEmulation.switch1.ethg$o[2].channel datarate 1e+07bps
+attr mutable ""
+attr unit bps
+par WiredEmulation.switch1.ethg$o[2].channel ber 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[2].channel per 0
+attr mutable ""
+par WiredEmulation.switch1.ethg$o[2].channel length 10m
+attr unit m
+par WiredEmulation.router1.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.ethg$i[1].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[1].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WiredEmulation.router1.interfaceTable displayAddresses false
+par WiredEmulation.router1.cb typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.cb forwardServiceRegistration true
+par WiredEmulation.router1.cb forwardProtocolRegistration true
+par WiredEmulation.router1.bl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.bl forwardServiceRegistration true
+par WiredEmulation.router1.bl forwardProtocolRegistration true
+par WiredEmulation.router1.ethernet typename "\"inet.linklayer.ethernet.basic.EthernetEncapsulation\""
+par WiredEmulation.router1.ethernet registerProtocol true
+par WiredEmulation.router1.ethernet interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ethernet fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router1.ethernet stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router1.ethernet stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar WiredEmulation.router1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar WiredEmulation.router1.ethernet decapPk:count 1802
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar WiredEmulation.router1.ethernet decapPk:sum(packetBytes) 371475
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar WiredEmulation.router1.ethernet encapPk:count 1792
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar WiredEmulation.router1.ethernet encapPk:sum(packetBytes) 370745
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+par WiredEmulation.router1.li typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.li forwardServiceRegistration true
+par WiredEmulation.router1.li forwardProtocolRegistration true
+par WiredEmulation.router1.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par WiredEmulation.router1.lo[0].lo interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.lo[0].lo mtu 4470B
+attr unit B
+scalar WiredEmulation.router1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par WiredEmulation.router1.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par WiredEmulation.router1.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router1.lo[0] recordPcap false
+par WiredEmulation.router1.lo[0] numPcapRecorders 0
+par WiredEmulation.router1.lo[0] interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+scalar WiredEmulation.router1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router1.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[0].socket.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[0].socket typename "\"inet.emulation.linklayer.ethernet.ExtEthernetSocket\""
+par WiredEmulation.router1.eth[0].socket device "\"sim-veth1\""
+par WiredEmulation.router1.eth[0].socket namespace "\"\""
+par WiredEmulation.router1.eth[0].socket packetNameFormat "\"Ext-%p-%t-%n\""
+scalar WiredEmulation.router1.eth[0].socket packetReceived:count 819
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar WiredEmulation.router1.eth[0].socket packetReceived:sum(packetBytes) 261639
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[0].socket packetSent:count 966
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar WiredEmulation.router1.eth[0].socket packetSent:sum(packetBytes) 141187
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[0].socket packetReceivedFromUpper:count 966
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router1.eth[0].socket packetReceivedFromUpper:sum(packetBytes) 141187
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[0].socket packetSentFromUpper:count 819
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets sent to higher layer, count"
+scalar WiredEmulation.router1.eth[0].socket packetSentFromUpper:sum(packetBytes) 261639
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, sum(packetBytes)"
+par WiredEmulation.router1.eth[0] typename "\"inet.emulation.linklayer.ethernet.ExtLowerEthernetInterface\""
+par WiredEmulation.router1.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router1.eth[0] recordPcap false
+par WiredEmulation.router1.eth[0] numPcapRecorders 0
+par WiredEmulation.router1.eth[0] isWireless false
+par WiredEmulation.router1.eth[0] interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.eth[0] device "\"sim-veth1\""
+par WiredEmulation.router1.eth[0] namespace "\"\""
+par WiredEmulation.router1.eth[0] copyConfiguration "\"\""
+attr enum ,copyToExt,copyFromExt
+par WiredEmulation.router1.eth[0] address "\"0A-AA-00-00-00-01\""
+attr mutable ""
+par WiredEmulation.router1.eth[0] broadcast true
+par WiredEmulation.router1.eth[0] multicast true
+par WiredEmulation.router1.eth[0] pointToPoint false
+par WiredEmulation.router1.eth[0] mtu 1500B
+attr unit B
+par WiredEmulation.router1.eth[0] protocol "\"ethernetmac\""
+par WiredEmulation.router1.eth[0] bitrate "nan bps"
+attr unit bps
+scalar WiredEmulation.router1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router1.eth[1].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[1].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[1].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.eth[1].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.router1.eth[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.router1.eth[1].queue packetCapacity 1000
+par WiredEmulation.router1.eth[1].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.router1.eth[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.router1.eth[1].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.router1.eth[1].queue bufferModule "\"\""
+scalar WiredEmulation.router1.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue queueLength:max 8
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue queueLength:timeavg 0.00020972734022898
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.router1.eth[1].queue queueBitLength:max 46880
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.router1.eth[1].queue queueBitLength:timeavg 1.0026925775923
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.router1.eth[1].queue queueingTime:histogram
+field count 826
+field mean 0.0002494951464891
+field stddev 0.00064108561364178
+field min 0
+field max 0.00506253
+field sum 0.206082991
+field sqrsum 0.00039048408634368
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	632
+bin	0.0001	34
+bin	0.0002	17
+bin	0.0003	7
+bin	0.0004	9
+bin	0.0005	12
+bin	0.0006	5
+bin	0.0007	2
+bin	0.0008	3
+bin	0.0009	18
+bin	0.001	30
+bin	0.0011	10
+bin	0.0012	4
+bin	0.0013	0
+bin	0.0014	2
+bin	0.0015	4
+bin	0.0016	2
+bin	0.0017	1
+bin	0.0018	0
+bin	0.0019	1
+bin	0.002	9
+bin	0.0021	4
+bin	0.0022	4
+bin	0.0023	2
+bin	0.0024	1
+bin	0.0025	1
+bin	0.0026	1
+bin	0.0027	0
+bin	0.0028	0
+bin	0.0029	0
+bin	0.003	0
+bin	0.0031	1
+bin	0.0032	1
+bin	0.0033	2
+bin	0.0034	0
+bin	0.0035	0
+bin	0.0036	0
+bin	0.0037	1
+bin	0.0038	0
+bin	0.0039	1
+bin	0.004	0
+bin	0.0041	1
+bin	0.0042	0
+bin	0.0043	1
+bin	0.0044	2
+bin	0.0045	0
+bin	0.0046	0
+bin	0.0047	0
+bin	0.0048	0
+bin	0.0049	0
+bin	0.005	1
+bin	0.0051	0
+bin	0.0052	0
+scalar WiredEmulation.router1.eth[1].queue outgoingPackets:count 826
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue outgoingPacketLengths:sum 2094512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router1.eth[1].queue outgoingPacketLengths:histogram
+field count 826
+field mean 2535.7288135593
+field stddev 3429.6684096729
+field min 368
+field max 12112
+field sum 2094512
+field sqrsum 15015280384
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	12
+bin	400	198
+bin	600	118
+bin	800	51
+bin	1000	0
+bin	1200	0
+bin	1400	152
+bin	1600	16
+bin	1800	72
+bin	2000	48
+bin	2200	31
+bin	2400	0
+bin	2600	0
+bin	2800	1
+bin	3000	0
+bin	3200	1
+bin	3400	0
+bin	3600	0
+bin	3800	0
+bin	4000	0
+bin	4200	0
+bin	4400	0
+bin	4600	0
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	0
+bin	6200	0
+bin	6400	0
+bin	6600	25
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	7
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	4
+bin	8800	0
+bin	9000	12
+bin	9200	0
+bin	9400	8
+bin	9600	0
+bin	9800	0
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	70
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+statistic WiredEmulation.router1.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.router1.eth[1].queue incomingPackets:count 826
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue incomingPacketLengths:sum 2094512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router1.eth[1].queue incomingPacketLengths:histogram
+field count 826
+field mean 2535.7288135593
+field stddev 3429.6684096729
+field min 368
+field max 12112
+field sum 2094512
+field sqrsum 15015280384
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	12
+bin	400	198
+bin	600	118
+bin	800	51
+bin	1000	0
+bin	1200	0
+bin	1400	152
+bin	1600	16
+bin	1800	72
+bin	2000	48
+bin	2200	31
+bin	2400	0
+bin	2600	0
+bin	2800	1
+bin	3000	0
+bin	3200	1
+bin	3400	0
+bin	3600	0
+bin	3800	0
+bin	4000	0
+bin	4200	0
+bin	4400	0
+bin	4600	0
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	0
+bin	6200	0
+bin	6400	0
+bin	6600	25
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	7
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	4
+bin	8800	0
+bin	9000	12
+bin	9200	0
+bin	9400	8
+bin	9600	0
+bin	9800	0
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	70
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+scalar WiredEmulation.router1.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.router1.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.router1.eth[1].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.router1.eth[1].mac interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.eth[1].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.router1.eth[1].mac sendRawBytes false
+par WiredEmulation.router1.eth[1].mac promiscuous false
+par WiredEmulation.router1.eth[1].mac duplexMode true
+par WiredEmulation.router1.eth[1].mac mtu 1500B
+attr unit B
+par WiredEmulation.router1.eth[1].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router1.eth[1].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router1.eth[1].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router1.eth[1].mac "simulated time" 982.623394618
+scalar WiredEmulation.router1.eth[1].mac full-duplex 1
+scalar WiredEmulation.router1.eth[1].mac "frames/sec sent" 0.84060689428335
+scalar WiredEmulation.router1.eth[1].mac "frames/sec rcvd" 1.0024186330134
+scalar WiredEmulation.router1.eth[1].mac "bits/sec sent" 2133.3096804752
+scalar WiredEmulation.router1.eth[1].mac "bits/sec rcvd" 1159.8095529194
+scalar WiredEmulation.router1.eth[1].mac "rx channel idle (%)" 99.987760356546
+scalar WiredEmulation.router1.eth[1].mac "rx channel utilization (%)" 0.012239643454322
+scalar WiredEmulation.router1.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.router1.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.router1.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.router1.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.router1.eth[1].mac rxPkOk:count 985
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.router1.eth[1].mac rxPkOk:sum(packetBytes) 142457
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac txPk:count 826
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.router1.eth[1].mac txPk:sum(packetBytes) 262030
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac packetReceivedFromUpper:count 826
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.router1.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 261814
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac passedUpPk:count 985
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router1.eth[1].mac passedUpPk:sum(packetBytes) 142457
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.router1.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.router1.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.router1.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.router1.eth[1] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.router1.eth[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router1.eth[1] recordPcap false
+par WiredEmulation.router1.eth[1] numPcapRecorders 0
+par WiredEmulation.router1.eth[1] interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.eth[1] protocol "\"ethernetmac\""
+par WiredEmulation.router1.eth[1] address "\"0A-AA-00-00-00-02\""
+attr mutable ""
+par WiredEmulation.router1.eth[1] duplexMode true
+par WiredEmulation.router1.eth[1] csmacdSupport false
+par WiredEmulation.router1.eth[1] bitrate 0bps
+attr unit bps
+par WiredEmulation.router1.eth[1] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.router1.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router1.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router1.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router1.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router1.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router1.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par WiredEmulation.router1.ipv4.configurator interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.configurator routingTableModule "\"WiredEmulation.router1.ipv4.routingTable\""
+par WiredEmulation.router1.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par WiredEmulation.router1.ipv4.configurator configureRoutingTable true
+par WiredEmulation.router1.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par WiredEmulation.router1.ipv4.routingTable interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.routingTable routerId "\"auto\""
+par WiredEmulation.router1.ipv4.routingTable netmaskRoutes "\"*\""
+par WiredEmulation.router1.ipv4.routingTable forwarding true
+par WiredEmulation.router1.ipv4.routingTable multicastForwarding false
+par WiredEmulation.router1.ipv4.routingTable useAdminDist false
+par WiredEmulation.router1.ipv4.routingTable routingFile "\"routing/router1.mrt\""
+par WiredEmulation.router1.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par WiredEmulation.router1.ipv4.natTable networkProtocolModule "\"^.ip\""
+par WiredEmulation.router1.ipv4.natTable config "<config/> at content:1"
+par WiredEmulation.router1.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.ipv4.up forwardServiceRegistration true
+par WiredEmulation.router1.ipv4.up forwardProtocolRegistration true
+par WiredEmulation.router1.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par WiredEmulation.router1.ipv4.igmp interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.igmp routingTableModule "\"WiredEmulation.router1.ipv4.routingTable\""
+par WiredEmulation.router1.ipv4.igmp crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router1.ipv4.igmp enabled true
+par WiredEmulation.router1.ipv4.igmp robustnessVariable 2
+par WiredEmulation.router1.ipv4.igmp queryInterval 125s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp startupQueryCount 2
+par WiredEmulation.router1.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par WiredEmulation.router1.ipv4.igmp lastMemberQueryCount 2
+par WiredEmulation.router1.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par WiredEmulation.router1.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par WiredEmulation.router1.ipv4.icmp interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.icmp routingTableModule "\"WiredEmulation.router1.ipv4.routingTable\""
+par WiredEmulation.router1.ipv4.icmp crcMode "\"computed\""
+attr enum declared,computed
+attr mutable ""
+par WiredEmulation.router1.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par WiredEmulation.router1.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.ipv4.mp forwardServiceRegistration true
+par WiredEmulation.router1.ipv4.mp forwardProtocolRegistration true
+par WiredEmulation.router1.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par WiredEmulation.router1.ipv4.ip interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.ip routingTableModule "\"WiredEmulation.router1.ipv4.routingTable\""
+par WiredEmulation.router1.ipv4.ip arpModule "\"WiredEmulation.router1.ipv4.arp\""
+par WiredEmulation.router1.ipv4.ip icmpModule "\"WiredEmulation.router1.ipv4.icmp\""
+par WiredEmulation.router1.ipv4.ip crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router1.ipv4.ip timeToLive 32
+par WiredEmulation.router1.ipv4.ip multicastTimeToLive 32
+par WiredEmulation.router1.ipv4.ip fragmentTimeout 60s
+attr unit s
+par WiredEmulation.router1.ipv4.ip limitedBroadcast false
+par WiredEmulation.router1.ipv4.ip directBroadcastInterfaces "\"\""
+scalar WiredEmulation.router1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar WiredEmulation.router1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par WiredEmulation.router1.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par WiredEmulation.router1.ipv4.arp interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4.arp routingTableModule "\"WiredEmulation.router1.ipv4.routingTable\""
+par WiredEmulation.router1.ipv4.arp retryTimeout 1s
+attr unit s
+par WiredEmulation.router1.ipv4.arp retryCount 3
+par WiredEmulation.router1.ipv4.arp cacheTimeout 120s
+attr unit s
+par WiredEmulation.router1.ipv4.arp proxyArpInterfaces "\"*\""
+scalar WiredEmulation.router1.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar WiredEmulation.router1.ipv4.arp arpResolutionCompleted:count 25
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar WiredEmulation.router1.ipv4.arp arpResolutionInitiated:count 9
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar WiredEmulation.router1.ipv4.arp arpReplySent:count 6
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar WiredEmulation.router1.ipv4.arp arpReplySent:sum(packetBytes) 168
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar WiredEmulation.router1.ipv4.arp arpRequestSent:count 9
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar WiredEmulation.router1.ipv4.arp arpRequestSent:sum(packetBytes) 252
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par WiredEmulation.router1.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.ipv4.lp forwardServiceRegistration true
+par WiredEmulation.router1.ipv4.lp forwardProtocolRegistration true
+par WiredEmulation.router1.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par WiredEmulation.router1.ipv4 forwarding true
+par WiredEmulation.router1.ipv4 multicastForwarding false
+par WiredEmulation.router1.ipv4 interfaceTableModule "\"WiredEmulation.router1.interfaceTable\""
+par WiredEmulation.router1.ipv4 displayStringTextFormat "\"%i\""
+par WiredEmulation.router1.nl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.nl forwardServiceRegistration true
+par WiredEmulation.router1.nl forwardProtocolRegistration true
+par WiredEmulation.router1.tn typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.tn forwardServiceRegistration true
+par WiredEmulation.router1.tn forwardProtocolRegistration true
+par WiredEmulation.router1.at typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router1.at displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router1.at forwardServiceRegistration true
+par WiredEmulation.router1.at forwardProtocolRegistration true
+par WiredEmulation.router1 typename "\"inet.node.inet.Router\""
+par WiredEmulation.router1 hasStatus false
+par WiredEmulation.router1 osgModel "\"\""
+par WiredEmulation.router1 osgModelColor "\"\""
+par WiredEmulation.router1 canvasImage "\"\""
+par WiredEmulation.router1 canvasImageColor "\"\""
+par WiredEmulation.router1 recordPcap false
+par WiredEmulation.router1 numPcapRecorders 0
+par WiredEmulation.router1 numLoInterfaces 1
+par WiredEmulation.router1 numWlanInterfaces 0
+par WiredEmulation.router1 numEthInterfaces 2
+par WiredEmulation.router1 numPppInterfaces 0
+par WiredEmulation.router1 numTunInterfaces 0
+par WiredEmulation.router1 numVirtInterfaces 0
+par WiredEmulation.router1 fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router1 hasIpv4 true
+par WiredEmulation.router1 hasIpv6 false
+par WiredEmulation.router1 hasGn false
+par WiredEmulation.router1 forwarding true
+par WiredEmulation.router1 multicastForwarding false
+par WiredEmulation.router1 hasUdp false
+par WiredEmulation.router1 hasTcp false
+par WiredEmulation.router1 hasSctp false
+par WiredEmulation.router1 numApps 0
+par WiredEmulation.router1 hasEigrp false
+par WiredEmulation.router1 hasOspf false
+par WiredEmulation.router1 hasRip false
+par WiredEmulation.router1 hasBgp false
+par WiredEmulation.router1 hasPim false
+par WiredEmulation.router1 hasDhcp false
+par WiredEmulation.router2.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.ethg$i[1].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[1].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WiredEmulation.router2.interfaceTable displayAddresses false
+par WiredEmulation.router2.cb typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.cb forwardServiceRegistration true
+par WiredEmulation.router2.cb forwardProtocolRegistration true
+par WiredEmulation.router2.bl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.bl forwardServiceRegistration true
+par WiredEmulation.router2.bl forwardProtocolRegistration true
+par WiredEmulation.router2.ethernet typename "\"inet.linklayer.ethernet.basic.EthernetEncapsulation\""
+par WiredEmulation.router2.ethernet registerProtocol true
+par WiredEmulation.router2.ethernet interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ethernet fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router2.ethernet stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router2.ethernet stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar WiredEmulation.router2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar WiredEmulation.router2.ethernet decapPk:count 8709
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar WiredEmulation.router2.ethernet decapPk:sum(packetBytes) 2646448
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar WiredEmulation.router2.ethernet encapPk:count 8703
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar WiredEmulation.router2.ethernet encapPk:sum(packetBytes) 2645740
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+par WiredEmulation.router2.li typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.li forwardServiceRegistration true
+par WiredEmulation.router2.li forwardProtocolRegistration true
+par WiredEmulation.router2.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par WiredEmulation.router2.lo[0].lo interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.lo[0].lo mtu 4470B
+attr unit B
+scalar WiredEmulation.router2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par WiredEmulation.router2.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par WiredEmulation.router2.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router2.lo[0] recordPcap false
+par WiredEmulation.router2.lo[0] numPcapRecorders 0
+par WiredEmulation.router2.lo[0] interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+scalar WiredEmulation.router2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router2.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[0].socket.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[0].socket typename "\"inet.emulation.linklayer.ethernet.ExtEthernetSocket\""
+par WiredEmulation.router2.eth[0].socket device "\"sim-veth2\""
+par WiredEmulation.router2.eth[0].socket namespace "\"\""
+par WiredEmulation.router2.eth[0].socket packetNameFormat "\"Ext-%p-%t-%n\""
+scalar WiredEmulation.router2.eth[0].socket packetReceived:count 4549
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar WiredEmulation.router2.eth[0].socket packetReceived:sum(packetBytes) 1383535
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[0].socket packetSent:count 4147
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar WiredEmulation.router2.eth[0].socket packetSent:sum(packetBytes) 1418746
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[0].socket packetReceivedFromUpper:count 4147
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router2.eth[0].socket packetReceivedFromUpper:sum(packetBytes) 1418746
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[0].socket packetSentFromUpper:count 4549
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets sent to higher layer, count"
+scalar WiredEmulation.router2.eth[0].socket packetSentFromUpper:sum(packetBytes) 1383535
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, sum(packetBytes)"
+par WiredEmulation.router2.eth[0] typename "\"inet.emulation.linklayer.ethernet.ExtLowerEthernetInterface\""
+par WiredEmulation.router2.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router2.eth[0] recordPcap false
+par WiredEmulation.router2.eth[0] numPcapRecorders 0
+par WiredEmulation.router2.eth[0] isWireless false
+par WiredEmulation.router2.eth[0] interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.eth[0] device "\"sim-veth2\""
+par WiredEmulation.router2.eth[0] namespace "\"\""
+par WiredEmulation.router2.eth[0] copyConfiguration "\"\""
+attr enum ,copyToExt,copyFromExt
+par WiredEmulation.router2.eth[0] address "\"0A-AA-00-00-00-03\""
+attr mutable ""
+par WiredEmulation.router2.eth[0] broadcast true
+par WiredEmulation.router2.eth[0] multicast true
+par WiredEmulation.router2.eth[0] pointToPoint false
+par WiredEmulation.router2.eth[0] mtu 1500B
+attr unit B
+par WiredEmulation.router2.eth[0] protocol "\"ethernetmac\""
+par WiredEmulation.router2.eth[0] bitrate "nan bps"
+attr unit bps
+scalar WiredEmulation.router2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router2.eth[1].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[1].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[1].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.eth[1].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.router2.eth[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.router2.eth[1].queue packetCapacity 1000
+par WiredEmulation.router2.eth[1].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.router2.eth[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.router2.eth[1].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.router2.eth[1].queue bufferModule "\"\""
+scalar WiredEmulation.router2.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue queueLength:max 4
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue queueLength:timeavg 0.00062396583610586
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.router2.eth[1].queue queueBitLength:max 19368
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.router2.eth[1].queue queueBitLength:timeavg 2.6467110120486
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.router2.eth[1].queue queueingTime:histogram
+field count 4556
+field mean 0.00013457494029851
+field stddev 0.00035216485639387
+field min 0
+field max 0.0024696
+field sum 0.613123428
+field sqrsum 0.00064742254080817
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3806
+bin	4e-05	26
+bin	8e-05	20
+bin	0.00012	18
+bin	0.00016	29
+bin	0.0002	25
+bin	0.00024	5
+bin	0.00028	3
+bin	0.00032	15
+bin	0.00036	12
+bin	0.0004	21
+bin	0.00044	25
+bin	0.00048	25
+bin	0.00052	19
+bin	0.00056	19
+bin	0.0006	19
+bin	0.00064	20
+bin	0.00068	29
+bin	0.00072	28
+bin	0.00076	16
+bin	0.0008	9
+bin	0.00084	8
+bin	0.00088	12
+bin	0.00092	11
+bin	0.00096	18
+bin	0.001	35
+bin	0.00104	37
+bin	0.00108	56
+bin	0.00112	23
+bin	0.00116	24
+bin	0.0012	14
+bin	0.00124	13
+bin	0.00128	17
+bin	0.00132	9
+bin	0.00136	4
+bin	0.0014	12
+bin	0.00144	13
+bin	0.00148	16
+bin	0.00152	11
+bin	0.00156	15
+bin	0.0016	11
+bin	0.00164	5
+bin	0.00168	1
+bin	0.00172	0
+bin	0.00176	0
+bin	0.0018	1
+bin	0.00184	0
+bin	0.00188	0
+bin	0.00192	0
+bin	0.00196	0
+bin	0.002	0
+bin	0.00204	0
+bin	0.00208	0
+bin	0.00212	0
+bin	0.00216	0
+bin	0.0022	0
+bin	0.00224	0
+bin	0.00228	0
+bin	0.00232	0
+bin	0.00236	0
+bin	0.0024	0
+bin	0.00244	1
+bin	0.00248	0
+scalar WiredEmulation.router2.eth[1].queue outgoingPackets:count 4556
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue outgoingPacketLengths:sum 11069184
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router2.eth[1].queue outgoingPacketLengths:histogram
+field count 4556
+field mean 2429.5838454785
+field stddev 3309.3649262241
+field min 368
+field max 12112
+field sum 11069184
+field sqrsum 76779397888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	16
+bin	400	1081
+bin	600	1557
+bin	800	182
+bin	1000	54
+bin	1200	64
+bin	1400	0
+bin	1600	232
+bin	1800	4
+bin	2000	49
+bin	2200	172
+bin	2400	16
+bin	2600	60
+bin	2800	8
+bin	3000	16
+bin	3200	135
+bin	3400	126
+bin	3600	0
+bin	3800	1
+bin	4000	0
+bin	4200	58
+bin	4400	0
+bin	4600	62
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	105
+bin	6200	3
+bin	6400	0
+bin	6600	0
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	0
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	0
+bin	8800	0
+bin	9000	0
+bin	9200	0
+bin	9400	0
+bin	9600	0
+bin	9800	379
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	176
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+statistic WiredEmulation.router2.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.router2.eth[1].queue incomingPackets:count 4556
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue incomingPacketLengths:sum 11069184
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router2.eth[1].queue incomingPacketLengths:histogram
+field count 4556
+field mean 2429.5838454785
+field stddev 3309.3649262241
+field min 368
+field max 12112
+field sum 11069184
+field sqrsum 76779397888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	16
+bin	400	1081
+bin	600	1557
+bin	800	182
+bin	1000	54
+bin	1200	64
+bin	1400	0
+bin	1600	232
+bin	1800	4
+bin	2000	49
+bin	2200	172
+bin	2400	16
+bin	2600	60
+bin	2800	8
+bin	3000	16
+bin	3200	135
+bin	3400	126
+bin	3600	0
+bin	3800	1
+bin	4000	0
+bin	4200	58
+bin	4400	0
+bin	4600	62
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	105
+bin	6200	3
+bin	6400	0
+bin	6600	0
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	0
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	0
+bin	8800	0
+bin	9000	0
+bin	9200	0
+bin	9400	0
+bin	9600	0
+bin	9800	379
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	176
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+scalar WiredEmulation.router2.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.router2.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.router2.eth[1].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.router2.eth[1].mac interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.eth[1].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.router2.eth[1].mac sendRawBytes false
+par WiredEmulation.router2.eth[1].mac promiscuous false
+par WiredEmulation.router2.eth[1].mac duplexMode true
+par WiredEmulation.router2.eth[1].mac mtu 1500B
+attr unit B
+par WiredEmulation.router2.eth[1].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router2.eth[1].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router2.eth[1].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router2.eth[1].mac "simulated time" 982.623394618
+scalar WiredEmulation.router2.eth[1].mac full-duplex 1
+scalar WiredEmulation.router2.eth[1].mac "frames/sec sent" 4.6365678091464
+scalar WiredEmulation.router2.eth[1].mac "frames/sec rcvd" 4.2345826720497
+scalar WiredEmulation.router2.eth[1].mac "bits/sec sent" 11267.274991253
+scalar WiredEmulation.router2.eth[1].mac "bits/sec rcvd" 11559.146731302
+scalar WiredEmulation.router2.eth[1].mac "rx channel idle (%)" 99.881698399777
+scalar WiredEmulation.router2.eth[1].mac "rx channel utilization (%)" 0.11830160022314
+scalar WiredEmulation.router2.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.router2.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.router2.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.router2.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.router2.eth[1].mac rxPkOk:count 4161
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.router2.eth[1].mac rxPkOk:sum(packetBytes) 1419786
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac txPk:count 4556
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.router2.eth[1].mac txPk:sum(packetBytes) 1383936
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac packetReceivedFromUpper:count 4556
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.router2.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1383648
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac passedUpPk:count 4161
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router2.eth[1].mac passedUpPk:sum(packetBytes) 1419786
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.router2.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.router2.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.router2.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.router2.eth[1] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.router2.eth[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router2.eth[1] recordPcap false
+par WiredEmulation.router2.eth[1] numPcapRecorders 0
+par WiredEmulation.router2.eth[1] interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.eth[1] protocol "\"ethernetmac\""
+par WiredEmulation.router2.eth[1] address "\"0A-AA-00-00-00-04\""
+attr mutable ""
+par WiredEmulation.router2.eth[1] duplexMode true
+par WiredEmulation.router2.eth[1] csmacdSupport false
+par WiredEmulation.router2.eth[1] bitrate 0bps
+attr unit bps
+par WiredEmulation.router2.eth[1] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.router2.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router2.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router2.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router2.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router2.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router2.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par WiredEmulation.router2.ipv4.configurator interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.configurator routingTableModule "\"WiredEmulation.router2.ipv4.routingTable\""
+par WiredEmulation.router2.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par WiredEmulation.router2.ipv4.configurator configureRoutingTable true
+par WiredEmulation.router2.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par WiredEmulation.router2.ipv4.routingTable interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.routingTable routerId "\"auto\""
+par WiredEmulation.router2.ipv4.routingTable netmaskRoutes "\"*\""
+par WiredEmulation.router2.ipv4.routingTable forwarding true
+par WiredEmulation.router2.ipv4.routingTable multicastForwarding false
+par WiredEmulation.router2.ipv4.routingTable useAdminDist false
+par WiredEmulation.router2.ipv4.routingTable routingFile "\"routing/router2.mrt\""
+par WiredEmulation.router2.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par WiredEmulation.router2.ipv4.natTable networkProtocolModule "\"^.ip\""
+par WiredEmulation.router2.ipv4.natTable config "<config/> at content:1"
+par WiredEmulation.router2.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.ipv4.up forwardServiceRegistration true
+par WiredEmulation.router2.ipv4.up forwardProtocolRegistration true
+par WiredEmulation.router2.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par WiredEmulation.router2.ipv4.igmp interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.igmp routingTableModule "\"WiredEmulation.router2.ipv4.routingTable\""
+par WiredEmulation.router2.ipv4.igmp crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router2.ipv4.igmp enabled true
+par WiredEmulation.router2.ipv4.igmp robustnessVariable 2
+par WiredEmulation.router2.ipv4.igmp queryInterval 125s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp startupQueryCount 2
+par WiredEmulation.router2.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par WiredEmulation.router2.ipv4.igmp lastMemberQueryCount 2
+par WiredEmulation.router2.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par WiredEmulation.router2.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par WiredEmulation.router2.ipv4.icmp interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.icmp routingTableModule "\"WiredEmulation.router2.ipv4.routingTable\""
+par WiredEmulation.router2.ipv4.icmp crcMode "\"computed\""
+attr enum declared,computed
+attr mutable ""
+par WiredEmulation.router2.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par WiredEmulation.router2.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.ipv4.mp forwardServiceRegistration true
+par WiredEmulation.router2.ipv4.mp forwardProtocolRegistration true
+par WiredEmulation.router2.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par WiredEmulation.router2.ipv4.ip interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.ip routingTableModule "\"WiredEmulation.router2.ipv4.routingTable\""
+par WiredEmulation.router2.ipv4.ip arpModule "\"WiredEmulation.router2.ipv4.arp\""
+par WiredEmulation.router2.ipv4.ip icmpModule "\"WiredEmulation.router2.ipv4.icmp\""
+par WiredEmulation.router2.ipv4.ip crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router2.ipv4.ip timeToLive 32
+par WiredEmulation.router2.ipv4.ip multicastTimeToLive 32
+par WiredEmulation.router2.ipv4.ip fragmentTimeout 60s
+attr unit s
+par WiredEmulation.router2.ipv4.ip limitedBroadcast false
+par WiredEmulation.router2.ipv4.ip directBroadcastInterfaces "\"\""
+scalar WiredEmulation.router2.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar WiredEmulation.router2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par WiredEmulation.router2.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par WiredEmulation.router2.ipv4.arp interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4.arp routingTableModule "\"WiredEmulation.router2.ipv4.routingTable\""
+par WiredEmulation.router2.ipv4.arp retryTimeout 1s
+attr unit s
+par WiredEmulation.router2.ipv4.arp retryCount 3
+par WiredEmulation.router2.ipv4.arp cacheTimeout 120s
+attr unit s
+par WiredEmulation.router2.ipv4.arp proxyArpInterfaces "\"*\""
+scalar WiredEmulation.router2.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar WiredEmulation.router2.ipv4.arp arpResolutionCompleted:count 29
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar WiredEmulation.router2.ipv4.arp arpResolutionInitiated:count 11
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar WiredEmulation.router2.ipv4.arp arpReplySent:count 13
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar WiredEmulation.router2.ipv4.arp arpReplySent:sum(packetBytes) 364
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar WiredEmulation.router2.ipv4.arp arpRequestSent:count 11
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar WiredEmulation.router2.ipv4.arp arpRequestSent:sum(packetBytes) 308
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par WiredEmulation.router2.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.ipv4.lp forwardServiceRegistration true
+par WiredEmulation.router2.ipv4.lp forwardProtocolRegistration true
+par WiredEmulation.router2.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par WiredEmulation.router2.ipv4 forwarding true
+par WiredEmulation.router2.ipv4 multicastForwarding false
+par WiredEmulation.router2.ipv4 interfaceTableModule "\"WiredEmulation.router2.interfaceTable\""
+par WiredEmulation.router2.ipv4 displayStringTextFormat "\"%i\""
+par WiredEmulation.router2.nl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.nl forwardServiceRegistration true
+par WiredEmulation.router2.nl forwardProtocolRegistration true
+par WiredEmulation.router2.tn typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.tn forwardServiceRegistration true
+par WiredEmulation.router2.tn forwardProtocolRegistration true
+par WiredEmulation.router2.at typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router2.at displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router2.at forwardServiceRegistration true
+par WiredEmulation.router2.at forwardProtocolRegistration true
+par WiredEmulation.router2 typename "\"inet.node.inet.Router\""
+par WiredEmulation.router2 hasStatus false
+par WiredEmulation.router2 osgModel "\"\""
+par WiredEmulation.router2 osgModelColor "\"\""
+par WiredEmulation.router2 canvasImage "\"\""
+par WiredEmulation.router2 canvasImageColor "\"\""
+par WiredEmulation.router2 recordPcap false
+par WiredEmulation.router2 numPcapRecorders 0
+par WiredEmulation.router2 numLoInterfaces 1
+par WiredEmulation.router2 numWlanInterfaces 0
+par WiredEmulation.router2 numEthInterfaces 2
+par WiredEmulation.router2 numPppInterfaces 0
+par WiredEmulation.router2 numTunInterfaces 0
+par WiredEmulation.router2 numVirtInterfaces 0
+par WiredEmulation.router2 fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router2 hasIpv4 true
+par WiredEmulation.router2 hasIpv6 false
+par WiredEmulation.router2 hasGn false
+par WiredEmulation.router2 forwarding true
+par WiredEmulation.router2 multicastForwarding false
+par WiredEmulation.router2 hasUdp false
+par WiredEmulation.router2 hasTcp false
+par WiredEmulation.router2 hasSctp false
+par WiredEmulation.router2 numApps 0
+par WiredEmulation.router2 hasEigrp false
+par WiredEmulation.router2 hasOspf false
+par WiredEmulation.router2 hasRip false
+par WiredEmulation.router2 hasBgp false
+par WiredEmulation.router2 hasPim false
+par WiredEmulation.router2 hasDhcp false
+par WiredEmulation.router3.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.ethg$i[1].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[1].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WiredEmulation.router3.interfaceTable displayAddresses false
+par WiredEmulation.router3.cb typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.cb forwardServiceRegistration true
+par WiredEmulation.router3.cb forwardProtocolRegistration true
+par WiredEmulation.router3.bl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.bl forwardServiceRegistration true
+par WiredEmulation.router3.bl forwardProtocolRegistration true
+par WiredEmulation.router3.ethernet typename "\"inet.linklayer.ethernet.basic.EthernetEncapsulation\""
+par WiredEmulation.router3.ethernet registerProtocol true
+par WiredEmulation.router3.ethernet interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ethernet fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router3.ethernet stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router3.ethernet stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router3.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar WiredEmulation.router3.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar WiredEmulation.router3.ethernet decapPk:count 8594
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar WiredEmulation.router3.ethernet decapPk:sum(packetBytes) 2629707
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar WiredEmulation.router3.ethernet encapPk:count 8588
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar WiredEmulation.router3.ethernet encapPk:sum(packetBytes) 2628999
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+par WiredEmulation.router3.li typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.li forwardServiceRegistration true
+par WiredEmulation.router3.li forwardProtocolRegistration true
+par WiredEmulation.router3.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par WiredEmulation.router3.lo[0].lo interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.lo[0].lo mtu 4470B
+attr unit B
+scalar WiredEmulation.router3.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router3.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router3.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router3.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par WiredEmulation.router3.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par WiredEmulation.router3.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router3.lo[0] recordPcap false
+par WiredEmulation.router3.lo[0] numPcapRecorders 0
+par WiredEmulation.router3.lo[0] interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+scalar WiredEmulation.router3.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router3.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router3.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router3.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router3.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[0].socket.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[0].socket typename "\"inet.emulation.linklayer.ethernet.ExtEthernetSocket\""
+par WiredEmulation.router3.eth[0].socket device "\"sim-veth3\""
+par WiredEmulation.router3.eth[0].socket namespace "\"\""
+par WiredEmulation.router3.eth[0].socket packetNameFormat "\"Ext-%p-%t-%n\""
+scalar WiredEmulation.router3.eth[0].socket packetReceived:count 4166
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar WiredEmulation.router3.eth[0].socket packetReceived:sum(packetBytes) 1349563
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[0].socket packetSent:count 4416
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar WiredEmulation.router3.eth[0].socket packetSent:sum(packetBytes) 1433981
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[0].socket packetReceivedFromUpper:count 4416
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WiredEmulation.router3.eth[0].socket packetReceivedFromUpper:sum(packetBytes) 1433981
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[0].socket packetSentFromUpper:count 4166
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets sent to higher layer, count"
+scalar WiredEmulation.router3.eth[0].socket packetSentFromUpper:sum(packetBytes) 1349563
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets sent to higher layer, sum(packetBytes)"
+par WiredEmulation.router3.eth[0] typename "\"inet.emulation.linklayer.ethernet.ExtLowerEthernetInterface\""
+par WiredEmulation.router3.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router3.eth[0] recordPcap false
+par WiredEmulation.router3.eth[0] numPcapRecorders 0
+par WiredEmulation.router3.eth[0] isWireless false
+par WiredEmulation.router3.eth[0] interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.eth[0] device "\"sim-veth3\""
+par WiredEmulation.router3.eth[0] namespace "\"\""
+par WiredEmulation.router3.eth[0] copyConfiguration "\"\""
+attr enum ,copyToExt,copyFromExt
+par WiredEmulation.router3.eth[0] address "\"0A-AA-00-00-00-05\""
+attr mutable ""
+par WiredEmulation.router3.eth[0] broadcast true
+par WiredEmulation.router3.eth[0] multicast true
+par WiredEmulation.router3.eth[0] pointToPoint false
+par WiredEmulation.router3.eth[0] mtu 1500B
+attr unit B
+par WiredEmulation.router3.eth[0] protocol "\"ethernetmac\""
+par WiredEmulation.router3.eth[0] bitrate "nan bps"
+attr unit bps
+scalar WiredEmulation.router3.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router3.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router3.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router3.eth[1].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[1].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[1].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.eth[1].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.router3.eth[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.router3.eth[1].queue packetCapacity 1000
+par WiredEmulation.router3.eth[1].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.router3.eth[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.router3.eth[1].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.router3.eth[1].queue bufferModule "\"\""
+scalar WiredEmulation.router3.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue queueLength:max 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue queueLength:timeavg 0.00022652310459851
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.router3.eth[1].queue queueBitLength:max 12472
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.router3.eth[1].queue queueBitLength:timeavg 0.84013367959444
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.router3.eth[1].queue queueingTime:histogram
+field count 4172
+field mean 5.3352565196548e-05
+field stddev 0.00018759344034379
+field min 0
+field max 0.001074199
+field sum 0.222586902
+field sqrsum 0.00015865848974599
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3706
+bin	2e-05	38
+bin	4e-05	23
+bin	6e-05	13
+bin	8e-05	11
+bin	0.0001	11
+bin	0.00012	10
+bin	0.00014	15
+bin	0.00016	20
+bin	0.00018	15
+bin	0.0002	11
+bin	0.00022	8
+bin	0.00024	5
+bin	0.00026	1
+bin	0.00028	5
+bin	0.0003	3
+bin	0.00032	4
+bin	0.00034	5
+bin	0.00036	5
+bin	0.00038	5
+bin	0.0004	8
+bin	0.00042	9
+bin	0.00044	14
+bin	0.00046	10
+bin	0.00048	4
+bin	0.0005	2
+bin	0.00052	3
+bin	0.00054	5
+bin	0.00056	4
+bin	0.00058	3
+bin	0.0006	4
+bin	0.00062	6
+bin	0.00064	4
+bin	0.00066	4
+bin	0.00068	11
+bin	0.0007	8
+bin	0.00072	11
+bin	0.00074	24
+bin	0.00076	24
+bin	0.00078	27
+bin	0.0008	9
+bin	0.00082	0
+bin	0.00084	0
+bin	0.00086	1
+bin	0.00088	2
+bin	0.0009	1
+bin	0.00092	1
+bin	0.00094	5
+bin	0.00096	4
+bin	0.00098	11
+bin	0.001	10
+bin	0.00102	14
+bin	0.00104	12
+bin	0.00106	3
+bin	0.00108	0
+scalar WiredEmulation.router3.eth[1].queue outgoingPackets:count 4172
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue outgoingPacketLengths:sum 10796816
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router3.eth[1].queue outgoingPacketLengths:histogram
+field count 4172
+field mean 2587.9232981783
+field stddev 3265.8101622985
+field min 368
+field max 12112
+field sum 10796816
+field sqrsum 72427198976
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	150	0
+bin	300	16
+bin	450	1102
+bin	600	1151
+bin	750	124
+bin	900	130
+bin	1050	0
+bin	1200	66
+bin	1350	0
+bin	1500	118
+bin	1650	0
+bin	1800	2
+bin	1950	20
+bin	2100	128
+bin	2250	228
+bin	2400	0
+bin	2550	78
+bin	2700	0
+bin	2850	8
+bin	3000	16
+bin	3150	58
+bin	3300	22
+bin	3450	12
+bin	3600	0
+bin	3750	0
+bin	3900	0
+bin	4050	0
+bin	4200	106
+bin	4350	0
+bin	4500	60
+bin	4650	0
+bin	4800	0
+bin	4950	0
+bin	5100	0
+bin	5250	0
+bin	5400	0
+bin	5550	0
+bin	5700	0
+bin	5850	0
+bin	6000	0
+bin	6150	0
+bin	6300	0
+bin	6450	0
+bin	6600	0
+bin	6750	0
+bin	6900	0
+bin	7050	0
+bin	7200	0
+bin	7350	0
+bin	7500	0
+bin	7650	0
+bin	7800	0
+bin	7950	0
+bin	8100	114
+bin	8250	52
+bin	8400	0
+bin	8550	56
+bin	8700	114
+bin	8850	52
+bin	9000	0
+bin	9150	56
+bin	9300	0
+bin	9450	0
+bin	9600	0
+bin	9750	0
+bin	9900	223
+bin	10050	0
+bin	10200	0
+bin	10350	0
+bin	10500	0
+bin	10650	0
+bin	10800	0
+bin	10950	0
+bin	11100	0
+bin	11250	0
+bin	11400	0
+bin	11550	0
+bin	11700	0
+bin	11850	0
+bin	12000	60
+bin	12150	0
+statistic WiredEmulation.router3.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.router3.eth[1].queue incomingPackets:count 4172
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue incomingPacketLengths:sum 10796816
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.router3.eth[1].queue incomingPacketLengths:histogram
+field count 4172
+field mean 2587.9232981783
+field stddev 3265.8101622985
+field min 368
+field max 12112
+field sum 10796816
+field sqrsum 72427198976
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	150	0
+bin	300	16
+bin	450	1102
+bin	600	1151
+bin	750	124
+bin	900	130
+bin	1050	0
+bin	1200	66
+bin	1350	0
+bin	1500	118
+bin	1650	0
+bin	1800	2
+bin	1950	20
+bin	2100	128
+bin	2250	228
+bin	2400	0
+bin	2550	78
+bin	2700	0
+bin	2850	8
+bin	3000	16
+bin	3150	58
+bin	3300	22
+bin	3450	12
+bin	3600	0
+bin	3750	0
+bin	3900	0
+bin	4050	0
+bin	4200	106
+bin	4350	0
+bin	4500	60
+bin	4650	0
+bin	4800	0
+bin	4950	0
+bin	5100	0
+bin	5250	0
+bin	5400	0
+bin	5550	0
+bin	5700	0
+bin	5850	0
+bin	6000	0
+bin	6150	0
+bin	6300	0
+bin	6450	0
+bin	6600	0
+bin	6750	0
+bin	6900	0
+bin	7050	0
+bin	7200	0
+bin	7350	0
+bin	7500	0
+bin	7650	0
+bin	7800	0
+bin	7950	0
+bin	8100	114
+bin	8250	52
+bin	8400	0
+bin	8550	56
+bin	8700	114
+bin	8850	52
+bin	9000	0
+bin	9150	56
+bin	9300	0
+bin	9450	0
+bin	9600	0
+bin	9750	0
+bin	9900	223
+bin	10050	0
+bin	10200	0
+bin	10350	0
+bin	10500	0
+bin	10650	0
+bin	10800	0
+bin	10950	0
+bin	11100	0
+bin	11250	0
+bin	11400	0
+bin	11550	0
+bin	11700	0
+bin	11850	0
+bin	12000	60
+bin	12150	0
+scalar WiredEmulation.router3.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.router3.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.router3.eth[1].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.router3.eth[1].mac interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.eth[1].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.router3.eth[1].mac sendRawBytes false
+par WiredEmulation.router3.eth[1].mac promiscuous false
+par WiredEmulation.router3.eth[1].mac duplexMode true
+par WiredEmulation.router3.eth[1].mac mtu 1500B
+attr unit B
+par WiredEmulation.router3.eth[1].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router3.eth[1].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.router3.eth[1].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.router3.eth[1].mac "simulated time" 982.623394618
+scalar WiredEmulation.router3.eth[1].mac full-duplex 1
+scalar WiredEmulation.router3.eth[1].mac "frames/sec sent" 4.2457771948549
+scalar WiredEmulation.router3.eth[1].mac "frames/sec rcvd" 4.508339638832
+scalar WiredEmulation.router3.eth[1].mac "bits/sec sent" 10990.090465125
+scalar WiredEmulation.router3.eth[1].mac "bits/sec rcvd" 11683.182043984
+scalar WiredEmulation.router3.eth[1].mac "rx channel idle (%)" 99.880282842191
+scalar WiredEmulation.router3.eth[1].mac "rx channel utilization (%)" 0.1197171578087
+scalar WiredEmulation.router3.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.router3.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.router3.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.router3.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.router3.eth[1].mac rxPkOk:count 4430
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.router3.eth[1].mac rxPkOk:sum(packetBytes) 1435021
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac txPk:count 4172
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.router3.eth[1].mac txPk:sum(packetBytes) 1349890
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac packetReceivedFromUpper:count 4172
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.router3.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1349602
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac passedUpPk:count 4430
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.router3.eth[1].mac passedUpPk:sum(packetBytes) 1435021
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.router3.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.router3.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.router3.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.router3.eth[1] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.router3.eth[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.router3.eth[1] recordPcap false
+par WiredEmulation.router3.eth[1] numPcapRecorders 0
+par WiredEmulation.router3.eth[1] interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.eth[1] protocol "\"ethernetmac\""
+par WiredEmulation.router3.eth[1] address "\"0A-AA-00-00-00-06\""
+attr mutable ""
+par WiredEmulation.router3.eth[1] duplexMode true
+par WiredEmulation.router3.eth[1] csmacdSupport false
+par WiredEmulation.router3.eth[1] bitrate 0bps
+attr unit bps
+par WiredEmulation.router3.eth[1] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.router3.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.router3.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.router3.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.router3.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.router3.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.router3.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par WiredEmulation.router3.ipv4.configurator interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.configurator routingTableModule "\"WiredEmulation.router3.ipv4.routingTable\""
+par WiredEmulation.router3.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par WiredEmulation.router3.ipv4.configurator configureRoutingTable true
+par WiredEmulation.router3.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par WiredEmulation.router3.ipv4.routingTable interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.routingTable routerId "\"auto\""
+par WiredEmulation.router3.ipv4.routingTable netmaskRoutes "\"*\""
+par WiredEmulation.router3.ipv4.routingTable forwarding true
+par WiredEmulation.router3.ipv4.routingTable multicastForwarding false
+par WiredEmulation.router3.ipv4.routingTable useAdminDist false
+par WiredEmulation.router3.ipv4.routingTable routingFile "\"routing/router3.mrt\""
+par WiredEmulation.router3.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par WiredEmulation.router3.ipv4.natTable networkProtocolModule "\"^.ip\""
+par WiredEmulation.router3.ipv4.natTable config "<config/> at content:1"
+par WiredEmulation.router3.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.ipv4.up forwardServiceRegistration true
+par WiredEmulation.router3.ipv4.up forwardProtocolRegistration true
+par WiredEmulation.router3.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par WiredEmulation.router3.ipv4.igmp interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.igmp routingTableModule "\"WiredEmulation.router3.ipv4.routingTable\""
+par WiredEmulation.router3.ipv4.igmp crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router3.ipv4.igmp enabled true
+par WiredEmulation.router3.ipv4.igmp robustnessVariable 2
+par WiredEmulation.router3.ipv4.igmp queryInterval 125s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp startupQueryCount 2
+par WiredEmulation.router3.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par WiredEmulation.router3.ipv4.igmp lastMemberQueryCount 2
+par WiredEmulation.router3.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par WiredEmulation.router3.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par WiredEmulation.router3.ipv4.icmp interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.icmp routingTableModule "\"WiredEmulation.router3.ipv4.routingTable\""
+par WiredEmulation.router3.ipv4.icmp crcMode "\"computed\""
+attr enum declared,computed
+attr mutable ""
+par WiredEmulation.router3.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par WiredEmulation.router3.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.ipv4.mp forwardServiceRegistration true
+par WiredEmulation.router3.ipv4.mp forwardProtocolRegistration true
+par WiredEmulation.router3.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par WiredEmulation.router3.ipv4.ip interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.ip routingTableModule "\"WiredEmulation.router3.ipv4.routingTable\""
+par WiredEmulation.router3.ipv4.ip arpModule "\"WiredEmulation.router3.ipv4.arp\""
+par WiredEmulation.router3.ipv4.ip icmpModule "\"WiredEmulation.router3.ipv4.icmp\""
+par WiredEmulation.router3.ipv4.ip crcMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router3.ipv4.ip timeToLive 32
+par WiredEmulation.router3.ipv4.ip multicastTimeToLive 32
+par WiredEmulation.router3.ipv4.ip fragmentTimeout 60s
+attr unit s
+par WiredEmulation.router3.ipv4.ip limitedBroadcast false
+par WiredEmulation.router3.ipv4.ip directBroadcastInterfaces "\"\""
+scalar WiredEmulation.router3.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar WiredEmulation.router3.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par WiredEmulation.router3.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par WiredEmulation.router3.ipv4.arp interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4.arp routingTableModule "\"WiredEmulation.router3.ipv4.routingTable\""
+par WiredEmulation.router3.ipv4.arp retryTimeout 1s
+attr unit s
+par WiredEmulation.router3.ipv4.arp retryCount 3
+par WiredEmulation.router3.ipv4.arp cacheTimeout 120s
+attr unit s
+par WiredEmulation.router3.ipv4.arp proxyArpInterfaces "\"*\""
+scalar WiredEmulation.router3.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar WiredEmulation.router3.ipv4.arp arpResolutionCompleted:count 28
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar WiredEmulation.router3.ipv4.arp arpResolutionInitiated:count 11
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar WiredEmulation.router3.ipv4.arp arpReplySent:count 13
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar WiredEmulation.router3.ipv4.arp arpReplySent:sum(packetBytes) 364
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar WiredEmulation.router3.ipv4.arp arpRequestSent:count 11
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar WiredEmulation.router3.ipv4.arp arpRequestSent:sum(packetBytes) 308
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par WiredEmulation.router3.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.ipv4.lp forwardServiceRegistration true
+par WiredEmulation.router3.ipv4.lp forwardProtocolRegistration true
+par WiredEmulation.router3.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par WiredEmulation.router3.ipv4 forwarding true
+par WiredEmulation.router3.ipv4 multicastForwarding false
+par WiredEmulation.router3.ipv4 interfaceTableModule "\"WiredEmulation.router3.interfaceTable\""
+par WiredEmulation.router3.ipv4 displayStringTextFormat "\"%i\""
+par WiredEmulation.router3.nl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.nl forwardServiceRegistration true
+par WiredEmulation.router3.nl forwardProtocolRegistration true
+par WiredEmulation.router3.tn typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.tn forwardServiceRegistration true
+par WiredEmulation.router3.tn forwardProtocolRegistration true
+par WiredEmulation.router3.at typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.router3.at displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.router3.at forwardServiceRegistration true
+par WiredEmulation.router3.at forwardProtocolRegistration true
+par WiredEmulation.router3 typename "\"inet.node.inet.Router\""
+par WiredEmulation.router3 hasStatus false
+par WiredEmulation.router3 osgModel "\"\""
+par WiredEmulation.router3 osgModelColor "\"\""
+par WiredEmulation.router3 canvasImage "\"\""
+par WiredEmulation.router3 canvasImageColor "\"\""
+par WiredEmulation.router3 recordPcap false
+par WiredEmulation.router3 numPcapRecorders 0
+par WiredEmulation.router3 numLoInterfaces 1
+par WiredEmulation.router3 numWlanInterfaces 0
+par WiredEmulation.router3 numEthInterfaces 2
+par WiredEmulation.router3 numPppInterfaces 0
+par WiredEmulation.router3 numTunInterfaces 0
+par WiredEmulation.router3 numVirtInterfaces 0
+par WiredEmulation.router3 fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.router3 hasIpv4 true
+par WiredEmulation.router3 hasIpv6 false
+par WiredEmulation.router3 hasGn false
+par WiredEmulation.router3 forwarding true
+par WiredEmulation.router3 multicastForwarding false
+par WiredEmulation.router3 hasUdp false
+par WiredEmulation.router3 hasTcp false
+par WiredEmulation.router3 hasSctp false
+par WiredEmulation.router3 numApps 0
+par WiredEmulation.router3 hasEigrp false
+par WiredEmulation.router3 hasOspf false
+par WiredEmulation.router3 hasRip false
+par WiredEmulation.router3 hasBgp false
+par WiredEmulation.router3 hasPim false
+par WiredEmulation.router3 hasDhcp false
+par WiredEmulation.switch1.eth[0].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ethg$i[0].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[1].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ethg$i[1].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[2].phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ethg$i[2].channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.macTable typename "\"inet.linklayer.ethernet.common.MacForwardingTable\""
+par WiredEmulation.switch1.macTable agingTime 120s
+attr unit s
+par WiredEmulation.switch1.macTable forwardingTable []
+attr mutable ""
+par WiredEmulation.switch1.macTable forwardingTableFile "\"\""
+par WiredEmulation.switch1.macTable interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.macTable displayStringTextFormat "\"addr: %a\\nvlan: %v\""
+par WiredEmulation.switch1.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WiredEmulation.switch1.interfaceTable displayAddresses false
+par WiredEmulation.switch1.sc typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.switch1.sc displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.sc forwardServiceRegistration true
+par WiredEmulation.switch1.sc forwardProtocolRegistration true
+par WiredEmulation.switch1.llc typename "\"inet.linklayer.ieee8022.Ieee8022Llc\""
+par WiredEmulation.switch1.llc registerProtocol true
+par WiredEmulation.switch1.cb typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.switch1.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.cb forwardServiceRegistration true
+par WiredEmulation.switch1.cb forwardProtocolRegistration true
+par WiredEmulation.switch1.bridging typename "\"inet.linklayer.ieee8021d.relay.Ieee8021dRelay\""
+par WiredEmulation.switch1.bridging macTableModule "\"WiredEmulation.switch1.macTable\""
+par WiredEmulation.switch1.bridging interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.bridging displayStringTextFormat "\"proc: %p\\ndisc: %d\""
+scalar WiredEmulation.switch1.bridging "processed frames" 0
+scalar WiredEmulation.switch1.bridging "discarded frames" 0
+scalar WiredEmulation.switch1.bridging "number of received BPDUs from STP module" 0
+scalar WiredEmulation.switch1.bridging "number of received frames from network (including BPDUs)" 9554
+scalar WiredEmulation.switch1.bridging "number of dropped frames (including BPDUs)" 0
+scalar WiredEmulation.switch1.bridging "number of delivered BPDUs to the STP module" 0
+scalar WiredEmulation.switch1.bridging "number of dispatched BPDU frames to the network" 0
+scalar WiredEmulation.switch1.bridging "number of dispatched non-BDPU frames to the network" 0
+scalar WiredEmulation.switch1.bridging packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar WiredEmulation.switch1.bridging packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+par WiredEmulation.switch1.bl typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.switch1.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.bl forwardServiceRegistration true
+par WiredEmulation.switch1.bl forwardProtocolRegistration true
+par WiredEmulation.switch1.ethernet typename "\"inet.linklayer.ethernet.basic.EthernetEncapsulation\""
+par WiredEmulation.switch1.ethernet registerProtocol true
+par WiredEmulation.switch1.ethernet interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.ethernet fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.switch1.ethernet stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.switch1.ethernet stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.switch1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar WiredEmulation.switch1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar WiredEmulation.switch1.ethernet decapPk:count 9554
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar WiredEmulation.switch1.ethernet decapPk:sum(packetBytes) 2823884
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar WiredEmulation.switch1.ethernet encapPk:count 9576
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar WiredEmulation.switch1.ethernet encapPk:sum(packetBytes) 2824896
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter.out.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021q.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021q.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter typename "\"inet.linklayer.ieee8021q.Ieee8021qTagEpdHeaderInserter\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter vlanTagType "\"c\""
+attr enum c,s
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter nextProtocol "\"ethernetmac\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter defaultVlanId -1
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter defaultPcp -1
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter defaultUserPriority -1
+par WiredEmulation.switch1.ieee8021q.qTagHeaderInserter defaultDropEligible -1
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker typename "\"inet.linklayer.ieee8021q.Ieee8021qTagEpdHeaderChecker\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker backpressure false
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker vlanTagType "\"c\""
+attr enum c,s
+par WiredEmulation.switch1.ieee8021q.qTagHeaderChecker vlanIdFilter []
+attr mutable ""
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+par WiredEmulation.switch1.ieee8021q typename "\"inet.linklayer.ieee8021q.Ieee8021qProtocol\""
+par WiredEmulation.switch1.ieee8021q vlanTagType "\"c\""
+par WiredEmulation.switch1.ieee8021q hasSocketSupport false
+par WiredEmulation.switch1.ieee8021r.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderInserter.out.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021r.lowerLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderChecker.out.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderInserter typename "\"inet.linklayer.ieee8021r.Ieee8021rTagEpdHeaderInserter\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderInserter displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderInserter nextProtocol "\"ieee8021qctag\""
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+par WiredEmulation.switch1.ieee8021r.rTagHeaderChecker typename "\"inet.linklayer.ieee8021r.Ieee8021rTagEpdHeaderChecker\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderChecker displayStringTextFormat "\"dropped %d/%p pk (%k/%l)\""
+par WiredEmulation.switch1.ieee8021r.rTagHeaderChecker backpressure false
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+par WiredEmulation.switch1.ieee8021r typename "\"inet.linklayer.ieee8021r.Ieee8021rProtocol\""
+par WiredEmulation.switch1.li typename "\"inet.common.MessageDispatcher\""
+par WiredEmulation.switch1.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WiredEmulation.switch1.li forwardServiceRegistration true
+par WiredEmulation.switch1.li forwardProtocolRegistration true
+par WiredEmulation.switch1.eth[0].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[0].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[0].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.switch1.eth[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.switch1.eth[0].queue packetCapacity 1000
+par WiredEmulation.switch1.eth[0].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.switch1.eth[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.switch1.eth[0].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.switch1.eth[0].queue bufferModule "\"\""
+scalar WiredEmulation.switch1.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue queueLength:max 5
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue queueLength:timeavg 1.7227747774702e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.switch1.eth[0].queue queueBitLength:max 5120
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.switch1.eth[0].queue queueBitLength:timeavg 0.021729002412262
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.switch1.eth[0].queue queueingTime:histogram
+field count 985
+field mean 1.718618071066e-05
+field stddev 5.4924929065012e-05
+field min 0
+field max 0.000471224
+field sum 0.016928388
+field sqrsum 3.25941420278e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	850
+bin	1e-05	7
+bin	2e-05	4
+bin	3e-05	2
+bin	4e-05	16
+bin	5e-05	2
+bin	6e-05	2
+bin	7e-05	37
+bin	8e-05	6
+bin	9e-05	3
+bin	0.0001	2
+bin	0.00011	4
+bin	0.00012	1
+bin	0.00013	3
+bin	0.00014	2
+bin	0.00015	3
+bin	0.00016	2
+bin	0.00017	6
+bin	0.00018	1
+bin	0.00019	2
+bin	0.0002	2
+bin	0.00021	0
+bin	0.00022	4
+bin	0.00023	6
+bin	0.00024	0
+bin	0.00025	1
+bin	0.00026	1
+bin	0.00027	7
+bin	0.00028	2
+bin	0.00029	0
+bin	0.0003	1
+bin	0.00031	3
+bin	0.00032	0
+bin	0.00033	0
+bin	0.00034	0
+bin	0.00035	1
+bin	0.00036	0
+bin	0.00037	1
+bin	0.00038	0
+bin	0.00039	0
+bin	0.0004	0
+bin	0.00041	0
+bin	0.00042	0
+bin	0.00043	0
+bin	0.00044	0
+bin	0.00045	0
+bin	0.00046	0
+bin	0.00047	1
+bin	0.00048	0
+scalar WiredEmulation.switch1.eth[0].queue outgoingPackets:count 985
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue outgoingPacketLengths:sum 1139656
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[0].queue outgoingPacketLengths:histogram
+field count 985
+field mean 1157.0111675127
+field stddev 969.08796327589
+field min 512
+field max 3576
+field sum 1139656
+field sqrsum 2242700096
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	0
+bin	400	0
+bin	450	0
+bin	500	22
+bin	550	526
+bin	600	118
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	51
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	8
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	8
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	6
+bin	1950	0
+bin	2000	0
+bin	2050	40
+bin	2100	0
+bin	2150	51
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	0
+bin	2450	0
+bin	2500	0
+bin	2550	32
+bin	2600	0
+bin	2650	0
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	16
+bin	2900	0
+bin	2950	0
+bin	3000	32
+bin	3050	0
+bin	3100	0
+bin	3150	0
+bin	3200	0
+bin	3250	0
+bin	3300	51
+bin	3350	0
+bin	3400	0
+bin	3450	0
+bin	3500	0
+bin	3550	24
+bin	3600	0
+statistic WiredEmulation.switch1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.eth[0].queue incomingPackets:count 985
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue incomingPacketLengths:sum 1139656
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[0].queue incomingPacketLengths:histogram
+field count 985
+field mean 1157.0111675127
+field stddev 969.08796327589
+field min 512
+field max 3576
+field sum 1139656
+field sqrsum 2242700096
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	0
+bin	400	0
+bin	450	0
+bin	500	22
+bin	550	526
+bin	600	118
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	51
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	8
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	8
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	6
+bin	1950	0
+bin	2000	0
+bin	2050	40
+bin	2100	0
+bin	2150	51
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	0
+bin	2450	0
+bin	2500	0
+bin	2550	32
+bin	2600	0
+bin	2650	0
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	16
+bin	2900	0
+bin	2950	0
+bin	3000	32
+bin	3050	0
+bin	3100	0
+bin	3150	0
+bin	3200	0
+bin	3250	0
+bin	3300	51
+bin	3350	0
+bin	3400	0
+bin	3450	0
+bin	3500	0
+bin	3550	24
+bin	3600	0
+scalar WiredEmulation.switch1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.switch1.eth[0].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.switch1.eth[0].mac interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[0].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.switch1.eth[0].mac sendRawBytes false
+par WiredEmulation.switch1.eth[0].mac promiscuous true
+par WiredEmulation.switch1.eth[0].mac duplexMode true
+par WiredEmulation.switch1.eth[0].mac mtu 1500B
+attr unit B
+par WiredEmulation.switch1.eth[0].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.switch1.eth[0].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.switch1.eth[0].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.switch1.eth[0].mac "simulated time" 982.623394618
+scalar WiredEmulation.switch1.eth[0].mac full-duplex 1
+scalar WiredEmulation.switch1.eth[0].mac "frames/sec sent" 1.0024186330134
+scalar WiredEmulation.switch1.eth[0].mac "frames/sec rcvd" 0.84060689428335
+scalar WiredEmulation.switch1.eth[0].mac "bits/sec sent" 1159.8095529194
+scalar WiredEmulation.switch1.eth[0].mac "bits/sec rcvd" 2133.3096804752
+scalar WiredEmulation.switch1.eth[0].mac "rx channel idle (%)" 99.978128914783
+scalar WiredEmulation.switch1.eth[0].mac "rx channel utilization (%)" 0.021871085217094
+scalar WiredEmulation.switch1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.switch1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.switch1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.switch1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.switch1.eth[0].mac rxPkOk:count 826
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.switch1.eth[0].mac rxPkOk:sum(packetBytes) 262030
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac txPk:count 985
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.switch1.eth[0].mac txPk:sum(packetBytes) 142457
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac packetReceivedFromUpper:count 985
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.switch1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 142457
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac passedUpPk:count 826
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.switch1.eth[0].mac passedUpPk:sum(packetBytes) 262030
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.switch1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.switch1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.switch1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.switch1.eth[0] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.switch1.eth[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.switch1.eth[0] recordPcap false
+par WiredEmulation.switch1.eth[0] numPcapRecorders 0
+par WiredEmulation.switch1.eth[0] interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[0] protocol "\"ethernetmac\""
+par WiredEmulation.switch1.eth[0] address "\"0A-AA-00-00-00-07\""
+attr mutable ""
+par WiredEmulation.switch1.eth[0] duplexMode true
+par WiredEmulation.switch1.eth[0] csmacdSupport false
+par WiredEmulation.switch1.eth[0] bitrate 0bps
+attr unit bps
+par WiredEmulation.switch1.eth[0] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.switch1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.switch1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.switch1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.switch1.eth[1].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[1].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[1].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[1].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.switch1.eth[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.switch1.eth[1].queue packetCapacity 1000
+par WiredEmulation.switch1.eth[1].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.switch1.eth[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.switch1.eth[1].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.switch1.eth[1].queue bufferModule "\"\""
+scalar WiredEmulation.switch1.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue queueLength:timeavg 0.00025232011405182
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.switch1.eth[1].queue queueBitLength:max 9272
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.switch1.eth[1].queue queueBitLength:timeavg 0.56202196118757
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.switch1.eth[1].queue queueingTime:histogram
+field count 4161
+field mean 5.9585591684691e-05
+field stddev 0.00021707958516668
+field min 0
+field max 0.0011368
+field sum 0.247935647
+field sqrsum 0.00021080734481815
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3774
+bin	2e-05	24
+bin	4e-05	4
+bin	6e-05	49
+bin	8e-05	0
+bin	0.0001	0
+bin	0.00012	2
+bin	0.00014	5
+bin	0.00016	1
+bin	0.00018	0
+bin	0.0002	2
+bin	0.00022	1
+bin	0.00024	0
+bin	0.00026	0
+bin	0.00028	0
+bin	0.0003	0
+bin	0.00032	0
+bin	0.00034	0
+bin	0.00036	0
+bin	0.00038	0
+bin	0.0004	1
+bin	0.00042	0
+bin	0.00044	0
+bin	0.00046	0
+bin	0.00048	0
+bin	0.0005	0
+bin	0.00052	1
+bin	0.00054	0
+bin	0.00056	103
+bin	0.00058	0
+bin	0.0006	0
+bin	0.00062	0
+bin	0.00064	0
+bin	0.00066	52
+bin	0.00068	0
+bin	0.0007	0
+bin	0.00072	0
+bin	0.00074	0
+bin	0.00076	0
+bin	0.00078	0
+bin	0.0008	0
+bin	0.00082	0
+bin	0.00084	4
+bin	0.00086	0
+bin	0.00088	0
+bin	0.0009	0
+bin	0.00092	44
+bin	0.00094	1
+bin	0.00096	0
+bin	0.00098	20
+bin	0.001	9
+bin	0.00102	2
+bin	0.00104	0
+bin	0.00106	2
+bin	0.00108	0
+bin	0.0011	0
+bin	0.00112	60
+bin	0.00114	0
+bin	0.00116	0
+bin	0.00118	0
+bin	0.0012	0
+bin	0.00122	0
+bin	0.00124	0
+bin	0.00126	0
+scalar WiredEmulation.switch1.eth[1].queue outgoingPackets:count 4161
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue outgoingPacketLengths:sum 11358288
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[1].queue outgoingPacketLengths:histogram
+field count 4161
+field mean 2729.7015140591
+field stddev 3398.95462384
+field min 512
+field max 12112
+field sum 11358288
+field sqrsum 79064768896
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	977
+bin	600	1289
+bin	800	135
+bin	1000	2
+bin	1200	62
+bin	1400	82
+bin	1600	122
+bin	1800	40
+bin	2000	24
+bin	2200	350
+bin	2400	0
+bin	2600	62
+bin	2800	1
+bin	3000	0
+bin	3200	58
+bin	3400	0
+bin	3600	0
+bin	3800	0
+bin	4000	0
+bin	4200	106
+bin	4400	0
+bin	4600	60
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	0
+bin	6200	0
+bin	6400	0
+bin	6600	14
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	2
+bin	7800	0
+bin	8000	114
+bin	8200	52
+bin	8400	0
+bin	8600	56
+bin	8800	166
+bin	9000	8
+bin	9200	56
+bin	9400	4
+bin	9600	0
+bin	9800	223
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	96
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+statistic WiredEmulation.switch1.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.eth[1].queue incomingPackets:count 4161
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue incomingPacketLengths:sum 11358288
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[1].queue incomingPacketLengths:histogram
+field count 4161
+field mean 2729.7015140591
+field stddev 3398.95462384
+field min 512
+field max 12112
+field sum 11358288
+field sqrsum 79064768896
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	977
+bin	600	1289
+bin	800	135
+bin	1000	2
+bin	1200	62
+bin	1400	82
+bin	1600	122
+bin	1800	40
+bin	2000	24
+bin	2200	350
+bin	2400	0
+bin	2600	62
+bin	2800	1
+bin	3000	0
+bin	3200	58
+bin	3400	0
+bin	3600	0
+bin	3800	0
+bin	4000	0
+bin	4200	106
+bin	4400	0
+bin	4600	60
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	0
+bin	6200	0
+bin	6400	0
+bin	6600	14
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	2
+bin	7800	0
+bin	8000	114
+bin	8200	52
+bin	8400	0
+bin	8600	56
+bin	8800	166
+bin	9000	8
+bin	9200	56
+bin	9400	4
+bin	9600	0
+bin	9800	223
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	96
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+scalar WiredEmulation.switch1.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.switch1.eth[1].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.switch1.eth[1].mac interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[1].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.switch1.eth[1].mac sendRawBytes false
+par WiredEmulation.switch1.eth[1].mac promiscuous true
+par WiredEmulation.switch1.eth[1].mac duplexMode true
+par WiredEmulation.switch1.eth[1].mac mtu 1500B
+attr unit B
+par WiredEmulation.switch1.eth[1].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.switch1.eth[1].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.switch1.eth[1].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.switch1.eth[1].mac "simulated time" 982.623394618
+scalar WiredEmulation.switch1.eth[1].mac full-duplex 1
+scalar WiredEmulation.switch1.eth[1].mac "frames/sec sent" 4.2345826720497
+scalar WiredEmulation.switch1.eth[1].mac "frames/sec rcvd" 4.6365678091464
+scalar WiredEmulation.switch1.eth[1].mac "bits/sec sent" 11559.146731302
+scalar WiredEmulation.switch1.eth[1].mac "bits/sec rcvd" 11267.274991253
+scalar WiredEmulation.switch1.eth[1].mac "rx channel idle (%)" 99.88435984669
+scalar WiredEmulation.switch1.eth[1].mac "rx channel utilization (%)" 0.11564015331039
+scalar WiredEmulation.switch1.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.switch1.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.switch1.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.switch1.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.switch1.eth[1].mac rxPkOk:count 4556
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.switch1.eth[1].mac rxPkOk:sum(packetBytes) 1383936
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac txPk:count 4161
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.switch1.eth[1].mac txPk:sum(packetBytes) 1419786
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac packetReceivedFromUpper:count 4161
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.switch1.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1419786
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac passedUpPk:count 4556
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.switch1.eth[1].mac passedUpPk:sum(packetBytes) 1383936
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.switch1.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.switch1.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.switch1.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.switch1.eth[1] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.switch1.eth[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.switch1.eth[1] recordPcap false
+par WiredEmulation.switch1.eth[1] numPcapRecorders 0
+par WiredEmulation.switch1.eth[1] interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[1] protocol "\"ethernetmac\""
+par WiredEmulation.switch1.eth[1] address "\"0A-AA-00-00-00-08\""
+attr mutable ""
+par WiredEmulation.switch1.eth[1] duplexMode true
+par WiredEmulation.switch1.eth[1] csmacdSupport false
+par WiredEmulation.switch1.eth[1] bitrate 0bps
+attr unit bps
+par WiredEmulation.switch1.eth[1] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.switch1.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.switch1.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.switch1.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.switch1.eth[2].mac.phys$o.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[2].phys$i.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[2].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[2].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WiredEmulation.switch1.eth[2].queue typename "\"inet.linklayer.ethernet.common.EthernetQueue\""
+par WiredEmulation.switch1.eth[2].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WiredEmulation.switch1.eth[2].queue packetCapacity 1000
+par WiredEmulation.switch1.eth[2].queue dataCapacity -1b
+attr unit b
+par WiredEmulation.switch1.eth[2].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WiredEmulation.switch1.eth[2].queue comparatorClass "\"inet::EthernetFrameTypeComparator\""
+par WiredEmulation.switch1.eth[2].queue bufferModule "\"\""
+scalar WiredEmulation.switch1.eth[2].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue queueLength:timeavg 0.00044304977001819
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar WiredEmulation.switch1.eth[2].queue queueBitLength:max 6792
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar WiredEmulation.switch1.eth[2].queue queueBitLength:timeavg 1.1566990129905
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic WiredEmulation.switch1.eth[2].queue queueingTime:histogram
+field count 4430
+field mean 9.8273379006771e-05
+field stddev 0.00026790169453913
+field min 0
+field max 0.0011368
+field sum 0.435351069
+field sqrsum 0.00036065858774754
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3809
+bin	2e-05	45
+bin	4e-05	0
+bin	6e-05	0
+bin	8e-05	1
+bin	0.0001	0
+bin	0.00012	1
+bin	0.00014	2
+bin	0.00016	0
+bin	0.00018	0
+bin	0.0002	0
+bin	0.00022	0
+bin	0.00024	0
+bin	0.00026	0
+bin	0.00028	0
+bin	0.0003	0
+bin	0.00032	0
+bin	0.00034	0
+bin	0.00036	3
+bin	0.00038	104
+bin	0.0004	0
+bin	0.00042	0
+bin	0.00044	0
+bin	0.00046	0
+bin	0.00048	0
+bin	0.0005	0
+bin	0.00052	0
+bin	0.00054	0
+bin	0.00056	57
+bin	0.00058	0
+bin	0.0006	1
+bin	0.00062	0
+bin	0.00064	0
+bin	0.00066	101
+bin	0.00068	1
+bin	0.0007	0
+bin	0.00072	0
+bin	0.00074	0
+bin	0.00076	0
+bin	0.00078	0
+bin	0.0008	0
+bin	0.00082	0
+bin	0.00084	114
+bin	0.00086	0
+bin	0.00088	1
+bin	0.0009	0
+bin	0.00092	98
+bin	0.00094	0
+bin	0.00096	0
+bin	0.00098	19
+bin	0.001	10
+bin	0.00102	0
+bin	0.00104	0
+bin	0.00106	3
+bin	0.00108	0
+bin	0.0011	0
+bin	0.00112	60
+bin	0.00114	0
+bin	0.00116	0
+bin	0.00118	0
+bin	0.0012	0
+bin	0.00122	0
+bin	0.00124	0
+bin	0.00126	0
+scalar WiredEmulation.switch1.eth[2].queue outgoingPackets:count 4430
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue outgoingPacketLengths:sum 11480168
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[2].queue outgoingPacketLengths:histogram
+field count 4430
+field mean 2591.4600451467
+field stddev 3464.9929591437
+field min 512
+field max 12112
+field sum 11480168
+field sqrsum 82925751104
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	922
+bin	600	1543
+bin	800	175
+bin	1000	54
+bin	1200	60
+bin	1400	70
+bin	1600	236
+bin	1800	32
+bin	2000	24
+bin	2200	187
+bin	2400	0
+bin	2600	60
+bin	2800	0
+bin	3000	0
+bin	3200	107
+bin	3400	114
+bin	3600	0
+bin	3800	1
+bin	4000	0
+bin	4200	58
+bin	4400	0
+bin	4600	62
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	105
+bin	6200	3
+bin	6400	0
+bin	6600	11
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	5
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	4
+bin	8800	0
+bin	9000	4
+bin	9200	0
+bin	9400	4
+bin	9600	0
+bin	9800	379
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	210
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+statistic WiredEmulation.switch1.eth[2].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WiredEmulation.switch1.eth[2].queue incomingPackets:count 4430
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue incomingPacketLengths:sum 11480168
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic WiredEmulation.switch1.eth[2].queue incomingPacketLengths:histogram
+field count 4430
+field mean 2591.4600451467
+field stddev 3464.9929591437
+field min 512
+field max 12112
+field sum 11480168
+field sqrsum 82925751104
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	922
+bin	600	1543
+bin	800	175
+bin	1000	54
+bin	1200	60
+bin	1400	70
+bin	1600	236
+bin	1800	32
+bin	2000	24
+bin	2200	187
+bin	2400	0
+bin	2600	60
+bin	2800	0
+bin	3000	0
+bin	3200	107
+bin	3400	114
+bin	3600	0
+bin	3800	1
+bin	4000	0
+bin	4200	58
+bin	4400	0
+bin	4600	62
+bin	4800	0
+bin	5000	0
+bin	5200	0
+bin	5400	0
+bin	5600	0
+bin	5800	0
+bin	6000	105
+bin	6200	3
+bin	6400	0
+bin	6600	11
+bin	6800	0
+bin	7000	0
+bin	7200	0
+bin	7400	0
+bin	7600	5
+bin	7800	0
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	4
+bin	8800	0
+bin	9000	4
+bin	9200	0
+bin	9400	4
+bin	9600	0
+bin	9800	379
+bin	10000	0
+bin	10200	0
+bin	10400	0
+bin	10600	0
+bin	10800	0
+bin	11000	0
+bin	11200	0
+bin	11400	0
+bin	11600	0
+bin	11800	0
+bin	12000	210
+bin	12200	0
+bin	12400	0
+bin	12600	0
+bin	12800	0
+bin	13000	0
+bin	13200	0
+bin	13400	0
+bin	13600	0
+bin	13800	0
+bin	14000	0
+bin	14200	0
+bin	14400	0
+bin	14600	0
+bin	14800	0
+bin	15000	0
+bin	15200	0
+scalar WiredEmulation.switch1.eth[2].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar WiredEmulation.switch1.eth[2].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par WiredEmulation.switch1.eth[2].mac typename "\"inet.linklayer.ethernet.basic.EthernetMac\""
+par WiredEmulation.switch1.eth[2].mac interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[2].mac displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par WiredEmulation.switch1.eth[2].mac sendRawBytes false
+par WiredEmulation.switch1.eth[2].mac promiscuous true
+par WiredEmulation.switch1.eth[2].mac duplexMode true
+par WiredEmulation.switch1.eth[2].mac mtu 1500B
+attr unit B
+par WiredEmulation.switch1.eth[2].mac fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.switch1.eth[2].mac stopOperationExtraTime -1s
+attr unit s
+par WiredEmulation.switch1.eth[2].mac stopOperationTimeout 2s
+attr unit s
+scalar WiredEmulation.switch1.eth[2].mac "simulated time" 982.623394618
+scalar WiredEmulation.switch1.eth[2].mac full-duplex 1
+scalar WiredEmulation.switch1.eth[2].mac "frames/sec sent" 4.508339638832
+scalar WiredEmulation.switch1.eth[2].mac "frames/sec rcvd" 4.2457771948549
+scalar WiredEmulation.switch1.eth[2].mac "bits/sec sent" 11683.182043984
+scalar WiredEmulation.switch1.eth[2].mac "bits/sec rcvd" 10990.090465125
+scalar WiredEmulation.switch1.eth[2].mac "rx channel idle (%)" 99.887381797944
+scalar WiredEmulation.switch1.eth[2].mac "rx channel utilization (%)" 0.11261820205596
+scalar WiredEmulation.switch1.eth[2].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar WiredEmulation.switch1.eth[2].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar WiredEmulation.switch1.eth[2].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar WiredEmulation.switch1.eth[2].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar WiredEmulation.switch1.eth[2].mac rxPkOk:count 4172
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar WiredEmulation.switch1.eth[2].mac rxPkOk:sum(packetBytes) 1349890
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac txPk:count 4430
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar WiredEmulation.switch1.eth[2].mac txPk:sum(packetBytes) 1435021
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac packetReceivedFromUpper:count 4430
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar WiredEmulation.switch1.eth[2].mac packetReceivedFromUpper:sum(packetBytes) 1435021
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac passedUpPk:count 4172
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WiredEmulation.switch1.eth[2].mac passedUpPk:sum(packetBytes) 1349890
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WiredEmulation.switch1.eth[2].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WiredEmulation.switch1.eth[2].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WiredEmulation.switch1.eth[2].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+par WiredEmulation.switch1.eth[2] typename "\"inet.linklayer.ethernet.EthernetInterface\""
+par WiredEmulation.switch1.eth[2] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WiredEmulation.switch1.eth[2] recordPcap false
+par WiredEmulation.switch1.eth[2] numPcapRecorders 0
+par WiredEmulation.switch1.eth[2] interfaceTableModule "\"WiredEmulation.switch1.interfaceTable\""
+par WiredEmulation.switch1.eth[2] protocol "\"ethernetmac\""
+par WiredEmulation.switch1.eth[2] address "\"0A-AA-00-00-00-09\""
+attr mutable ""
+par WiredEmulation.switch1.eth[2] duplexMode true
+par WiredEmulation.switch1.eth[2] csmacdSupport false
+par WiredEmulation.switch1.eth[2] bitrate 0bps
+attr unit bps
+par WiredEmulation.switch1.eth[2] fcsMode "\"computed\""
+attr enum declared,computed
+scalar WiredEmulation.switch1.eth[2] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar WiredEmulation.switch1.eth[2] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar WiredEmulation.switch1.eth[2] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar WiredEmulation.switch1.eth[2] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par WiredEmulation.switch1 typename "\"inet.node.ethernet.EthernetSwitch\""
+par WiredEmulation.switch1 recordPcap false
+par WiredEmulation.switch1 numPcapRecorders 0
+par WiredEmulation.switch1 numApps 0
+par WiredEmulation.switch1 hasStatus false
+par WiredEmulation.switch1 hasStp false
+par WiredEmulation.switch1 hasGptp false
+par WiredEmulation.switch1 hasCutthroughSwitching false
+par WiredEmulation.switch1 fcsMode "\"computed\""
+attr enum declared,computed
+par WiredEmulation.switch1 spanningTreeProtocol "\"Stp\""
+par WiredEmulation.switch1 numEthInterfaces 0
+par WiredEmulation typename "\"thesis.simulations.wired_emulation.WiredEmulation\""
+
