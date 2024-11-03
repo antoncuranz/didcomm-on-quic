@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant controller as Controller
+    participant alice as ACA-py Agent
+    participant bob as Other Agent
+    
+    controller->>alice: Connect to DID
+    activate controller
+
+    autonumber 1
+    alice->>bob: didexchange request
+    autonumber 1
+    bob->>alice: didexchange response
+    alice->>bob: didexchange complete
+    autonumber off
+    
+    alice-->>controller: Completed Webhook
+    deactivate controller

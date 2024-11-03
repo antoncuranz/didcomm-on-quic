@@ -1,3 +1,4 @@
+import os
 import sys
 import re
 from os import listdir
@@ -9,39 +10,7 @@ import matplotlib.pyplot as plt
 FIRST_CHUNK = 1
 
 
-def print_latex(files, bp):
-    outliers = [flier.get_ydata() for flier in bp["fliers"]]
-    boxes = [box.get_ydata() for box in bp["boxes"]]
-    medians = [median.get_ydata() for median in bp["medians"]]
-    whiskers = [whiskers.get_ydata() for whiskers in bp["whiskers"]]
-
-    for i, file in enumerate(files):
-        fill = "blue" if "http3" in file else "red"
-        position = 1.2 if "http3" in file else 0.8
-        latex = """
-\\addplot+[
-fill={},
-draw=black,
-boxplot prepared={{
-    draw position={},
-    lower whisker={},
-    lower quartile={},
-    median={},
-    upper quartile={},
-    upper whisker={}
-}},
-] coordinates {{}};
-% ] coordinates {{{}}};
-            """.format(fill, position, whiskers[i * 2][1], boxes[i][1], medians[i][1], boxes[i][2], whiskers[i * 2 + 1][1],
-                       " ".join(["(0,{})".format(str(o)) for o in outliers[i]]))
-        print(latex)
-
-
-def process(path):
-    plt.figure(path)
-    plt.title("Time to retrieve DASH segment ({})".format(path))
-    print("Processing {}".format(path))
-    files = [f for f in listdir(path) if isfile(join(path, f))]
+def create_boxplot(path, files):
     data = {}
 
     for file in files:
@@ -61,8 +30,17 @@ def process(path):
 
     df = pd.DataFrame(data)
     _, bp = pd.DataFrame.boxplot(df, return_type='both')
+    return bp
 
-    print_latex(files, bp)
+
+def process(path):
+    title = os.path.basename(os.path.normpath(path))
+    plt.figure(title)
+    plt.title("Time to retrieve DASH segment ({})".format(title))
+    print("Processing {}".format(path))
+    files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswith(".txt")]
+    create_boxplot(path, files)
+    plt.savefig(join(path, title))
 
 
 if __name__ == "__main__":
