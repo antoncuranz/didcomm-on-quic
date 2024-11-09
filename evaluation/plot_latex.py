@@ -50,6 +50,7 @@ LATEX_PLOT = """
 fill={},
 draw=black,
 solid,
+mark=asterisk,
 boxplot prepared={{
     draw position={},
     lower whisker={},

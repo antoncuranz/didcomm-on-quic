@@ -6,7 +6,7 @@ from os.path import isfile, join
 import pandas as pd
 import matplotlib.pyplot as plt
 
-SAMPLE_SIZE = 50
+SAMPLE_SIZE = 100
 
 
 def create_boxplot(path, files):
