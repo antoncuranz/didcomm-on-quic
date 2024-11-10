@@ -4,6 +4,7 @@ import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.node.ethernet.EthernetSwitch;
 import inet.node.ethernet.EthernetLink;
+import inet.node.ethernet.*;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import ned.DatarateChannel;
@@ -14,10 +15,10 @@ network WiredEmulation
     parameters:
         @display("bgb=706.428,339.264");
     types:
-        channel ethline extends EthernetLink
+        channel ethline extends Eth100M
         {
-            delay = 30 ms;
-            datarate = 10 Mbps;
+            delay = 0 ms;
+            //datarate = 50 Mbps;
         }
     submodules:
         router1: Router {
