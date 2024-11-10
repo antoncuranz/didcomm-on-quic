@@ -5,3 +5,5 @@ venv
 /recvd/
 /logs/
 /simulations/**/results/
+/simulations/**/.cmdenv-log
+/simulations/**/.qtenvrc
