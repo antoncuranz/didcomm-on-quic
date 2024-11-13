@@ -41,16 +41,19 @@ network WirelessEmulation
             @display("p=350,150");
         }
         ap1: AccessPoint {
-            @display("p=230,210");
+            @display("p=150,210");
         }
         ap2: AccessPoint {
-            @display("p=470,210");
+            @display("p=550,210");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             @display("p=75,50");
         }
         visualizer: IntegratedCanvasVisualizer {
             @display("p=75,118");
+        }
+        configurator: Ipv4NetworkConfigurator {
+            @display("p=100,100");
         }
     connections allowunconnected:
         indy1.ethg[1] <--> ethline <--> switch1.ethg++;
