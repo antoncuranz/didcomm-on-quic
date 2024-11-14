@@ -29,7 +29,8 @@ class HttpsTransport(BaseOutboundTransport):
 
     async def start(self):
         """Start the transport."""
-        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False, force_close=self.force_close, keepalive_timeout=self.keepalive_timeout)
+        keepalive_timeout = None if self.force_close else self.keepalive_timeout
+        self.connector = TCPConnector(limit=200, limit_per_host=50, verify_ssl=False, force_close=self.force_close, keepalive_timeout=keepalive_timeout)
         session_args = {
             "cookie_jar": DummyCookieJar(),
             "connector": self.connector,
