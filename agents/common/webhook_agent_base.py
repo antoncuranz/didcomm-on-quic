@@ -143,4 +143,5 @@ class WebhookAgentBase(AgentBase):
         self.log_msg("Connection webhook: did = {}; state = {};".format(their_did, message["state"]))
 
     async def handle_present_proof_v2_0(self, message):
-        self.log_msg("Present-Proof webhook: pres_ex_id = {}; state = {};".format(message["pres_ex_id"], message["state"]))
+        # self.log_msg("Present-Proof webhook: pres_ex_id = {}; state = {};".format(message["pres_ex_id"], message["state"]))
+        pass

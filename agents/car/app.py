@@ -88,13 +88,16 @@ class CarApp(AppBase):
         self.access_btn = None
         self.display_cb = None
         self.bm_input = None
+        self.bm_pres_times = {}
+        self.bm_conn_count = None
+        self.bm_pres_batch_cb = None
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
         self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
         self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
         self.bm_connections = {}
-        self.bm_reconnect_count = 0
+        self.bm_repeat_count = 0
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(
@@ -108,29 +111,33 @@ class CarApp(AppBase):
         yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
         
     def compose_benchmark_ui(self) -> ComposeResult:
-        yield Input("PhbGmg1H53KupchWiZSyk1", id="bm_input", placeholder="Connect to DID", classes="input")
-        yield Button("Connect", id="bm_connect")
-        yield Input("1", id="bm_conn_count", placeholder="Count", classes="input")
+        with Vertical():
+            with Horizontal():
+                yield Input("PhbGmg1H53KupchWiZSyk1", id="bm_input", placeholder="Connect to DID", classes="input")
+                yield Button("Connect", id="bm_connect")
+                yield Input("1", id="bm_conn_count", placeholder="Count", classes="input")
+            with Horizontal():
+                yield Button("Request Proof", id="bm_presreq")
+                yield Checkbox("Batch", id="bm_pres_batch")
 
     def on_mount(self) -> None:
         self.credential_table = self.query_one("#credential_table", DataTable)
         self.credential_table.add_columns("State", "Schema", "Attributes")
 
         self.service_input = self.query_one("#service_input", Input)
-        self.register_btn = self.query_one("#register_btn", Button)
-        self.access_btn = self.query_one("#access_btn", Button)
         self.display_cb = self.query_one("#display_cb", Checkbox)
         self.bm_input = self.query_one("#bm_input", Input)
         self.bm_conn_count = self.query_one("#bm_conn_count", Input)
+        self.bm_pres_batch_cb = self.query_one("#bm_pres_batch", Checkbox)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
         if button == "bm_connect":
             did = self.bm_input.value
-            self.bm_reconnect_count = int(self.bm_conn_count.value) - 1
+            self.bm_repeat_count = int(self.bm_conn_count.value) - 1
             self.run_worker(self.agent.create_connection(did), exit_on_error=False)
             return
-        
+
         conn_id = self.get_focused_connection()
 
         if button == "register_btn":
@@ -142,7 +149,14 @@ class CarApp(AppBase):
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
-    
+        elif button == "bm_presreq":
+            if self.bm_pres_batch_cb.value:
+                count = int(self.bm_conn_count.value)
+            else:
+                self.bm_repeat_count = int(self.bm_conn_count.value)
+                count = 1
+            self.batch_request_presentations(conn_id, count)
+
     def handle_credentials(self, credential):
         if credential["state"] == "done":
             self.log_msg("Adding new credential to table")
@@ -201,9 +215,9 @@ class CarApp(AppBase):
             if self.benchmark_mode.value:
                 self.run_worker(self.agent.delete_connection(conn_id), exit_on_error=False)
                 
-        elif state == "deleted" and self.bm_reconnect_count > 0:
+        elif state == "deleted" and self.bm_repeat_count > 0:
             did = connection["their_did"].split(":")[-1]
-            self.bm_reconnect_count -= 1
+            self.bm_repeat_count -= 1
 
             async def wait_and_connect(did):
                 await asyncio.sleep(self.agent.keepalive_timeout + 0.5)
@@ -211,5 +225,39 @@ class CarApp(AppBase):
                 await self.agent.create_connection(did)
 
             self.run_worker(wait_and_connect(did), exit_on_error=False)
-    
+
+    def batch_request_presentations(self, conn_id, count):
+        self.bm_pres_times = dict(init=time.perf_counter(), count=count)
+
+        def done_callback(task, req_time):
+            pres_ex_id = task.result()["pres_ex_id"]
+            self.bm_pres_times[pres_ex_id] = dict(req_time=req_time)
+
+        for i in range(count):
+            req_time = time.perf_counter()
+            task = asyncio.create_task(self.agent.request_presentation(conn_id))
+            task.add_done_callback(lambda task: done_callback(task, req_time))
+
+    def handle_present_proof(self, message):
+        super().handle_present_proof(message)
+
+        if message["state"] != "done":
+            return
+
+        pres_ex_id = message["pres_ex_id"]
+        rsp_time = time.perf_counter()
+        if pres_ex_id in self.bm_pres_times:
+            req_time = self.bm_pres_times.pop(pres_ex_id)["req_time"]
+            self.log_msg( "BM(pres): done;{};{};{};{}".format(pres_ex_id, req_time, rsp_time, rsp_time-req_time))
+            if self.bm_repeat_count > 0:
+                self.bm_repeat_count -= 1
+                async def wait_and_request_pres(conn_id):
+                    await asyncio.sleep(self.agent.keepalive_timeout + 0.5)
+                    self.batch_request_presentations(conn_id, 1)
+
+                self.run_worker(wait_and_request_pres(message["connection_id"]), exit_on_error=False)
+
+        if self.bm_pres_batch_cb.value and len(self.bm_pres_times.keys()) == 2: # only init and count
+            req_time = self.bm_pres_times["init"]
+            self.log_msg("BM(pres): batch-done;{};{};{};{}".format(self.bm_pres_times["count"], req_time, rsp_time, rsp_time-req_time))
 

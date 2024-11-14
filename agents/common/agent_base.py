@@ -159,6 +159,32 @@ class AgentBase:
     async def get_credentials_for_pres_req(self, pres_ex_id):
         return await self.admin_GET("/present-proof-2.0/records/{}/credentials".format(pres_ex_id))
 
+    async def request_presentation(self, conn_id):
+        uri = "/present-proof-2.0/send-request"
+        restrictions = [{"issuer_did": "NB5Rjw6kpkMcwmcUQeLhKt"}]
+        body = {
+            "connection_id": conn_id,
+            "presentation_request": {
+                "indy": {
+                    "name": "Proof of Identity",
+                    "version": "1.0",
+                    "requested_attributes": {
+                        "1_first_name": {
+                            "name": "first_name",
+                            "restrictions": restrictions
+                        },
+                        "2_last_name": {
+                            "name": "last_name",
+                            "restrictions": restrictions
+                        }
+                    },
+                    "requested_predicates": {}
+                }
+            }
+        }
+
+        return await self.admin_POST(uri, body)
+
     async def send_presentation(self, pres_ex_id, credential):
         uri = "/present-proof-2.0/records/{}/send-presentation".format(pres_ex_id)
         body = {
