@@ -27,7 +27,7 @@ LATEX_PRE = \
     xtick={{{}}},
     xticklabels={{{}}},
     %ymin=0.1,
-    ytick distance=0.05,
+    %ytick distance=0.05,
     %ymax=0.6,
     boxplot/box extend=0.35,
     boxplot/draw direction=y,
@@ -59,8 +59,8 @@ boxplot prepared={{
     upper quartile={},
     upper whisker={}
 }},
-] coordinates {{}};
-% ] coordinates {{{}}};"""
+% ] coordinates {{}};
+] coordinates {{{}}};"""
 
 LATEX_POST = \
 """
