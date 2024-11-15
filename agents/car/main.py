@@ -2,7 +2,7 @@ import argparse
 import asyncio
 import logging
 
-from agents.car.app import CarApp
+from agents.car.bm_app import BenchmarkCarApp
 from .agent import Agent
 
 logging.basicConfig(level=logging.DEBUG)
@@ -55,7 +55,7 @@ async def main(args):
     transport_type = "http3" if args.quic else "https"
     agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip,
                   receive_invitations=args.receive_invitations, force_close=args.force_close, keepalive_timeout=args.keepalive)
-    app = CarApp(agent)
+    app = BenchmarkCarApp(agent)
 
     try:
         await app.run_async()

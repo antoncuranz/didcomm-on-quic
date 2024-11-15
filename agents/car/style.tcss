@@ -41,3 +41,7 @@ Horizontal {
 #bm_conn_count {
     width: 20;
 }
+
+#benchmark_ui Button {
+    width: 25;
+}
