@@ -20,9 +20,10 @@ class Agent(WebhookAgentBase):
             http_port: int = 8020,
             receive_invitations: bool = False,
             force_close: bool = False,
-            keepalive_timeout=None
+            keepalive_timeout=None,
+            ledger_keepalive=None
     ):
-        super().__init__(ident, http_port, transport_type, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32), force_close=force_close, keepalive_timeout=keepalive_timeout)
+        super().__init__(ident, http_port, transport_type, external_host=external_host, ledger_url=ledger_url, seed=ident.zfill(32), force_close=force_close, keepalive_timeout=keepalive_timeout, ledger_keepalive=ledger_keepalive)
         self.receive_invitations = receive_invitations
 
     async def initialize(self):

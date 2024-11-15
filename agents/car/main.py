@@ -49,12 +49,17 @@ parser.add_argument(
     type = float,
     help = "Keepalive timeout for outbound transport",
 )
+parser.add_argument(
+    "--ledger-keepalive",
+    type = int,
+    help = "Keepalive for ledger",
+)
 
 
 async def main(args):
     transport_type = "http3" if args.quic else "https"
     agent = Agent(args.ident, args.ledger, transport_type, http_port=args.port, external_host=args.ip,
-                  receive_invitations=args.receive_invitations, force_close=args.force_close, keepalive_timeout=args.keepalive)
+                  receive_invitations=args.receive_invitations, force_close=args.force_close, keepalive_timeout=args.keepalive, ledger_keepalive=args.ledger_keepalive)
     app = BenchmarkCarApp(agent)
 
     try:
