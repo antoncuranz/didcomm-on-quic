@@ -5,6 +5,7 @@ from os.path import isfile, join, isdir
 
 from eval_conn import create_boxplot as create_boxplot_conn
 from eval_chunk import create_boxplot as create_boxplot_chunk
+from eval_pres_batch import create_boxplot as create_boxplot_pres
 
 LATEX_PRE = \
 """\\documentclass[tikz]{{standalone}}
@@ -79,6 +80,10 @@ TYPES = {
     "chunk": {
         "title": "DASH segment transmission time ({})",
         "bpf": create_boxplot_chunk
+    },
+    "pres": {
+        "title": "Time to request and verify presentation (batched) ({})",
+        "bpf": create_boxplot_pres
     }
 }
 
@@ -124,7 +129,7 @@ def process_dir(path, type, outfile):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3 or sys.argv[2] not in TYPES.keys():
-        print("USAGE: {} <folder> <conn|chunk>".format(sys.argv[0]))
+        print("USAGE: {} <folder> <{}>".format(sys.argv[0], "|".join(TYPES.keys())))
         sys.exit(1)
 
     outfilename = join(sys.argv[1], "{}-{}.tex".format(sys.argv[1].replace("/", "-"), sys.argv[2]))

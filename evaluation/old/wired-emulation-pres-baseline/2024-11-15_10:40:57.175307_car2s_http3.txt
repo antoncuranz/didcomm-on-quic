@@ -1,0 +1,78 @@
+Started webhook listener on port: 8022
+Registering car2s ...
+using ledger: http://192.168.1.2:8000/register
+nym_info: {'did': '7vuCNteT74Y9pE434w6CS8', 'seed': '000000000000000000000000000car2s', 'verkey': '4n3rFjoUm2jFWkvGhKnu4vidkGsfYTJcQzteeB9YXnwZ'}
+Registered DID: 7vuCNteT74Y9pE434w6CS8
+Created public DID
+/usr/src/app/.venv/bin/python -m aries_cloudagent start --endpoint http3://192.168.3.2:8020 --label car2s --auto-respond-messages --inbound-transport acapy-plugins.http3transport.v1_0.inbound 0.0.0.0 8020 --outbound-transport acapy-plugins.http3transport.v1_0.outbound --outbound-transport acapy-plugins.httpstransport.v1_0.outbound --plugin-config-value httpxtransport.keepalive_timeout=0.5 --admin 0.0.0.0 8021 --admin-insecure-mode --wallet-type askar --wallet-name car2sde170589 --wallet-key car2s --preserve-exchange-records --auto-provision --public-invites --emit-new-didcomm-prefix --requests-through-public-did --auto-respond-credential-offer --auto-respond-credential-request --auto-store-credential --auto-verify-presentation --plugin acapy-plugins.serviceregistry.v1_0 --plugin acapy-plugins.videostreaming.v1_0 --plugin acapy-plugins.http3transport.v1_0 --plugin acapy-plugins.httpstransport.v1_0 --genesis-transactions {"reqSignature":{},"txn":{"data":{"data":{"alias":"Node1","blskey":"4N8aUNHSgjQVgkpm8nhNEfDf6txHznoYREg9kirmJrkivgL4oSEimFF6nsQ6M41QvhM2Z33nves5vfSn9n1UwNFJBYtWVnHYMATn76vLuL3zU88KyeAYcHfsih3He6UHcXDxcaecHVz6jhCYz1P2UZn2bDVruL5wXpehgBfBaLKm3Ba","blskey_pop":"RahHYiCvoNCtPTrVtP7nMC5eTYrsUA8WjXbdhNc8debh1agE9bGiJxWBXYNFbnJXoXhWFMvyqhqhRoq737YQemH5ik9oL7R4NTTCz2LEZhkgLJzB3QRQqJyBNyv7acbdHrAT8nQ9UkLbaVL9NBpnWXBTw4LEMePaSHEw66RzPNdAX1","client_ip":"192.168.1.2","client_port":9702,"node_ip":"192.168.1.2","node_port":9701,"services":["VALIDATOR"]},"dest":"Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv"},"metadata":{"from":"Th7MpTaRZVRYnPiabds81Y"},"type":"0"},"txnMetadata":{"seqNo":1,"txnId":"fea82e10e894419fe2bea7d96296a6d46f50f93f9eeda954ec461b2ed2950b62"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node2","blskey":"37rAPpXVoxzKhz7d9gkUe52XuXryuLXoM6P6LbWDB7LSbG62Lsb33sfG7zqS8TK1MXwuCHj1FKNzVpsnafmqLG1vXN88rt38mNFs9TENzm4QHdBzsvCuoBnPH7rpYYDo9DZNJePaDvRvqJKByCabubJz3XXKbEeshzpz4Ma5QYpJqjk","blskey_pop":"Qr658mWZ2YC8JXGXwMDQTzuZCWF7NK9EwxphGmcBvCh6ybUuLxbG65nsX4JvD4SPNtkJ2w9ug1yLTj6fgmuDg41TgECXjLCij3RMsV8CwewBVgVN67wsA45DFWvqvLtu4rjNnE9JbdFTc1Z4WCPA3Xan44K1HoHAq9EVeaRYs8zoF5","client_ip":"192.168.1.2","client_port":9704,"node_ip":"192.168.1.2","node_port":9703,"services":["VALIDATOR"]},"dest":"8ECVSk179mjsjKRLWiQtssMLgp6EPhWXtaYyStWPSGAb"},"metadata":{"from":"EbP4aYNeTHL6q385GuVpRV"},"type":"0"},"txnMetadata":{"seqNo":2,"txnId":"1ac8aece2a18ced660fef8694b61aac3af08ba875ce3026a160acbc3a3af35fc"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node3","blskey":"3WFpdbg7C5cnLYZwFZevJqhubkFALBfCBBok15GdrKMUhUjGsk3jV6QKj6MZgEubF7oqCafxNdkm7eswgA4sdKTRc82tLGzZBd6vNqU8dupzup6uYUf32KTHTPQbuUM8Yk4QFXjEf2Usu2TJcNkdgpyeUSX42u5LqdDDpNSWUK5deC5","blskey_pop":"QwDeb2CkNSx6r8QC8vGQK3GRv7Yndn84TGNijX8YXHPiagXajyfTjoR87rXUu4G4QLk2cF8NNyqWiYMus1623dELWwx57rLCFqGh7N4ZRbGDRP4fnVcaKg1BcUxQ866Ven4gw8y4N56S5HzxXNBZtLYmhGHvDtk6PFkFwCvxYrNYjh","client_ip":"192.168.1.2","client_port":9706,"node_ip":"192.168.1.2","node_port":9705,"services":["VALIDATOR"]},"dest":"DKVxG2fXXTU8yT5N7hGEbXB3dfdAnYv1JczDUHpmDxya"},"metadata":{"from":"4cU41vWW82ArfxJxHkzXPG"},"type":"0"},"txnMetadata":{"seqNo":3,"txnId":"7e9f355dffa78ed24668f0e0e369fd8c224076571c51e2ea8be5f26479edebe4"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node4","blskey":"2zN3bHM1m4rLz54MJHYSwvqzPchYp8jkHswveCLAEJVcX6Mm1wHQD1SkPYMzUDTZvWvhuE6VNAkK3KxVeEmsanSmvjVkReDeBEMxeDaayjcZjFGPydyey1qxBHmTvAnBKoPydvuTAqx5f7YNNRAdeLmUi99gERUU7TD8KfAa6MpQ9bw","blskey_pop":"RPLagxaR5xdimFzwmzYnz4ZhWtYQEj8iR5ZU53T2gitPCyCHQneUn2Huc4oeLd2B2HzkGnjAff4hWTJT6C7qHYB1Mv2wU5iHHGFWkhnTX9WsEAbunJCV2qcaXScKj4tTfvdDKfLiVuU2av6hbsMztirRze7LvYBkRHV3tGwyCptsrP","client_ip":"192.168.1.2","client_port":9708,"node_ip":"192.168.1.2","node_port":9707,"services":["VALIDATOR"]},"dest":"4PS3EDQ3dW1tci1Bp6543CfuuebjFrg36kLAUcskGfaA"},"metadata":{"from":"TWwCRQRZ2ZHMJFn9TzLp7W"},"type":"0"},"txnMetadata":{"seqNo":4,"txnId":"aa5e817d7cc626170eca175822029339a444eb0ee8f0bd20d3b0b76e566fb008"},"ver":"1"}
+ --seed 000000000000000000000000000car2s --debug-webhooks --monitor-revocation-notification --webhook-url http://localhost:8022/webhooks
+Inserted new connection
+Adding new credential to table
+Adding new credential to table
+Adding new credential to table
+Agent initialized
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+BM(pres): done;881b4539-e050-4be8-ba28-fcd4ee6cdcd7;3013.06584348;3013.365734873;0.29989139300005263
+BM(pres): done;cdcbee76-e7be-4a4c-a14b-5d9649611f82;3014.36850295;3014.456932261;0.08842931099979978
+BM(pres): done;734dc71d-8d04-4f6b-9208-33d9789ac7a8;3015.460091479;3015.577590491;0.11749901200028035
+BM(pres): done;00c3d56d-28e2-4479-b1d4-9cc62cef4de5;3016.582222841;3016.669472948;0.08725010699981794
+BM(pres): done;6a73d046-46e2-4ff9-84ae-e0b6697c4781;3017.67128788;3017.785987198;0.11469931800002087
+BM(pres): done;9f95deb8-d181-4c03-b0c3-554647e2791f;3018.78994634;3018.881158746;0.09121240600006786
+BM(pres): done;093d6533-b9c7-4ef0-9c31-019da1b1c0ab;3019.882644383;3019.978239421;0.09559503800028324
+BM(pres): done;3f07535a-8dff-476e-b970-bb31ab3389da;3020.980534779;3021.085282496;0.10474771700000929
+BM(pres): done;59c6989f-8a4d-4999-a10d-519e04d6883d;3022.087205584;3022.181736583;0.09453099900019879
+BM(pres): done;97d390d7-b462-476c-a289-57377a676c50;3023.183879522;3023.288203946;0.10432442399996944
+BM(pres): done;95c55817-8475-41f9-80a2-81a24f10a432;3024.291701101;3024.443379208;0.15167810699995243
+BM(pres): done;50e91e34-ca17-4185-8b94-fa8949fa033b;3025.446717631;3025.528224682;0.08150705100024425
+BM(pres): done;3b252990-2f9c-4f2f-94b8-3ce948af08ff;3026.530286134;3026.637748612;0.1074624779998885
+BM(pres): done;34cbdca4-55e4-4404-8d67-6a8594ea0f14;3027.640939324;3027.742869508;0.10193018399968423
+BM(pres): done;bdebe4e7-c1da-42f4-aefa-ca3dd41ff77b;3028.744610334;3028.900984306;0.15637397199998304
+BM(pres): done;e150c907-c5c3-4177-ac63-e70c6d073f0a;3029.904810092;3029.985334641;0.08052454900007433
+BM(pres): done;c7afeaf4-c484-4614-bc4b-37745377220e;3030.989357237;3031.091149163;0.10179192599980524
+BM(pres): done;846ce3af-9ef9-47d8-bbef-e36047b611f5;3032.093712247;3032.195216882;0.10150463499985563
+BM(pres): done;27b588dd-81f3-4b72-bfce-d7e56b68fc24;3033.197164489;3033.325559039;0.12839454999993904
+BM(pres): done;7d2a0ff3-1d1e-46e1-9069-abfbda00e90c;3034.330726682;3034.423943793;0.09321711099983077
+BM(pres): done;47a5f768-cdbe-4197-ad5c-c21da67ac95d;3035.427650925;3035.545873174;0.11822224900015499
+BM(pres): done;1594f179-71fd-433f-b4e5-a345c94e20d8;3036.548801247;3036.72758973;0.17878848300006212
+BM(pres): done;5419f957-4bc4-42ca-9f27-79c1a863d368;3037.73062757;3037.874967275;0.14433970500022042
+BM(pres): done;ee89dd54-ad9a-4b85-827c-e07abf58131b;3038.877236472;3038.961173064;0.08393659200010006
+BM(pres): done;283b22e1-45ad-4906-9afe-eac166aa6772;3039.963824903;3040.077823506;0.11399860300025466
+BM(pres): done;b1584543-f46d-4699-ac3a-95701ab47da7;3041.081567648;3041.18405159;0.1024839419997079
+BM(pres): done;49e01281-41fa-4da6-836f-554dee0bd843;3042.18841862;3042.317877805;0.12945918500008702
+BM(pres): done;ea5337c6-a4b7-48cf-a095-49fe48fa084e;3043.32161636;3043.401334353;0.07971799300003113
+BM(pres): done;ba08fb2f-c60b-4d1b-9c97-745b16997eca;3044.40684133;3044.520402969;0.11356163899972671
+BM(pres): done;c21cb461-8e2b-43f5-a17e-5d2fafc7edc6;3045.523789649;3045.635987422;0.11219777300038913
+BM(pres): done;44132deb-c7ac-4a3b-8e9c-fa00f9c68b5c;3046.640225656;3046.757707968;0.11748231199999282
+BM(pres): done;fdfd4090-682a-4822-8f14-eb95ccfdb6c0;3047.760207985;3047.902941007;0.14273302200035687
+BM(pres): done;d26ec529-493b-4277-adc3-80f4c3735392;3048.906742615;3049.036207407;0.1294647919999079
+BM(pres): done;00c71b49-6a1c-427d-9fcb-d1f66a695844;3050.040822445;3050.169634115;0.12881167000023197
+BM(pres): done;4c17d627-3cb4-40e3-9c66-fe32b850934c;3051.172480436;3051.306367271;0.13388683499988474
+BM(pres): done;4da038d3-f335-4390-bb35-2ad512381cfe;3052.311327844;3052.420325336;0.10899749200007136
+BM(pres): done;7a4185a2-58d8-4528-841f-f774dcf201b6;3053.42294799;3053.550482204;0.1275342140002067
+BM(pres): done;4e11b86b-e2f1-43df-9857-e82afdb4b333;3054.554386658;3054.637526606;0.08313994799982538
+BM(pres): done;88786088-a8d8-4202-81f7-44362da7eb9c;3055.641641163;3055.761364686;0.11972352300017519
+BM(pres): done;23addf37-9ce1-47ce-b8ee-1145706ce9f8;3056.76379265;3056.877323553;0.11353090300008262
+BM(pres): done;e75267df-01dc-49b8-a8ba-e048277abf02;3057.880100534;3058.016919535;0.13681900099982158
+BM(pres): done;adf61e2c-059e-4985-8765-e8aa357586b3;3059.021437105;3059.10516054;0.08372343499968338
+BM(pres): done;4909a54f-1ce1-4d93-9ef1-43f0238b07fd;3060.1072769;3060.200583505;0.0933066049997251
+BM(pres): done;50ea9cfa-2d76-4d2b-b996-7fd634d52b7c;3061.203161798;3061.30927242;0.10611062199996013
+BM(pres): done;822654e7-82fc-4392-a750-16d80b467967;3062.311195239;3062.450463458;0.13926821899985953
+BM(pres): done;e425b738-d229-4a19-8588-9bb1a862603b;3063.453546371;3063.536117601;0.08257123000021238
+BM(pres): done;01d62f21-8821-4da7-b9f3-a889194630b4;3064.54251009;3064.653655913;0.11114582299978792
+BM(pres): done;0a96c63e-33c3-42c5-8408-eefec808637e;3065.657541152;3065.765656248;0.10811509600034697
+BM(pres): done;9ad4ffd7-2d93-49ea-b3ea-4228c05c3433;3066.768202393;3066.909408832;0.14120643899968854
+BM(pres): done;db522384-e76d-4d5f-b703-47c0f7309e9a;3067.915211136;3067.997969773;0.08275863700009722
+BM(pres): done;93e8f95d-8637-47ec-aed6-3539c5d67bdf;3069.001612574;3069.12251368;0.12090110600001935

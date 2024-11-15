@@ -6,7 +6,7 @@ from os.path import isfile, join
 import pandas as pd
 import matplotlib.pyplot as plt
 
-SAMPLE_SIZE = 10
+SAMPLE_SIZE = 50
 
 
 def create_boxplot(path, files):
@@ -17,10 +17,16 @@ def create_boxplot(path, files):
         lines = f.readlines()
         file = file[27:-4]
         data[file] = []
+        
+        skip = True
 
         for line in lines:
             line = line.rstrip()
             if line.startswith("BM(pres): batch-done"):
+                if skip:
+                    skip = False
+                    continue
+                    
                 time = line.split(";")[-1]
                 data[file].append(float(time))
 
