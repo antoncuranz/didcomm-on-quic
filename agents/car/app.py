@@ -260,4 +260,5 @@ class CarApp(AppBase):
         if self.bm_pres_batch_cb.value and len(self.bm_pres_times.keys()) == 2: # only init and count
             req_time = self.bm_pres_times["init"]
             self.log_msg("BM(pres): batch-done;{};{};{};{}".format(self.bm_pres_times["count"], req_time, rsp_time, rsp_time-req_time))
+            self.notify("BM(pres): batch-done")
 
