@@ -2,9 +2,15 @@ sequenceDiagram
     participant controller as Controller
     participant alice as ACA-py Agent
     participant bob as Other Agent
+%%    participant indy as Indy Node
     
     controller->>alice: Connect to DID
     activate controller
+    
+%%    opt diddoc not cached
+%%        alice->>indy: retrieve did document
+%%        indy-->>alice: 
+%%    end
 
     autonumber 1
     alice->>bob: didexchange request
