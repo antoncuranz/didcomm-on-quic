@@ -5,7 +5,7 @@ from os.path import isfile, join, isdir
 
 from eval_conn import create_boxplot as create_boxplot_conn
 from eval_chunk import create_boxplot as create_boxplot_chunk
-from eval_pres_batch import create_boxplot as create_boxplot_pres
+from eval_pres import create_boxplot as create_boxplot_pres
 
 LATEX_PRE = \
 """\\documentclass[tikz]{{standalone}}

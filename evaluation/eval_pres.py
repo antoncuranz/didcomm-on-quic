@@ -17,10 +17,16 @@ def create_boxplot(path, files):
         lines = f.readlines()
         file = file[27:-4]
         data[file] = []
+        
+        skip = True
 
         for line in lines:
             line = line.rstrip()
-            if line.startswith("BM(pres):"):
+            if line.startswith("BM(pres): batch-done"):
+                if skip:
+                    skip = False
+                    continue
+                    
                 time = line.split(";")[-1]
                 data[file].append(float(time))
 
@@ -35,7 +41,7 @@ def create_boxplot(path, files):
 def process(path):
     title = os.path.basename(os.path.normpath(path))
     plt.figure(title)
-    plt.title("Time to request and verify presentation ({})".format(title))
+    plt.title("Time to request and verify presentation (batched)\n({})".format(title))
     print("Processing {}".format(path))
     files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswith(".txt")]
     create_boxplot(path, files)
