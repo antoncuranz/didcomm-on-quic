@@ -90,8 +90,6 @@ class CarApp(AppBase):
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
-        self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
-        self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
 
     def compose_ui(self) -> ComposeResult:
         yield Horizontal(

@@ -343,10 +343,11 @@ class AgentBase:
             "--auto-respond-credential-request",
             "--auto-store-credential",
             "--auto-verify-presentation",
-            ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
-            ("--plugin", "acapy-plugins.videostreaming.v1_0"),
             ("--plugin", "acapy-plugins.http3transport.v1_0"),
             ("--plugin", "acapy-plugins.httpstransport.v1_0"),
+            ("--plugin", "acapy-plugins.serviceregistry.v1_0"),
+            ("--plugin", "acapy-plugins.videostreaming.v1_0"),
+            ("--plugin", "acapy-plugins.filesharing.v1_0"),
             # ("--log-level", "debug"),
         ]
         if self.log_file or self.log_file == "":

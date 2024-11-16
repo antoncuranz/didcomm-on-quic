@@ -19,10 +19,8 @@ class BenchmarkCarApp(CarApp):
         self.bm_pres_batch_size = None
         self.bm_connections = {}
         self.bm_repeat_remaining = 0
-        self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
-        self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
-        self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
         self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
+        self.agent.set_webhook_callback("retrievefile_metrics", self.log_msg)
         self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
 
     def compose_benchmark_ui(self) -> ComposeResult:
