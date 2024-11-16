@@ -57,19 +57,12 @@ async def retrieve_file(request: web.BaseRequest):
             msg = "BM(file): {};{};{};{}".format(filename, req_time, rsp_time, rsp_time-req_time)
             await event_bus.notify(context.profile, Event("acapy::webhook::retrievefile_metrics", msg))
             
-            try:
-                file_content = base64.b64decode(event.payload["data"])
-            except (TypeError, ValueError) as e:
-                return web.Response(status=400, text="Invalid base64 content")
+            # try:
+            #     file_content = base64.b64decode(event.payload["data"])
+            # except (TypeError, ValueError) as e:
+            #     return web.Response(status=400, text="Invalid base64 content")
 
-            return web.Response(
-                body=file_content,
-                status=200,
-                headers={
-                    'Content-Disposition': f'attachment; filename="{event.payload["filename"]}"',
-                    'Content-Type': 'application/octet-stream'
-                }
-            )
+            return web.Response(status=204)
         else:
             return web.Response(text="Error", status=event.payload["status"])
 

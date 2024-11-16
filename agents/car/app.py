@@ -5,7 +5,7 @@ import subprocess
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label
+from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label, Collapsible
 from textual.widgets._data_table import CellDoesNotExist
 
 from agents.common.app_base import AppBase
@@ -87,27 +87,33 @@ class CarApp(AppBase):
         self.register_btn = None
         self.access_btn = None
         self.display_cb = None
+        self.filename_input = None
         self.agent.set_webhook_callback("issue_credential_v2_0", self.handle_credentials)
         self.agent.set_webhook_callback("requeststream_result", self.handle_stream_result)
         self.agent.set_webhook_callback("queryservices_result", self.handle_available_services)
 
     def compose_ui(self) -> ComposeResult:
-        yield Horizontal(
-            Input(id="service_input", placeholder="Service"),
-            Button("Register", id="register_btn"),
-            Button("Query", id="query_btn"),
-            Button("Access Stream", id="access_btn"),
-            Checkbox("Display", id="display_cb")
-        )
+        with Collapsible(title="Services"):
+            yield Horizontal(
+                Input(id="service_input", placeholder="Service"),
+                Button("Register", id="register_btn"),
+                Button("Query", id="query_btn"),
+            )
+            yield Horizontal(
+                Input("acapy-help.txt", id="filename_input", placeholder="Filename"),
+                Button("Retrieve File", id="file_btn"),
+                Button("Access Stream", id="access_btn"),
+                Checkbox("Display", id="display_cb")
+            )
         yield Label("Credentials")
         yield DataTable(id="credential_table", cursor_type="row", name="Credentials")
-        
+
     def on_mount(self) -> None:
         self.credential_table = self.query_one("#credential_table", DataTable)
         self.credential_table.add_columns("State", "Schema", "Attributes")
-
         self.service_input = self.query_one("#service_input", Input)
         self.display_cb = self.query_one("#display_cb", Checkbox)
+        self.filename_input = self.query_one("#filename_input", Input)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button = event.button.id
@@ -125,6 +131,8 @@ class CarApp(AppBase):
         elif button == "access_btn":
             self.log_msg("Requesting stream from connection {}".format(conn_id))
             self.run_worker(self.agent.request_video_stream(conn_id), exit_on_error=False)
+        elif button == "file_btn":
+            self.run_worker(self.agent.retrieve_file(conn_id, self.filename_input.value), exit_on_error=False)
 
     def handle_credentials(self, credential):
         if credential["state"] == "done":

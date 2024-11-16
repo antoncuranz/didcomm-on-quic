@@ -22,6 +22,7 @@ class BenchmarkCarApp(CarApp):
         self.agent.set_webhook_callback("fetchchunk_metrics", self.log_msg)
         self.agent.set_webhook_callback("retrievefile_metrics", self.log_msg)
         self.agent.set_webhook_callback("presentation_metrics", self.log_msg)
+        self.agent.set_webhook_callback("retrievefile_result", self.handle_retrievefile_results)
 
     def compose_benchmark_ui(self) -> ComposeResult:
         with Vertical():
@@ -53,6 +54,9 @@ class BenchmarkCarApp(CarApp):
             conn_id = self.get_focused_connection()
             self.bm_repeat_remaining = int(self.bm_repeat_count.value) - 1
             self.batch_request_presentations(conn_id)
+            
+        elif button == "file_btn":
+            self.bm_repeat_remaining = int(self.bm_repeat_count.value) - 1
 
     def handle_connections(self, connection):
         super().handle_connections(connection)
@@ -123,3 +127,16 @@ class BenchmarkCarApp(CarApp):
                     self.batch_request_presentations(conn_id)
 
                 self.run_worker(wait_and_request_pres(message["connection_id"]), exit_on_error=False)
+    
+    def handle_retrievefile_results(self, message):
+        if self.bm_repeat_remaining <= 0:
+            return
+        
+        self.bm_repeat_remaining -= 1
+
+        async def wait_and_download(conn_id, filename):
+            if self.agent.keepalive_timeout is not None:
+                await asyncio.sleep(self.agent.keepalive_timeout + 0.5)
+            await self.agent.retrieve_file(conn_id, filename)
+
+        self.run_worker(wait_and_download(message["conn_id"], message["filename"]), exit_on_error=False)

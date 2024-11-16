@@ -220,6 +220,10 @@ class AgentBase:
     async def request_video_stream(self, conn_id):
         uri = "/connections/{}/videostreaming".format(conn_id)
         return await self.admin_POST(uri)
+    
+    async def retrieve_file(self, conn_id, filename):
+        uri = "/connections/{}/filesharing/{}".format(conn_id, filename)
+        return await self.admin_GET(uri)
 
     async def get_wallets(self):
         """Get registered wallets of agent (this is an agency call)."""
@@ -343,6 +347,7 @@ class AgentBase:
             "--auto-respond-credential-request",
             "--auto-store-credential",
             "--auto-verify-presentation",
+            ("--max-message-size", str(2 * 1024 ** 3)),
             ("--plugin", "acapy-plugins.http3transport.v1_0"),
             ("--plugin", "acapy-plugins.httpstransport.v1_0"),
             ("--plugin", "acapy-plugins.serviceregistry.v1_0"),

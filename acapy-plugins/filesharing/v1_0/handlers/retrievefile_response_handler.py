@@ -20,8 +20,9 @@ class RetrieveFileResponseHandler(BaseHandler):
         await responder.send_webhook(
             "retrievefile_result",
             {
+                "conn_id": context.connection_record.connection_id,
                 "status": context.message.status,
                 "filename": context.message.filename,
-                "data": context.message.data
+                # "data": context.message.data
             },
         )

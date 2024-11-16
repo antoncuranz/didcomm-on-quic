@@ -18,6 +18,10 @@ Horizontal {
     width: 25;
 }
 
+#filename_input {
+    width: 25;
+}
+
 #register_btn {
     width: 0;
 }
