@@ -100,7 +100,7 @@ class CarApp(AppBase):
                 Button("Query", id="query_btn"),
             )
             yield Horizontal(
-                Input("acapy-help.txt", id="filename_input", placeholder="Filename"),
+                Input("files/file_1M", id="filename_input", placeholder="Filename"),
                 Button("Retrieve File", id="file_btn"),
                 Button("Access Stream", id="access_btn"),
                 Checkbox("Display", id="display_cb")
