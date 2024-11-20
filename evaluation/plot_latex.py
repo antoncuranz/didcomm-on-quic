@@ -6,6 +6,7 @@ from os.path import isfile, join, isdir
 from eval_conn import create_boxplot as create_boxplot_conn
 from eval_chunk import create_boxplot as create_boxplot_chunk
 from eval_pres import create_boxplot as create_boxplot_pres
+from eval_file import create_boxplot as create_boxplot_file
 
 LATEX_PRE = \
 """\\documentclass[tikz]{{standalone}}
@@ -22,9 +23,10 @@ LATEX_PRE = \
 
 \\begin{{axis}}
 [
-    title={{{}}},
+    %title={{{}}},
     xlabel={{TODO}},
     ylabel={{time in seconds}},
+    yticklabel style={{text width=8mm,align=right}},
     xtick={{{}}},
     xticklabels={{{}}},
     %ymin=0.1,
@@ -39,8 +41,8 @@ LATEX_PRE = \
     yminorgrids = true,
     major grid style = {{lightgray}},
     minor grid style = {{lightgray!25}},
-    width = \\textwidth,
-    height = \\textwidth,
+    width = 15cm,
+    height = 11.5cm,
 ]
 
 % START PLOTS
@@ -84,6 +86,10 @@ TYPES = {
     "pres": {
         "title": "Time to request and verify presentation (batched) ({})",
         "bpf": create_boxplot_pres
+    },
+    "file": {
+        "title": "File transmission time ({})",
+        "bpf": create_boxplot_file
     }
 }
 

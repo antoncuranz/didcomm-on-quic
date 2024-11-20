@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant controller as MPV (DASH client)
+    participant alice as ACA-py Agent
+    participant bob as Other Agent
+    
+    activate controller
+    
+    loop
+        controller->>alice: Request DASH segment
+        
+        alice->>bob: videostreaming chunk-request
+        bob->>alice: videostreaming chunk-response
+        
+        alice-->>controller: DASH segment
+    end
+    
+    deactivate controller

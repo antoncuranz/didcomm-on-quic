@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant controller as Controller
+    participant alice as ACA-py Agent
+    participant bob as Other Agent
+    
+    controller->>alice: Request file
+    activate controller
+    
+    autonumber 1
+    alice->>bob: filesharing request
+    autonumber 1
+    bob->>alice: filesharing response
+    autonumber off
+    
+    alice-->>controller: File content
+    deactivate controller
