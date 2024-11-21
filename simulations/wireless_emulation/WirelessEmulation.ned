@@ -8,9 +8,9 @@ import inet.node.ethernet.*;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import inet.node.inet.WirelessHost;
+import inet.node.inet.AdhocHost;
 import inet.node.wireless.AccessPoint;
 import ned.DatarateChannel;
-import inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.physicallayer.wireless.common.contract.packetlevel.IRadioMedium;
 import inet.visualizer.canvas.integrated.IntegratedCanvasVisualizer;
@@ -29,22 +29,19 @@ network WirelessEmulation
         }
     submodules:
         indy1: Router {
-            @display("p=350,50;i=device/smallrouter");
+            @display("p=350,124;i=device/accesspoint");
         }
         agent1: Router {
             @display("p=150,250;i=device/wifilaptop");
         }
+        intermediate1: Router {
+            @display("p=275,250;i=device/wifilaptop");
+        }
+        intermediate2: Router {
+            @display("p=425,250;i=device/wifilaptop");
+        }
         agent2: Router {
             @display("p=550,250;i=device/wifilaptop");
-        }
-        switch1: EthernetSwitch {
-            @display("p=350,150");
-        }
-        ap1: AccessPoint {
-            @display("p=150,210");
-        }
-        ap2: AccessPoint {
-            @display("p=550,210");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             @display("p=75,50");
@@ -53,10 +50,7 @@ network WirelessEmulation
             @display("p=75,118");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,100");
+            @display("p=75,183");
         }
     connections allowunconnected:
-        indy1.ethg[1] <--> ethline <--> switch1.ethg++;
-        ap1.ethg++ <--> ethline <--> switch1.ethg++;
-        ap2.ethg++ <--> ethline <--> switch1.ethg++;
 }
