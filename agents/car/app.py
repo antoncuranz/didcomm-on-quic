@@ -5,7 +5,7 @@ import subprocess
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label, Collapsible
+from textual.widgets import DataTable, Input, Button, Log, Checkbox, Label, Collapsible, TabbedContent
 from textual.widgets._data_table import CellDoesNotExist
 
 from agents.common.app_base import AppBase
@@ -156,8 +156,7 @@ class CarApp(AppBase):
                 .replace(b"initialization=\"", b"initialization=\"" + base_url.encode())
             file.write(modified)
 
-        if not self.benchmark_mode.value:
-            self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
+        self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
 
     def handle_available_services(self, message):
         connections = list(self.connection_table.get_column_at(2))
