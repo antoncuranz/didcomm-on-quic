@@ -156,7 +156,8 @@ class CarApp(AppBase):
                 .replace(b"initialization=\"", b"initialization=\"" + base_url.encode())
             file.write(modified)
 
-        self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
+        if not self.benchmark_mode.value:
+            self.push_screen(VideoStreamScreen(self.agent, stream_file, self.display_cb.value))
 
     def handle_available_services(self, message):
         connections = list(self.connection_table.get_column_at(2))
