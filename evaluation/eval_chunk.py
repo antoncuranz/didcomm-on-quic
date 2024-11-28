@@ -27,6 +27,10 @@ def create_boxplot(path, files):
                     continue
                 time = line.split(";")[-1]
                 data[file].append(float(time))
+        
+        # TODO remove once measurements complete
+        # if "dist72-5" in path:
+        #     data[file] = data[file][:110]
 
     df = pd.DataFrame(data)
     _, bp = pd.DataFrame.boxplot(df, return_type='both')
@@ -51,4 +55,4 @@ if __name__ == "__main__":
     for path in sys.argv[1:]:
         process(path)
 
-    plt.show()
+    # plt.show()
