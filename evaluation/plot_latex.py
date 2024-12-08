@@ -35,7 +35,7 @@ LATEX_PRE = \
     boxplot/box extend=0.35,
     boxplot/draw direction=y,
     area legend,
-    legend entries={{http2, http3}},
+    legend entries={{http1, http3}},
     legend pos=north west,
     ymajorgrids = true,
     yminorgrids = true,

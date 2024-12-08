@@ -1,0 +1,343 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{statistics}
+
+\begin{document}
+\begin{tikzpicture}
+
+\definecolor{red}{RGB}{219,58,52}
+\definecolor{blue}{RGB}{23,126,137}
+
+\begin{axis}
+[
+    %title={File transmission time (wireless-emulation/distrc/file-1M)},
+    xlabel={TODO},
+    ylabel={time in seconds},
+    yticklabel style={text width=8mm,align=right},
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    xticklabels={60,62-5,65,67-5,70,72-5,75,77-5,80,82-5},
+    %ymin=0.1,
+    %ytick distance=0.05,
+    %ymax=0.6,
+    boxplot/box extend=0.35,
+    boxplot/draw direction=y,
+    area legend,
+    legend entries={http2, http3},
+    legend pos=north west,
+    ymajorgrids = true,
+    yminorgrids = true,
+    major grid style = {lightgray},
+    minor grid style = {lightgray!25},
+    width = 15cm,
+    height = 11.5cm,
+]
+
+% START PLOTS
+
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=0.8,
+    lower whisker=1.1242835800003377,
+    lower quartile=1.1527814524997666,
+    median=1.1962736460000087,
+    upper quartile=1.2806523665003624,
+    upper whisker=1.3817424629996822
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=1.2,
+    lower whisker=1.1322692450012255,
+    lower quartile=1.149743890499849,
+    median=1.1614787669986981,
+    upper quartile=1.227731422000943,
+    upper whisker=1.2615857370001322
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=1.8,
+    lower whisker=1.1466721359993244,
+    lower quartile=1.2066396195004927,
+    median=1.2391524760005268,
+    upper quartile=1.3083918259999336,
+    upper whisker=1.383929244000683
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=2.2,
+    lower whisker=1.1614175689992408,
+    lower quartile=1.1817499435001082,
+    median=1.1908386799987056,
+    upper quartile=1.2606176780009264,
+    upper whisker=1.3034096169994882
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=2.8,
+    lower whisker=1.2402430969996203,
+    lower quartile=1.2756730175001394,
+    median=1.2972605830000248,
+    upper quartile=1.3898615999996764,
+    upper whisker=1.4814645839996956
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=3.2,
+    lower whisker=1.2282286570007273,
+    lower quartile=1.2766441234998638,
+    median=1.2932921219999116,
+    upper quartile=1.33349651449862,
+    upper whisker=1.4099603579998075
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=3.8,
+    lower whisker=1.4508442489996014,
+    lower quartile=1.547013826500006,
+    median=1.5778616079996937,
+    upper quartile=1.6186430385000676,
+    upper whisker=1.694410242000231
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=4.2,
+    lower whisker=1.4574412660003873,
+    lower quartile=1.5128411964997213,
+    median=1.5388021689996094,
+    upper quartile=1.5677790409990848,
+    upper whisker=1.640206585998385
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=4.8,
+    lower whisker=2.038625600999694,
+    lower quartile=2.1423562065001533,
+    median=2.1799197569998796,
+    upper quartile=2.2223902089999683,
+    upper whisker=2.3336542130000453
+},
+% ] coordinates {};
+] coordinates {(0,1.9948257670002931) (0,2.364070196999819) (0,2.3518120449998605) (0,2.3960739879994435)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=5.2,
+    lower whisker=1.5964435999994748,
+    lower quartile=1.7522349970004143,
+    median=1.8130858839995199,
+    upper quartile=1.8737736385010066,
+    upper whisker=2.0261683850003465
+},
+% ] coordinates {};
+] coordinates {(0,1.560854510000354) (0,2.0909746130000713)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=5.8,
+    lower whisker=1.8931305969999812,
+    lower quartile=2.04633093450002,
+    median=2.1175126040006944,
+    upper quartile=2.182972050999979,
+    upper whisker=2.3405053759997827
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=6.2,
+    lower whisker=1.3674715180004569,
+    lower quartile=1.4476188830003593,
+    median=1.487923453998519,
+    upper quartile=1.5264799489996221,
+    upper whisker=1.6101195510000252
+},
+% ] coordinates {};
+] coordinates {(0,1.6533052430004318) (0,1.681077473998812)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=6.8,
+    lower whisker=1.658675733000564,
+    lower quartile=1.7696137544999146,
+    median=1.8188523080007144,
+    upper quartile=1.870008981501087,
+    upper whisker=2.0161511690002953
+},
+% ] coordinates {};
+] coordinates {(0,2.071477681000033)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=7.2,
+    lower whisker=1.3602720449998742,
+    lower quartile=1.4221765615011464,
+    median=1.4533467930014012,
+    upper quartile=1.4832836374998806,
+    upper whisker=1.5616096520006977
+},
+% ] coordinates {};
+] coordinates {(0,1.5862507139991067)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=7.8,
+    lower whisker=1.789005835998978,
+    lower quartile=1.8825817449996975,
+    median=1.931287314999281,
+    upper quartile=1.969343596500039,
+    upper whisker=2.0719203089993243
+},
+% ] coordinates {};
+] coordinates {(0,2.1203082079991873) (0,2.132212045000415)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=8.2,
+    lower whisker=1.579511537000144,
+    lower quartile=1.651231963999635,
+    median=1.675347750999208,
+    upper quartile=1.7119871924996914,
+    upper whisker=1.8007691960010561
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=8.8,
+    lower whisker=2.240668029999142,
+    lower quartile=2.3632793670003593,
+    median=2.4072238320004544,
+    upper quartile=2.4590200850007022,
+    upper whisker=2.559063950999189
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=9.2,
+    lower whisker=1.8029640530003235,
+    lower quartile=1.9682105829997454,
+    median=2.035641446998852,
+    upper quartile=2.0976416489993426,
+    upper whisker=2.199228896000932
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=9.8,
+    lower whisker=2.411843094001597,
+    lower quartile=2.57304073350042,
+    median=2.6597212870001385,
+    upper quartile=2.707530831499753,
+    upper whisker=2.8758640229989396
+},
+% ] coordinates {};
+] coordinates {(0,2.337176497998371)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=10.2,
+    lower whisker=1.5069615339998563,
+    lower quartile=1.619176473999687,
+    median=1.6846740750006575,
+    upper quartile=1.7430722310009514,
+    upper whisker=1.891096845998618
+},
+% ] coordinates {};
+] coordinates {(0,1.9501141620003182)};
+% END PLOTS
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
