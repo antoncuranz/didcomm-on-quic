@@ -56,4 +56,4 @@ if __name__ == "__main__":
     for path in sys.argv[1:]:
         process(path)
 
-    plt.show()
+    # plt.show()

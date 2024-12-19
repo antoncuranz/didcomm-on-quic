@@ -1,0 +1,1118 @@
+Started webhook listener on port: 8022
+Registering car2s ...
+using ledger: http://192.168.1.2:8000/register
+nym_info: {'did': '7vuCNteT74Y9pE434w6CS8', 'seed': '000000000000000000000000000car2s', 'verkey': '4n3rFjoUm2jFWkvGhKnu4vidkGsfYTJcQzteeB9YXnwZ'}
+Registered DID: 7vuCNteT74Y9pE434w6CS8
+Created public DID
+/usr/src/app/.venv/bin/python -m aries_cloudagent start --endpoint https://192.168.3.2:8020 --label car2s --auto-respond-messages --inbound-transport acapy-plugins.httpstransport.v1_0.inbound 0.0.0.0 8020 --outbound-transport acapy-plugins.httpstransport.v1_0.outbound --plugin-config-value httpxtransport.keepalive_timeout=0.5 --admin 0.0.0.0 8021 --admin-insecure-mode --wallet-type askar --wallet-name car2s9eab273a --wallet-key car2s --preserve-exchange-records --auto-provision --public-invites --emit-new-didcomm-prefix --requests-through-public-did --auto-respond-credential-offer --auto-respond-credential-request --auto-store-credential --auto-verify-presentation --max-message-size 2147483648 --plugin acapy-plugins.http3transport.v1_0 --plugin acapy-plugins.httpstransport.v1_0 --plugin acapy-plugins.serviceregistry.v1_0 --plugin acapy-plugins.videostreaming.v1_0 --plugin acapy-plugins.filesharing.v1_0 --genesis-transactions {"reqSignature":{},"txn":{"data":{"data":{"alias":"Node1","blskey":"4N8aUNHSgjQVgkpm8nhNEfDf6txHznoYREg9kirmJrkivgL4oSEimFF6nsQ6M41QvhM2Z33nves5vfSn9n1UwNFJBYtWVnHYMATn76vLuL3zU88KyeAYcHfsih3He6UHcXDxcaecHVz6jhCYz1P2UZn2bDVruL5wXpehgBfBaLKm3Ba","blskey_pop":"RahHYiCvoNCtPTrVtP7nMC5eTYrsUA8WjXbdhNc8debh1agE9bGiJxWBXYNFbnJXoXhWFMvyqhqhRoq737YQemH5ik9oL7R4NTTCz2LEZhkgLJzB3QRQqJyBNyv7acbdHrAT8nQ9UkLbaVL9NBpnWXBTw4LEMePaSHEw66RzPNdAX1","client_ip":"192.168.1.2","client_port":9702,"node_ip":"192.168.1.2","node_port":9701,"services":["VALIDATOR"]},"dest":"Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv"},"metadata":{"from":"Th7MpTaRZVRYnPiabds81Y"},"type":"0"},"txnMetadata":{"seqNo":1,"txnId":"fea82e10e894419fe2bea7d96296a6d46f50f93f9eeda954ec461b2ed2950b62"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node2","blskey":"37rAPpXVoxzKhz7d9gkUe52XuXryuLXoM6P6LbWDB7LSbG62Lsb33sfG7zqS8TK1MXwuCHj1FKNzVpsnafmqLG1vXN88rt38mNFs9TENzm4QHdBzsvCuoBnPH7rpYYDo9DZNJePaDvRvqJKByCabubJz3XXKbEeshzpz4Ma5QYpJqjk","blskey_pop":"Qr658mWZ2YC8JXGXwMDQTzuZCWF7NK9EwxphGmcBvCh6ybUuLxbG65nsX4JvD4SPNtkJ2w9ug1yLTj6fgmuDg41TgECXjLCij3RMsV8CwewBVgVN67wsA45DFWvqvLtu4rjNnE9JbdFTc1Z4WCPA3Xan44K1HoHAq9EVeaRYs8zoF5","client_ip":"192.168.1.2","client_port":9704,"node_ip":"192.168.1.2","node_port":9703,"services":["VALIDATOR"]},"dest":"8ECVSk179mjsjKRLWiQtssMLgp6EPhWXtaYyStWPSGAb"},"metadata":{"from":"EbP4aYNeTHL6q385GuVpRV"},"type":"0"},"txnMetadata":{"seqNo":2,"txnId":"1ac8aece2a18ced660fef8694b61aac3af08ba875ce3026a160acbc3a3af35fc"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node3","blskey":"3WFpdbg7C5cnLYZwFZevJqhubkFALBfCBBok15GdrKMUhUjGsk3jV6QKj6MZgEubF7oqCafxNdkm7eswgA4sdKTRc82tLGzZBd6vNqU8dupzup6uYUf32KTHTPQbuUM8Yk4QFXjEf2Usu2TJcNkdgpyeUSX42u5LqdDDpNSWUK5deC5","blskey_pop":"QwDeb2CkNSx6r8QC8vGQK3GRv7Yndn84TGNijX8YXHPiagXajyfTjoR87rXUu4G4QLk2cF8NNyqWiYMus1623dELWwx57rLCFqGh7N4ZRbGDRP4fnVcaKg1BcUxQ866Ven4gw8y4N56S5HzxXNBZtLYmhGHvDtk6PFkFwCvxYrNYjh","client_ip":"192.168.1.2","client_port":9706,"node_ip":"192.168.1.2","node_port":9705,"services":["VALIDATOR"]},"dest":"DKVxG2fXXTU8yT5N7hGEbXB3dfdAnYv1JczDUHpmDxya"},"metadata":{"from":"4cU41vWW82ArfxJxHkzXPG"},"type":"0"},"txnMetadata":{"seqNo":3,"txnId":"7e9f355dffa78ed24668f0e0e369fd8c224076571c51e2ea8be5f26479edebe4"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node4","blskey":"2zN3bHM1m4rLz54MJHYSwvqzPchYp8jkHswveCLAEJVcX6Mm1wHQD1SkPYMzUDTZvWvhuE6VNAkK3KxVeEmsanSmvjVkReDeBEMxeDaayjcZjFGPydyey1qxBHmTvAnBKoPydvuTAqx5f7YNNRAdeLmUi99gERUU7TD8KfAa6MpQ9bw","blskey_pop":"RPLagxaR5xdimFzwmzYnz4ZhWtYQEj8iR5ZU53T2gitPCyCHQneUn2Huc4oeLd2B2HzkGnjAff4hWTJT6C7qHYB1Mv2wU5iHHGFWkhnTX9WsEAbunJCV2qcaXScKj4tTfvdDKfLiVuU2av6hbsMztirRze7LvYBkRHV3tGwyCptsrP","client_ip":"192.168.1.2","client_port":9708,"node_ip":"192.168.1.2","node_port":9707,"services":["VALIDATOR"]},"dest":"4PS3EDQ3dW1tci1Bp6543CfuuebjFrg36kLAUcskGfaA"},"metadata":{"from":"TWwCRQRZ2ZHMJFn9TzLp7W"},"type":"0"},"txnMetadata":{"seqNo":4,"txnId":"aa5e817d7cc626170eca175822029339a444eb0ee8f0bd20d3b0b76e566fb008"},"ver":"1"}
+ --seed 000000000000000000000000000car2s --debug-webhooks --monitor-revocation-notification --webhook-url http://localhost:8022/webhooks
+Inserted new connection
+Adding new credential to table
+Adding new credential to table
+Adding new credential to table
+Agent initialized
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43211.343178948;43211.71839903;0.37522008199448464
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43212.724387766;43213.101581036;0.3771932699964964
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43214.107283853;43214.485733387;0.3784495340005378
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43215.491765;43215.875479339;0.3837143390046549
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43216.885650622;43217.256280532;0.37062990999402246
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43218.262360855;43218.659106958;0.3967461030042614
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43219.668742778;43220.071488403;0.4027456250041723
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43221.077535436;43221.501131989;0.42359655300242594
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43222.513183337;43222.896724801;0.38354146399797173
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43223.903570678;43224.280877327;0.37730664900300326
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43225.287957415;43225.657538357;0.3695809420023579
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43226.663298557;43227.051417154;0.38811859699490014
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43228.057407649;43228.427968228;0.37056057900190353
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43229.436426;43229.869821284;0.4333952840024722
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43230.877398505;43231.256601967;0.3792034619982587
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43232.262063167;43232.693149178;0.43108601099811494
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43233.705263824;43234.080983708;0.3757198840030469
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43235.087660256;43235.528221367;0.44056111099780537
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43236.541168566;43236.917538999;0.3763704329976463
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43237.924566011;43238.296118977;0.37155296599667054
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43239.3018451;43239.700939816;0.399094715998217
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43240.708413626;43241.088599267;0.380185640999116
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43242.095195568;43242.515711969;0.42051640099816723
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43243.526259563;43243.903764343;0.3775047800008906
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43244.910771484;43245.338350418;0.42757893400266767
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43246.349235184;43246.719916809;0.37068162499781465
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43247.725554437;43248.17529544;0.44974100300169084
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43249.189300698;43249.568538081;0.3792373830001452
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43250.577749456;43251.004213089;0.4264636329971836
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43252.023816158;43252.397559026;0.373742868003319
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43253.404408752;43253.782831044;0.37842229200032307
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43254.788475759;43255.191386186;0.4029104270011885
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43256.201340572;43256.578863397;0.37752282500150613
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43257.585998962;43257.976177921;0.390178959001787
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43258.985677221;43259.388939193;0.40326197200192837
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43260.394263325;43260.829156882;0.43489355700148735
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43261.837190084;43262.220335386;0.3831453020029585
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43263.228387465;43263.619311849;0.39092438399529783
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43264.624923861;43264.999911661;0.3749877999944147
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43266.006546392;43266.398514039;0.39196764700318454
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43267.404484639;43267.834201893;0.4297172539954772
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43268.845485467;43269.224693312;0.3792078449987457
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43270.232895104;43270.648807255;0.4159121509946999
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43271.661535929;43272.036383395;0.37484746600239305
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43273.04154599;43273.466284276;0.42473828599759145
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43274.477680104;43274.853094452;0.37541434800368734
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43275.858237715;43276.28657904;0.42834132500138367
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43277.294886295;43277.675392198;0.3805059029982658
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43278.685088968;43279.105387501;0.42029853299754905
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43280.123200525;43280.511872431;0.3886719060028554
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43281.519787726;43281.903268786;0.38348106000194093
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43282.908910557;43283.341464762;0.4325542049991782
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43284.351269578;43284.728334696;0.377065118002065
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43285.735554736;43286.159274056;0.4237193200024194
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43287.179856821;43287.557701031;0.37784421000105795
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43288.563301763;43288.984688184;0.42138642099598655
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43289.99742441;43290.370452485;0.3730280750023667
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43291.376146345;43291.802237858;0.4260915129998466
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43292.813462736;43293.192261332;0.3787985960007063
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43294.202105487;43294.606769774;0.40466428700165125
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43295.621528857;43295.991284858;0.36975600099685835
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43297.001831647;43297.402881646;0.40104999899631366
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43298.4084308;43298.814141432;0.40571063199604396
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43299.82836072;43300.214167433;0.38580671299860114
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43301.221510899;43301.639814164;0.41830326500348747
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43302.646337789;43303.028502047;0.38216425799328135
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43304.035831556;43304.46075131;0.42491975399752846
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43305.472879953;43305.959802781;0.4869228280003881
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43306.969605776;43307.366859278;0.3972535020002397
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43308.373264988;43308.81990993;0.44664494200696936
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43309.826646811;43310.20798902;0.3813422089951928
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43311.218586859;43311.636382913;0.41779605399642605
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43312.649154734;43313.030197274;0.3810425400006352
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43314.037309536;43314.459351761;0.42204222500004107
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43315.47323522;43315.856632577;0.3833973569999216
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43316.863351044;43317.29373815;0.4303871060037636
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43318.309453921;43318.73079589;0.421341968998604
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43319.737603942;43320.12052992;0.3829259780031862
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43321.127948397;43321.546922424;0.41897402700124076
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43322.555230411;43322.933981262;0.378750850999495
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43323.940496688;43324.37114984;0.4306531519978307
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43325.387906585;43325.771517571;0.38361098599852994
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43326.777418742;43327.197588908;0.42017016599857016
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43328.206729282;43328.605286344;0.3985570619988721
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43329.612117777;43330.026190212;0.41407243499998003
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43331.035922343;43331.425841897;0.38991955399978906
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43332.436430746;43332.819412269;0.3829815229983069
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43333.825864741;43334.235430713;0.4095659720042022
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43335.24315995;43335.701874985;0.458715035005298
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43336.712421502;43337.093847675;0.38142617300036363
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43338.101829625;43338.517187825;0.41535819999990053
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43339.532221183;43339.902639865;0.37041868200321915
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43340.908615336;43341.338169938;0.4295546020002803
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43342.354756939;43342.761914803;0.4071578639996005
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43343.771492563;43344.172156734;0.4006641710002441
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43345.178191374;43345.620255235;0.4420638610026799
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43346.627961185;43347.006436537;0.37847535200126003
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43348.012784515;43348.45077425;0.43798973500088323
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;43349.462069072;43349.83852507;0.37645599800453056
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+Deleted old connection from table
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = deleted;

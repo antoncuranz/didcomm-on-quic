@@ -1,0 +1,193 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{statistics}
+
+\begin{document}
+\begin{tikzpicture}
+
+\definecolor{red}{RGB}{219,58,52}
+\definecolor{blue}{RGB}{23,126,137}
+
+\begin{axis}
+[
+    %title={File transmission time (wired-emulation/file/packetloss/file-500K)},
+    xlabel={TODO},
+    ylabel={time in seconds},
+    yticklabel style={text width=8mm,align=right},
+    xtick={1,2,3,4,5},
+    xticklabels={00,02-5,05,10,15},
+    %ymin=0.1,
+    %ytick distance=0.05,
+    %ymax=0.6,
+    boxplot/box extend=0.35,
+    boxplot/draw direction=y,
+    area legend,
+    legend entries={http1, http3},
+    legend pos=north west,
+    ymajorgrids = true,
+    yminorgrids = true,
+    major grid style = {lightgray},
+    minor grid style = {lightgray!25},
+    width = 15cm,
+    height = 11.5cm,
+]
+
+% START PLOTS
+
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=0.8,
+    lower whisker=0.126067791999958,
+    lower quartile=0.1296048919975874,
+    median=0.13065846600511577,
+    upper quartile=0.13345714149909327,
+    upper whisker=0.13908572199579794
+},
+% ] coordinates {};
+] coordinates {(0,0.18263093200221192) (0,0.1891580840019742) (0,0.1885483279984328) (0,0.19934364999789977) (0,0.14625829699798487) (0,0.14719664000585908) (0,0.15824817399698077) (0,0.21772005300590536) (0,0.1397991460034973) (0,0.21982945100171492) (0,0.14426452600309858) (0,0.22757561699836515) (0,0.14345801799936453) (0,0.22721090500272112) (0,0.14472503200522624) (0,0.22297560999868438)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=1.2,
+    lower whisker=0.13504607700451743,
+    lower quartile=0.1383786955011601,
+    median=0.14034996800182853,
+    upper quartile=0.14477907749824226,
+    upper whisker=0.14966198400361463
+},
+% ] coordinates {};
+] coordinates {(0,0.24653481699351687) (0,0.21680299699801253) (0,0.21243945099558914) (0,0.1969187009963207) (0,0.18923561799601885) (0,0.19365499899868155) (0,0.2366355440026382) (0,0.24433475199475652) (0,0.20802448600443313) (0,0.20697660000587348) (0,0.2190747300046496) (0,0.1808967369943275) (0,0.203316019003978) (0,0.2418555589974858) (0,0.24887846799538238)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=1.8,
+    lower whisker=0.12682420000055572,
+    lower quartile=0.1317564825003501,
+    median=0.13574379700003192,
+    upper quartile=0.23031450399867026,
+    upper whisker=0.3676255470054457
+},
+% ] coordinates {};
+] coordinates {(0,1.1981512919956003) (0,0.42086920399742667) (0,0.45718901199870743) (0,0.7002909659931902) (0,0.5583765210030833) (0,1.180660562000412) (0,1.1650337700048112) (0,0.44833275100245373) (0,1.2711045379983261) (0,1.1962621900020167) (0,1.1660174879943952) (0,1.3492626730003394) (0,0.45043031499517383)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=2.2,
+    lower whisker=0.18255752899858635,
+    lower quartile=0.276756214996567,
+    median=0.3182252400001744,
+    upper quartile=0.350535031499021,
+    upper whisker=0.444899952999549
+},
+% ] coordinates {};
+] coordinates {(0,0.47276393699576147) (0,0.49800881900591776) (0,0.5002593859971967) (0,0.46505323599558324) (0,0.4847605629984173) (0,0.5639020790040377) (0,0.5498806870018598) (0,0.5122612199993455) (0,0.5367218040046282) (0,0.465246660001867) (0,0.49967871899571037)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=2.8,
+    lower whisker=0.12595714799681446,
+    lower quartile=0.19310428899916587,
+    median=0.41665506699791877,
+    upper quartile=0.8193189184967196,
+    upper whisker=1.701798433001386
+},
+% ] coordinates {};
+] coordinates {(0,1.8041200490042684) (0,1.9289229649948538) (0,1.8110349839989794) (0,2.1986997200001497) (0,2.1511126199984574) (0,2.5832334340011585)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=3.2,
+    lower whisker=0.29977291399700334,
+    lower quartile=0.426760488000582,
+    median=0.48657165199983865,
+    upper quartile=0.5860954165036674,
+    upper whisker=0.759513117998722
+},
+% ] coordinates {};
+] coordinates {};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=3.8,
+    lower whisker=0.24726324299990665,
+    lower quartile=2.7737289530014095,
+    median=4.611661691000336,
+    upper quartile=6.002532873997552,
+    upper whisker=9.532032144998084
+},
+% ] coordinates {};
+] coordinates {(0,11.411821631001658) (0,11.070626890999847) (0,13.742352547000337) (0,10.958366676997684) (0,11.76391535699804)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=4.2,
+    lower whisker=0.6777965320000021,
+    lower quartile=0.931117343000011,
+    median=1.101781299999999,
+    upper quartile=1.3375086770000024,
+    upper whisker=1.7789428039999962
+},
+% ] coordinates {};
+] coordinates {(0,1.9513908510000135)};
+\addplot+[
+fill=red,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=4.8,
+    lower whisker=4.846724286995595,
+    lower quartile=11.531682105000073,
+    median=15.836600891998387,
+    upper quartile=22.909654796501854,
+    upper whisker=38.76277897399268
+},
+% ] coordinates {};
+] coordinates {(0,41.1019544039882) (0,54.396005037997384) (0,54.32570666799438) (0,69.02935633600282) (0,46.279489088992705) (0,87.24650619798922) (0,88.68786182299664) (0,45.0339149460051) (0,62.721289323002566) (0,64.11901460700028) (0,54.56082500999037) (0,49.6339184630051)};
+\addplot+[
+fill=blue,
+draw=black,
+solid,
+mark=asterisk,
+boxplot prepared={
+    draw position=5.2,
+    lower whisker=1.6214273940000226,
+    lower quartile=2.266015230000022,
+    median=2.6664065660000063,
+    upper quartile=3.1888201404999776,
+    upper whisker=4.283521499000017
+},
+% ] coordinates {};
+] coordinates {(0,6.973348641999991) (0,4.586002827000016) (0,17.39248648800003) (0,6.403103741999985) (0,7.648529537000002)};
+% END PLOTS
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
