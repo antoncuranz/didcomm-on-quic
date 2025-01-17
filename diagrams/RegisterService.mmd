@@ -1,0 +1,42 @@
+---
+config:
+  mirrorActors: false
+---
+%%{init: {
+  "theme": "neutral",
+  "themeVariables": {
+    "xactorTextColor": "#C40D20",
+    "signalColor": "#C40D20",
+    "xsignalTextColor": "#C40D20",
+    "activationBorderColor": "#C40D20"
+  }
+}}%%
+sequenceDiagram
+    participant truck as Vehicle
+    participant discovery as Discovery Service
+    participant indy as Indy Node
+
+    opt Establish Connection
+    activate truck
+        discovery-->>truck: Broadcast DIDComm Invitation
+        truck->>discovery: 
+        discovery->>truck: 
+        truck->>discovery: 
+    end
+
+    truck->>+discovery: Register provided service
+    discovery->>discovery: Create Entry
+
+    loop Establish Trust
+        discovery->>truck: Request Credential
+        truck-->>discovery: Present Credential
+        discovery->>+indy: Retrieve Verification Material
+        indy-->>-discovery: 
+        discovery->>discovery: Verify Credential
+    end
+    
+    deactivate truck
+    
+    discovery->>discovery: Update Entry
+    
+    deactivate discovery

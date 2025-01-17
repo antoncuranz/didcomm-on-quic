@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" version="26.0.6">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-01-17T17:40:14.213Z" version="22.1.22" etag="SZ_E79h8gby-hEJEJgkc" type="embed">
   <diagram name="Seite-1" id="HDc-kwV_B_1xKTGdfyAV">
-    <mxGraphModel dx="2617" dy="1284" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
+    <mxGraphModel dx="1597" dy="1428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -692,7 +692,7 @@
         <mxCell id="64" value="Trusted Communication Module" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="53" vertex="1">
           <mxGeometry x="20" y="115.5" width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="rDYvrRGPtUadKn4o-k3J-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" parent="53" source="65" target="67">
+        <mxCell id="rDYvrRGPtUadKn4o-k3J-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="53" source="65" target="67" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="65" value="Controller&lt;br&gt;Application" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="53" vertex="1">
@@ -713,7 +713,7 @@
         <mxCell id="71" value="Service 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="53" vertex="1">
           <mxGeometry x="90" y="58" width="60" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="rDYvrRGPtUadKn4o-k3J-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" parent="53" source="67" target="65">
+        <mxCell id="rDYvrRGPtUadKn4o-k3J-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="53" source="67" target="65" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="109" target="78" edge="1">
@@ -904,6 +904,9 @@
         </mxCell>
         <mxCell id="118" value="Verifiable&lt;br&gt;Data Registry" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="136.88" y="66.28" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="120" value="Text" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="-490" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

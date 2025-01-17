@@ -1,0 +1,40 @@
+%%{init: {
+  "theme": "neutral",
+  "themeVariables": {
+    "xactorTextColor": "#C40D20",
+    "signalColor": "#C40D20",
+    "xsignalTextColor": "#C40D20",
+    "activationBorderColor": "#C40D20"
+  }
+}}%%
+sequenceDiagram
+    participant car as Car
+    participant truck as Truck
+    participant indy as Indy Node
+
+
+    opt Establish Connection
+        activate car
+        car->>truck: 
+        truck->>car: 
+        car->>truck: 
+    end
+
+    car->>+truck: Service-specific Request
+
+    loop Establish Trust
+        truck->>car: Request Credential
+        car-->>truck: Present Credential
+        truck->>+indy: Retrieve Verification Material
+        indy-->>-truck: 
+        truck->>truck: Verify Credential
+    end
+
+    truck-->>-car: Service-specific Response
+
+    loop
+        car->>+truck: Service-specific Request
+        truck-->>-car: Service-specific Response
+    end
+
+    deactivate car

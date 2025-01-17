@@ -1,0 +1,29 @@
+---
+config:
+  mirrorActors: false
+---
+%%{init: {
+  "theme": "neutral",
+  "themeVariables": {
+    "xactorTextColor": "#C40D20",
+    "signalColor": "#C40D20",
+    "xsignalTextColor": "#C40D20",
+    "activationBorderColor": "#C40D20"
+  }
+}}%%
+sequenceDiagram
+    participant car as Vehicle
+    participant discovery as Discovery Service
+
+    opt Establish Connection
+        activate car
+        discovery-->>car: Broadcast DIDComm Invitation
+        car->>discovery: 
+        discovery->>car: 
+        car->>discovery: 
+    end
+
+    car->>+discovery: Query available services
+    discovery-->>-car: 
+
+    deactivate car
