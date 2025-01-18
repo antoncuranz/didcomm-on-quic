@@ -37,7 +37,6 @@ class BenchmarkCarApp(CarApp):
                 yield Button("Repeat Count", disabled=True)
 
     def on_mount(self) -> None:
-        super().on_mount()
         self.bm_input = self.query_one("#bm_input", Input)
         self.bm_repeat_count = self.query_one("#bm_repeat_count", Input)
         self.bm_pres_batch_size = self.query_one("#bm_pres_batch_size", Input)
