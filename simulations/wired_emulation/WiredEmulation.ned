@@ -12,13 +12,10 @@ import ned.DatarateChannel;
 
 network WiredEmulation
 {
-    parameters:
-        @display("bgb=706.428,339.264");
     types:
         channel ethline extends Eth100M
         {
             delay = 0 ms;
-            //datarate = 50 Mbps;
         }
     submodules:
         router1: Router {
