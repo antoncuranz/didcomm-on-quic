@@ -24,7 +24,7 @@ The implementation consists of three parts:
 
 ### Building container images
 
-I recommend packaging the different parts as a container image and running it using Docker or Podman.
+I recommend packaging the different components as a container image and running it using Docker or Podman.
 My GitHub repository is configured to automatically build container images on every commit.
 But this can also be done locally using the following command:
 
