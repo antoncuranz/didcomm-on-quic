@@ -5,3 +5,7 @@ Screen {
 DataTable {
     margin-bottom: 2;
 }
+
+.input {
+    width: 40;
+}

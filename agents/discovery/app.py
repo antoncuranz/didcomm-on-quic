@@ -1,5 +1,6 @@
 from textual.app import ComposeResult
-from textual.widgets import DataTable, Label
+from textual.containers import Horizontal
+from textual.widgets import DataTable, Label, Input, Button
 from textual.widgets._data_table import RowDoesNotExist
 
 from agents.common.app_base import AppBase
@@ -12,10 +13,24 @@ class DiscoveryApp(AppBase):
         super().__init__("Discovery Service", agent)
         self.service_table = None
         self.agent.set_webhook_callback("service_registry", self.handle_service_registry)
+        self.bm_input = None
 
     def compose_ui(self) -> ComposeResult:
         yield Label("Registered Services")
         yield DataTable(id="service_table", cursor_type="row")
+    
+    def compose_benchmark_ui(self) -> ComposeResult:
+        with Horizontal():
+            yield Input("9HktKFSbBsrxQJ6tTKq7SU", id="bm_input", placeholder="Connect to DID", classes="input")
+            yield Button("Connect", id="bm_connect")
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        button = event.button.id
+        self.bm_input = self.query_one("#bm_input", Input)
+
+        if button == "bm_connect":
+            did = self.bm_input.value
+            self.run_worker(self.agent.create_connection(did), exit_on_error=False)
 
     def on_mount(self) -> None:
         self.service_table = self.query_one("#service_table", DataTable)

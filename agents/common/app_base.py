@@ -55,6 +55,7 @@ class AppBase(App):
 
     def __init__(self, controller_name: str, agent: WebhookAgentBase):
         super().__init__()
+        self.dark = False
         self.agent = agent
         self.title = "{} ({})".format(controller_name, agent.ident)
         self.sub_title = "IP: {} Port: {} ({})".format(agent.external_host, agent.http_port, agent.transport_type)
