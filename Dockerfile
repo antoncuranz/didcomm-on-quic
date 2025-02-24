@@ -47,7 +47,7 @@ COPY acapy-plugins ./acapy-plugins
 COPY agents ./agents
 COPY wallets /root/.aries_cloudagent/wallet
 
-COPY bbb ./stream
+COPY stream ./stream
 COPY certs ./certs
 RUN mkdir recvd logs
 

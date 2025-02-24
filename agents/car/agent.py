@@ -37,6 +37,7 @@ class Agent(WebhookAgentBase):
     async def _receive_invitations(self):
         broadcast_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         broadcast_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        broadcast_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         broadcast_sock.setblocking(False)
         broadcast_sock.bind(("", LISTEN_PORT))
         loop = asyncio.get_event_loop()

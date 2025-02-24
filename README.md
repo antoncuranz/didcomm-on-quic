@@ -14,7 +14,7 @@ The implementation consists of three parts:
 📁
 ├─📁 acapy-plugins    # Implemented ACA-Py plugins (HTTP/3 transport, videostreaming and filesharing DIDComm protocols)
 ├─📁 agents           # Controller applications interacting with ACA-Py (car, discovery, issuer)
-├─📁 bbb              # First minute of "Big Buck Bunny" (test video for videostreaming use case)
+├─📁 stream           # First minute of "Big Buck Bunny" (test video for videostreaming use case)
 ├─📁 certs            # Self-signed certificates used for TLS connections
 ├─📁 simulations      # Simulated OMNeT++ networks used for the evaluation
 └─📁 wallets          # ACA-Py wallets persisting connections and credentials
