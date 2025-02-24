@@ -40,6 +40,7 @@ ENV PYTHONUNBUFFERED 1
 ENV TERM xterm-256color
 ENV DISPLAY host.docker.internal:0
 
+RUN rm /var/lib/dpkg/info/libc-bin.*
 RUN apt-get update && apt-get install -y mpv && apt-get clean
 
 COPY acapy-plugins ./acapy-plugins
