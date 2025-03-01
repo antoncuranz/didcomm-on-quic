@@ -16,6 +16,7 @@ The implementation consists of three parts:
 ├─📁 agents           # Controller applications interacting with ACA-Py (car, discovery, issuer)
 ├─📁 stream           # First minute of "Big Buck Bunny" (test video for videostreaming use case)
 ├─📁 certs            # Self-signed certificates used for TLS connections
+├─📁 evaluation       # Raw measurements from the evaluation
 ├─📁 simulations      # Simulated OMNeT++ networks used for the evaluation
 └─📁 wallets          # ACA-Py wallets persisting connections and credentials
 ```
@@ -90,3 +91,27 @@ Note that the `Network emulation support` Project Feature needs to be enabled in
 A simulated network can be started by right-clicking the respective `omnetpp.ini` file and clicking `Run As > OMNeT++ Simulation`. Then, click the three green arrows (Express Run) in the GUI.
 
 The scripts `start-agent.sh` and `start-issuer.sh` can be used to start the respective agents in a specified network namespace.
+
+## Evaluation
+
+### Benchmark Logs
+
+All controller applications write application logs to a file inside the `logs` folder.
+The name of the file includes the start time, agent name and transport (e.g. `logs/2024-11-28_14:07:18.516155_car2s_https.txt`).
+The logs include time measurements of certain actions, including connection establishment, credential presentation, file sharing and video streaming.
+
+Format: `BM(<ACTION>): <METADATA>;<TIME_START>;<TIME_END>;<DURATION>`
+
+Example:
+```
+BM(conn): did:sov:PhbGmg1H53KupchWiZSyk1;42807.376310773;42807.632572756;0.25626198300597025
+BM(file): files/file_1M;6338.676288084;6339.907634485;1.2313464010003372
+```
+
+### Extracting and Plotting Measurements
+
+The `evaluation` folder contains several scripts for retrieving and plotting the measurements from agents running in containers:
+
+The script `fetch_logs.sh` can be used to copy all logs from a running container to a local folder.
+
+The scripts `eval_<ACTION>.py` can be used to parse the application logs and plot the measurements.

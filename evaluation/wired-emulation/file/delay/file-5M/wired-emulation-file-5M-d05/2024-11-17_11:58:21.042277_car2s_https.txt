@@ -1,0 +1,128 @@
+Started webhook listener on port: 8022
+Registering car2s ...
+using ledger: http://192.168.1.2:8000/register
+nym_info: {'did': '7vuCNteT74Y9pE434w6CS8', 'seed': '000000000000000000000000000car2s', 'verkey': '4n3rFjoUm2jFWkvGhKnu4vidkGsfYTJcQzteeB9YXnwZ'}
+Registered DID: 7vuCNteT74Y9pE434w6CS8
+Created public DID
+/usr/src/app/.venv/bin/python -m aries_cloudagent start --endpoint https://192.168.3.2:8020 --label car2s --auto-respond-messages --inbound-transport acapy-plugins.httpstransport.v1_0.inbound 0.0.0.0 8020 --outbound-transport acapy-plugins.httpstransport.v1_0.outbound --plugin-config-value httpxtransport.keepalive_timeout=0.5 --admin 0.0.0.0 8021 --admin-insecure-mode --wallet-type askar --wallet-name car2s70e5a22f --wallet-key car2s --preserve-exchange-records --auto-provision --public-invites --emit-new-didcomm-prefix --requests-through-public-did --auto-respond-credential-offer --auto-respond-credential-request --auto-store-credential --auto-verify-presentation --max-message-size 2147483648 --plugin acapy-plugins.http3transport.v1_0 --plugin acapy-plugins.httpstransport.v1_0 --plugin acapy-plugins.serviceregistry.v1_0 --plugin acapy-plugins.videostreaming.v1_0 --plugin acapy-plugins.filesharing.v1_0 --genesis-transactions {"reqSignature":{},"txn":{"data":{"data":{"alias":"Node1","blskey":"4N8aUNHSgjQVgkpm8nhNEfDf6txHznoYREg9kirmJrkivgL4oSEimFF6nsQ6M41QvhM2Z33nves5vfSn9n1UwNFJBYtWVnHYMATn76vLuL3zU88KyeAYcHfsih3He6UHcXDxcaecHVz6jhCYz1P2UZn2bDVruL5wXpehgBfBaLKm3Ba","blskey_pop":"RahHYiCvoNCtPTrVtP7nMC5eTYrsUA8WjXbdhNc8debh1agE9bGiJxWBXYNFbnJXoXhWFMvyqhqhRoq737YQemH5ik9oL7R4NTTCz2LEZhkgLJzB3QRQqJyBNyv7acbdHrAT8nQ9UkLbaVL9NBpnWXBTw4LEMePaSHEw66RzPNdAX1","client_ip":"192.168.1.2","client_port":9702,"node_ip":"192.168.1.2","node_port":9701,"services":["VALIDATOR"]},"dest":"Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv"},"metadata":{"from":"Th7MpTaRZVRYnPiabds81Y"},"type":"0"},"txnMetadata":{"seqNo":1,"txnId":"fea82e10e894419fe2bea7d96296a6d46f50f93f9eeda954ec461b2ed2950b62"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node2","blskey":"37rAPpXVoxzKhz7d9gkUe52XuXryuLXoM6P6LbWDB7LSbG62Lsb33sfG7zqS8TK1MXwuCHj1FKNzVpsnafmqLG1vXN88rt38mNFs9TENzm4QHdBzsvCuoBnPH7rpYYDo9DZNJePaDvRvqJKByCabubJz3XXKbEeshzpz4Ma5QYpJqjk","blskey_pop":"Qr658mWZ2YC8JXGXwMDQTzuZCWF7NK9EwxphGmcBvCh6ybUuLxbG65nsX4JvD4SPNtkJ2w9ug1yLTj6fgmuDg41TgECXjLCij3RMsV8CwewBVgVN67wsA45DFWvqvLtu4rjNnE9JbdFTc1Z4WCPA3Xan44K1HoHAq9EVeaRYs8zoF5","client_ip":"192.168.1.2","client_port":9704,"node_ip":"192.168.1.2","node_port":9703,"services":["VALIDATOR"]},"dest":"8ECVSk179mjsjKRLWiQtssMLgp6EPhWXtaYyStWPSGAb"},"metadata":{"from":"EbP4aYNeTHL6q385GuVpRV"},"type":"0"},"txnMetadata":{"seqNo":2,"txnId":"1ac8aece2a18ced660fef8694b61aac3af08ba875ce3026a160acbc3a3af35fc"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node3","blskey":"3WFpdbg7C5cnLYZwFZevJqhubkFALBfCBBok15GdrKMUhUjGsk3jV6QKj6MZgEubF7oqCafxNdkm7eswgA4sdKTRc82tLGzZBd6vNqU8dupzup6uYUf32KTHTPQbuUM8Yk4QFXjEf2Usu2TJcNkdgpyeUSX42u5LqdDDpNSWUK5deC5","blskey_pop":"QwDeb2CkNSx6r8QC8vGQK3GRv7Yndn84TGNijX8YXHPiagXajyfTjoR87rXUu4G4QLk2cF8NNyqWiYMus1623dELWwx57rLCFqGh7N4ZRbGDRP4fnVcaKg1BcUxQ866Ven4gw8y4N56S5HzxXNBZtLYmhGHvDtk6PFkFwCvxYrNYjh","client_ip":"192.168.1.2","client_port":9706,"node_ip":"192.168.1.2","node_port":9705,"services":["VALIDATOR"]},"dest":"DKVxG2fXXTU8yT5N7hGEbXB3dfdAnYv1JczDUHpmDxya"},"metadata":{"from":"4cU41vWW82ArfxJxHkzXPG"},"type":"0"},"txnMetadata":{"seqNo":3,"txnId":"7e9f355dffa78ed24668f0e0e369fd8c224076571c51e2ea8be5f26479edebe4"},"ver":"1"}
+{"reqSignature":{},"txn":{"data":{"data":{"alias":"Node4","blskey":"2zN3bHM1m4rLz54MJHYSwvqzPchYp8jkHswveCLAEJVcX6Mm1wHQD1SkPYMzUDTZvWvhuE6VNAkK3KxVeEmsanSmvjVkReDeBEMxeDaayjcZjFGPydyey1qxBHmTvAnBKoPydvuTAqx5f7YNNRAdeLmUi99gERUU7TD8KfAa6MpQ9bw","blskey_pop":"RPLagxaR5xdimFzwmzYnz4ZhWtYQEj8iR5ZU53T2gitPCyCHQneUn2Huc4oeLd2B2HzkGnjAff4hWTJT6C7qHYB1Mv2wU5iHHGFWkhnTX9WsEAbunJCV2qcaXScKj4tTfvdDKfLiVuU2av6hbsMztirRze7LvYBkRHV3tGwyCptsrP","client_ip":"192.168.1.2","client_port":9708,"node_ip":"192.168.1.2","node_port":9707,"services":["VALIDATOR"]},"dest":"4PS3EDQ3dW1tci1Bp6543CfuuebjFrg36kLAUcskGfaA"},"metadata":{"from":"TWwCRQRZ2ZHMJFn9TzLp7W"},"type":"0"},"txnMetadata":{"seqNo":4,"txnId":"aa5e817d7cc626170eca175822029339a444eb0ee8f0bd20d3b0b76e566fb008"},"ver":"1"}
+ --seed 000000000000000000000000000car2s --debug-webhooks --monitor-revocation-notification --webhook-url http://localhost:8022/webhooks
+Inserted new connection
+Adding new credential to table
+Adding new credential to table
+Adding new credential to table
+Agent initialized
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Received issue-credential-2.0 webhook ...
+Inserted new connection
+Connection webhook: did = PhbGmg1H53KupchWiZSyk1; state = request;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = response;
+Deleted old connection from table
+Inserted new connection
+Connection webhook: did = did:sov:PhbGmg1H53KupchWiZSyk1; state = active;
+BM(file): files/file_5M;6650.671412961;6652.393100188;-100
+BM(file): files/file_5M;6650.671412961;6652.393100188;1.721687227000075
+BM(file): files/file_5M;6653.407952689;6655.131375768;1.7234230789999856
+BM(file): files/file_5M;6656.150455646;6657.502440761;1.3519851149994793
+BM(file): files/file_5M;6658.511420244;6660.197193815;1.685773571000027
+BM(file): files/file_5M;6661.205414083;6662.814550371;1.6091362880006272
+BM(file): files/file_5M;6663.825419459;6665.444937187;1.6195177279996642
+BM(file): files/file_5M;6666.46089366;6667.808229064;1.3473354040006598
+BM(file): files/file_5M;6668.815418823;6670.289101062;1.4736822389995723
+BM(file): files/file_5M;6671.302571261;6672.621563751;1.31899249000071
+BM(file): files/file_5M;6673.634696156;6675.206900653;1.5722044969998024
+BM(file): files/file_5M;6676.215912099;6677.810422326;1.5945102269997733
+BM(file): files/file_5M;6678.81735621;6680.469407318;1.652051107999796
+BM(file): files/file_5M;6681.491310188;6682.879205261;1.3878950729995267
+BM(file): files/file_5M;6683.895898829;6685.341753204;1.4458543750006356
+BM(file): files/file_5M;6686.377572218;6687.69535295;1.3177807319998465
+BM(file): files/file_5M;6688.708848361;6690.118423075;1.409574713999973
+BM(file): files/file_5M;6691.126616974;6692.875168698;1.7485517240002082
+BM(file): files/file_5M;6693.882877885;6695.445759752;1.5628818670002147
+BM(file): files/file_5M;6696.467693167;6698.117085837;1.6493926699995427
+BM(file): files/file_5M;6699.14776076;6700.45216465;1.3044038899997759
+BM(file): files/file_5M;6701.460734221;6703.155687359;1.6949531379996188
+BM(file): files/file_5M;6704.181592192;6705.521457905;1.3398657130001084
+BM(file): files/file_5M;6706.530142729;6708.212535156;1.6823924270001953
+BM(file): files/file_5M;6709.221295189;6710.513796919;1.2925017300003674
+BM(file): files/file_5M;6711.522037697;6713.113697781;1.5916600840000683
+BM(file): files/file_5M;6714.12113151;6715.586057839;1.4649263290002636
+BM(file): files/file_5M;6716.595425547;6718.441579862;1.8461543150006037
+BM(file): files/file_5M;6719.450852944;6721.027483377;1.5766304329999912
+BM(file): files/file_5M;6722.04266402;6723.62422767;1.5815636500001347
+BM(file): files/file_5M;6724.639951194;6725.991771618;1.351820423999925
+BM(file): files/file_5M;6727.004516696;6728.564227749;1.5597110529997735
+BM(file): files/file_5M;6729.584412861;6731.03410933;1.449696469000628
+BM(file): files/file_5M;6732.044389592;6733.791889236;1.747499644000527
+BM(file): files/file_5M;6734.800600357;6736.526422071;1.7258217139997214
+BM(file): files/file_5M;6737.538325184;6739.067251675;1.5289264909997655
+BM(file): files/file_5M;6740.074495323;6741.76023042;1.6857350970003608
+BM(file): files/file_5M;6742.772598122;6744.11738477;1.3447866480000812
+BM(file): files/file_5M;6745.127487907;6746.751666626;1.624178719000156
+BM(file): files/file_5M;6747.765678428;6749.179504701;1.413826273000268
+BM(file): files/file_5M;6750.195421024;6751.691247721;1.4958266969997567
+BM(file): files/file_5M;6752.701906323;6754.042382054;1.3404757309999695
+BM(file): files/file_5M;6755.054688132;6756.712357738;1.6576696060001268
+BM(file): files/file_5M;6757.721391492;6759.301692806;1.580301313999371
+BM(file): files/file_5M;6760.31399176;6762.120859104;1.8068673440002385
+BM(file): files/file_5M;6763.127289207;6764.628811924;1.501522716999716
+BM(file): files/file_5M;6765.638334351;6767.600137451;1.9618030999999974
+BM(file): files/file_5M;6768.610205383;6770.270701106;1.6604957230001673
+BM(file): files/file_5M;6771.298153842;6772.840201809;1.5420479670001441
+BM(file): files/file_5M;6773.848861187;6775.668356832;1.819495645000643
+BM(file): files/file_5M;6776.679211357;6778.291768257;1.6125568999996176
+BM(file): files/file_5M;6779.299610377;6780.969159737;1.669549360000019
+BM(file): files/file_5M;6781.978762833;6783.537175471;1.5584126380008456
+BM(file): files/file_5M;6784.569464009;6786.260050545;1.69058653600041
+BM(file): files/file_5M;6787.269597475;6788.865393789;1.5957963139999265
+BM(file): files/file_5M;6789.872271568;6791.665248112;1.7929765440003393
+BM(file): files/file_5M;6792.674425665;6794.247135286;1.5727096210002856
+BM(file): files/file_5M;6795.257592018;6797.08968634;1.8320943220005574
+BM(file): files/file_5M;6798.097510463;6799.69766645;1.6001559870001074
+BM(file): files/file_5M;6800.708207643;6802.215244176;1.507036533000246
+BM(file): files/file_5M;6803.226262415;6804.717490495;1.491228079999928
+BM(file): files/file_5M;6805.724254108;6807.421621969;1.697367860999293
+BM(file): files/file_5M;6808.444439872;6809.789634289;1.3451944170001298
+BM(file): files/file_5M;6810.802861969;6812.287902196;1.4850402269994447
+BM(file): files/file_5M;6813.302564433;6814.68326459;1.3807001570003195
+BM(file): files/file_5M;6815.697458448;6817.564775762;1.8673173139995924
+BM(file): files/file_5M;6818.574789285;6820.259131724;1.68434243899992
+BM(file): files/file_5M;6821.274602596;6822.673822236;1.3992196400004104
+BM(file): files/file_5M;6823.684230806;6825.38562838;1.701397573999202
+BM(file): files/file_5M;6826.397145336;6827.809387945;1.4122426089998044
+BM(file): files/file_5M;6828.817578535;6830.503787662;1.686209126999529
+BM(file): files/file_5M;6831.512575967;6833.070769323;1.5581933559997196
+BM(file): files/file_5M;6834.08428951;6835.537088244;1.4527987339997708
+BM(file): files/file_5M;6836.54650814;6838.079932285;1.5334241450000263
+BM(file): files/file_5M;6839.087594704;6840.632857222;1.5452625179996176
+BM(file): files/file_5M;6841.643248169;6843.120140986;1.4768928169996798
+BM(file): files/file_5M;6844.129694342;6845.743195519;1.6135011770002166
+BM(file): files/file_5M;6846.751614238;6848.120932036;1.3693177980003384
+BM(file): files/file_5M;6849.145534214;6850.60615674;1.4606225260004067
+BM(file): files/file_5M;6851.61695311;6853.396647952;1.7796948420000263
+BM(file): files/file_5M;6854.406120892;6856.140220267;1.7340993749994595
+BM(file): files/file_5M;6857.149347454;6858.899098823;1.7497513689995685
+BM(file): files/file_5M;6859.914540909;6861.561581225;1.6470403160001297
+BM(file): files/file_5M;6862.57041366;6864.318172927;1.7477592670002196
+BM(file): files/file_5M;6865.327186739;6866.957805597;1.6306188579992522
+BM(file): files/file_5M;6867.971301705;6869.438981933;1.467680228000063
+BM(file): files/file_5M;6870.446442104;6871.979725131;1.533283026999925
+BM(file): files/file_5M;6872.988098104;6874.57454551;1.5864474059999338
+BM(file): files/file_5M;6875.584343998;6877.093703155;1.50935915700029
+BM(file): files/file_5M;6878.101132619;6879.767775432;1.6666428130001805
+BM(file): files/file_5M;6880.793185082;6882.293589898;1.5004048160008097
+BM(file): files/file_5M;6883.31327478;6884.770904033;1.45762925300005
+BM(file): files/file_5M;6885.784855981;6887.453971655;1.6691156739998405
+BM(file): files/file_5M;6888.47449788;6889.926306616;1.4518087360002028
+BM(file): files/file_5M;6890.933548622;6892.350151246;1.4166026240000065
+BM(file): files/file_5M;6893.359206563;6894.959393281;1.6001867180002591
+BM(file): files/file_5M;6895.96818997;6897.460542873;1.49235290300021
+BM(file): files/file_5M;6898.468567263;6900.245599297;1.7770320339996033
+BM(file): files/file_5M;6901.262512654;6902.681322094;1.4188094400005866
+BM(file): files/file_5M;6903.689194358;6904.989958963;1.3007646050000403
+BM(file): files/file_5M;6906.007239074;6907.436573665;1.4293345910000426
